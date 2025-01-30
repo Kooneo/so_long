@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:19:34 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:34:09 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	render_el_at(t_game *game, int el, int x, int y)
 		render_image(game, "textures/env/el_1.xpm", x, y + 64 - 15);
 	else if (el == 2)
 		// render_image(game, "textures/env/el_2.xpm", x + 64 - 15, y  + 64
-			- 15 )
+			// - 15 )
 		render_image(game, "textures/env/el_2.xpm", x, y + 64 - 15);
 	else if (el == 3)
 		render_image(game, "textures/env/el_3.xpm", x + 64 - 20, y + 64 - 15);
@@ -221,10 +221,10 @@ void	map_render(t_game *game)
 				{
 					render_el_at(game, 2, x, y);
 					// render_image(game, "textures/env/el_2.xpm", x , y + 64
-						- 15 );
+						// - 15 );
 						// render_image(game, "textures/env/el_2.xpm", x + 64
-							- 15,
-						y  + 64 - 15 );
+						// 	- 15,
+						// y  + 64 - 15 );
 				}
 				if (game->map->is_sp == 1 && ((x / 64 == 16 && y / 64 == 2)
 						|| (x / 64 == 21 && y / 64 == 4)))
@@ -365,10 +365,10 @@ void	map_render(t_game *game)
 					if (x / 64 == 3 && y / 64 == 6)
 					{
 						// render_image(game, "textures/env/obj_2.xpm", x, y
-							+ 5);
+							// + 5);
 							// render_image(game, "textures/env/object_21.xpm",
-								x
-							+ 74, y + 10);
+							// 	x
+							// + 74, y + 10);
 								render_image(game, "textures/env/object_25.xpm",
 									x, y + 10);
 					}
