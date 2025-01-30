@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:28:56 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:35:48 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,4 +128,9 @@ void			fill(char **map, t_point size, t_point current, char to_fill);
 char			**make_new_map(t_map *map);
 void			flood_fill(char **map, t_point size, int x, int y);
 int				map_check(t_map *map);
+
+int				is_coin(t_game *game, int new_x, int new_y);
+int				is_the_curse(t_game *game, int new_x, int new_y);
+int				is_the_curse_remover(t_game *game, int new_x, int new_y);
+int				is_exit_and_valid(t_game *game, int new_x, int new_y);
 #endif
