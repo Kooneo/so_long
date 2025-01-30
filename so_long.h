@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 16:38:28 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:47:21 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,6 @@ void			setup_hooks(t_win *window, t_game *game);
 int				check_wall(char *wall);
 int				check_is_surrounded(char *row);
 void			render_exit(t_game *game);
+void			render_map_design(t_game *game);
 
 #endif
