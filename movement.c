@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 15:34:59 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 15:36:28 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,15 +148,15 @@ int	handle_player_movement(t_game *game)
 		game->player->y_pos = new_y;
 		render_movement_count(game);
 	}
-	// else
-	// {
-	// 	render_image(game, "textures/bg_64n.xpm", game->player->x_pos,
-	// 		game->player->y_pos);
-	// 	render_image(game, "textures/player/p_idle/down/idle_down_00.xpm",
-	// 		game->player->x_pos, game->player->y_pos);
-	// 	mlx_put_image_to_window(game->window->mlx, game->window->win,
-	// 		game->base_img->img_ptr, 0, 0);
-	// }
+	else
+	{
+		render_image(game, "textures/bg_64n.xpm", game->player->x_pos,
+			game->player->y_pos);
+		render_image(game, "textures/player/p_idle/down/idle_down_00.xpm",
+			game->player->x_pos, game->player->y_pos);
+		mlx_put_image_to_window(game->window->mlx, game->window->win,
+			game->base_img->img_ptr, 0, 0);
+	}
 	mlx_put_image_to_window(game->window->mlx, game->window->win,
 		game->base_img->img_ptr, 0, 0);
 	return (0);
