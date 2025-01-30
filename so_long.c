@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:01:03 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:18:41 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:30:47 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,36 @@ void	map_init(t_map *map, char *filepath)
 // map error if the map file is not .ber
 int	main(int argc, char **argv)
 {
-	t_game	game;
-	char	*mapname;
-	t_map	map;
-	t_img	base_image;
+	t_game		game;
+	t_map		map;
+	t_win		window;
+	t_player	player;
+	char		*mapname;
+	t_img		base_image;
 
 	if (argc != 2)
 		show_err("Usage: ./so_long <map>");
 	mapname = argv[1];
 	map_init(&map, mapname);
+	map.coins_count = 0;
+	map.is_sp = 0;
+	init_window(&window, map.y, map.x);
+	player.moves_count = 0;
+	player.items_collected = 0;
+	player.sleep_time = 45000;
 	game.map = &map;
-	init_game(&game, mapname);
+	game.window = &window;
+	game.player = &player;
 	// Initialize key states
 	int_keystate(&game);
-	base_image = new_img(game.window->width, game.window->hight,
-			*(game.window));
+	base_image = new_img(window.width, window.hight, window);
 	game.base_img = &base_image;
+	game.map->exit_x = 0;
+	game.map->exit_y = 0;
 	map_render(&game);
-	mlx_hook(game.window->win, 2, 1L << 0, key_press, &game);
-	mlx_hook(game.window->win, 3, 1L << 1, key_release, &game);
-	mlx_loop_hook(game.window->mlx, handle_player_movement, &game);
-	mlx_loop(game.window->mlx);
+	mlx_hook(window.win, 2, 1L << 0, key_press, &game);
+	mlx_hook(window.win, 3, 1L << 1, key_release, &game);
+	mlx_loop_hook(window.mlx, handle_player_movement, &game);
+	mlx_loop(window.mlx);
 	return (0);
 }
