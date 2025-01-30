@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:25:28 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:49:37 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,13 +107,13 @@ int	handle_player_movement(t_game *game)
 	if (game->player->items_collected == game->map->coins_count)
 	{
 		// render_image(game, "textures/open_exit.xpm", game->map->exit_x,
-			// game->map->exit_y);
-			render_image(game, "textures/env/exit_wall.xpm", game->map->exit_x
-				- 2, game->map->exit_y - 2);
-			render_image(game, "textures/env/exit_door.xpm", game->map->exit_x
-				+ 12, game->map->exit_y + 13);
-			mlx_put_image_to_window(game->window->mlx, game->window->win,
-				game->base_img->img_ptr, 0, 0);
+		// game->map->exit_y);
+		render_image(game, "textures/env/exit_wall.xpm", game->map->exit_x - 2,
+			game->map->exit_y - 2);
+		render_image(game, "textures/env/exit_door.xpm", game->map->exit_x + 12,
+			game->map->exit_y + 13);
+		mlx_put_image_to_window(game->window->mlx, game->window->win,
+			game->base_img->img_ptr, 0, 0);
 	}
 	if (direction && is_exit_and_valid(game, new_x, new_y))
 	{
@@ -168,5 +168,5 @@ int	handle_player_movement(t_game *game)
 	}
 	mlx_put_image_to_window(game->window->mlx, game->window->win,
 		game->base_img->img_ptr, 0, 0);
-		return (0);
+	return (0);
 }

@@ -6,22 +6,21 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:54:39 by zbakour           #+#    #+#             */
-/*   Updated: 2024/12/21 15:57:08 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:49:12 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-
 # define BUFFER_SIZE 42
 
+# include <stdarg.h>
 # include <stddef.h>
 # include <stdint.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-#include  <stdio.h>
-# include <stdarg.h>
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -77,31 +76,29 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 
+size_t				ft_strlen_gn(char *str);
+char				*ft_strchr_gn(char *str, int c_chr);
+char				*ft_strdup_gn(char *str2);
+char				*ft_strjoin_gn(char *str1, char *str2);
+char				*get_string(char *str);
+char				*handle_remaining(char *buff);
+void				read_save(int fd, char **str);
+char				*get_next_line(int fd);
 
-size_t	ft_strlen_gn(char *str);
-char	*ft_strchr_gn(char *str, int c_chr);
-char	*ft_strdup_gn(char *str2);
-char	*ft_strjoin_gn(char *str1, char *str2);
-char	*get_string(char *str);
-char	*handle_remaining(char *buff);
-void	read_save(int fd, char **str);
-char	*get_next_line(int fd);
-
-
-int	safe_write(const char *str, int len, int *count);
-int	ft_putnbr(int n, int count);
-int	ft_printf(const char *s, ...);
-int	handle_format(char specifier, va_list args, int *count);
-int	handle_char(va_list args);
-int	handle_string(va_list args);
-int	handle_pointer(va_list args);
-int	handle_integer(va_list args);
-int	handle_unsigned(va_list args);
-int	handle_hex(va_list args, int uppercase);
-int	handle_percent(void);
-int	ft_putubr(unsigned int n, int count);
-int	ft_putnbr(int n, int count);
-int	ft_puthex(char *base, unsigned long n, int *count);
-int	ft_decimal_to_hex(char *base, unsigned int num);
+int					safe_write(const char *str, int len, int *count);
+int					ft_putnbr(int n, int count);
+int					ft_printf(const char *s, ...);
+int					handle_format(char specifier, va_list args, int *count);
+int					handle_char(va_list args);
+int					handle_string(va_list args);
+int					handle_pointer(va_list args);
+int					handle_integer(va_list args);
+int					handle_unsigned(va_list args);
+int					handle_hex(va_list args, int uppercase);
+int					handle_percent(void);
+int					ft_putubr(unsigned int n, int count);
+int					ft_putnbr(int n, int count);
+int					ft_puthex(char *base, unsigned long n, int *count);
+int					ft_decimal_to_hex(char *base, unsigned int num);
 
 #endif
