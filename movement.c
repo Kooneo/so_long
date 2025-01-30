@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 16:33:37 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:34:04 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ static void	check_and_render_exit(t_game *game)
 
 static int	check_conditions(t_game *game, t_movement *move)
 {
+	(void)game;
+	(void)move;
 	// if (check_exit(game, move) || check_trap(game, move) || check_curse(game,
 	// 		move) || check_curse_remover(game, move) || check_coin(game, move)
 	// 	|| check_valid_move(game, move))
