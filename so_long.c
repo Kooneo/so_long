@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:01:03 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:39:05 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:40:24 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	map_init(t_map *map, char *filepath)
 // x button: exits game
 // add flood fill algo
 // map error if the map file is not .ber
-void	init_game(t_game *game, t_map *map, t_win *window, t_player *player, char *mapname)
+void	init_game(t_game *game, t_map *map, t_win *window, t_player *player)
 {
-	map_init(map, mapname);
+	map_init(map, map->filepath);
 	map->coins_count = 0;
 	map->is_sp = 0;
 	init_window(window, map->y, map->x);
@@ -75,7 +75,8 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		show_err("Usage: ./so_long <map>");
 	mapname = argv[1];
-	init_game(&game, &map, &window, &player, mapname);
+	map.filepath = mapname;
+	init_game(&game, &map, &window, &player);
 	base_image = new_img(window.width, window.hight, window);
 	game.base_img = &base_image;
 	map_render(&game);
