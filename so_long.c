@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:01:03 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:16:56 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:18:41 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int argc, char **argv)
 	mapname = argv[1];
 	map_init(&map, mapname);
 	game.map = &map;
-	game = init_game(&game, mapname);
+	init_game(&game, mapname);
 	// Initialize key states
 	int_keystate(&game);
 	base_image = new_img(game.window->width, game.window->hight,
