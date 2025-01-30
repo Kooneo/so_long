@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 16:27:11 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:35:04 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,6 @@ typedef struct s_point
 	int			y;
 }				t_point;
 
-typedef struct s_movement
-{
-	int			old_x;
-	int			old_y;
-	int			new_x;
-	int			new_y;
-	char		*direction;
-}				t_movement;
-
 # define TILE_SIZE 64
 
 // Map_utils.c
@@ -152,5 +143,6 @@ void			setup_hooks(t_win *window, t_game *game);
 int				check_wall(char *wall);
 int				check_is_surrounded(char *row);
 void			render_exit(t_game *game);
+
 
 #endif
