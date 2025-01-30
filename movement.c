@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 16:34:04 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:34:30 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static int	check_conditions(t_game *game, t_movement *move)
 	// 		move) || check_curse_remover(game, move) || check_coin(game, move)
 	// 	|| check_valid_move(game, move))
 	// 	return (1);
-	return (0);
+	return (1);
 }
 
 static void	render_idle_player(t_game *game)
