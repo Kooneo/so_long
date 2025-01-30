@@ -6,13 +6,13 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:41:20 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:19:02 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:31:51 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_win	*init_window(t_win *window, int map_y, int map_x)
+void	init_window(t_win *window, int map_y, int map_x)
 {
 	window->hight = map_y * TILE_SIZE;
 	window->width = map_x * TILE_SIZE;
@@ -21,7 +21,6 @@ t_win	*init_window(t_win *window, int map_y, int map_x)
 			"Drunk Runner!");
 	if (!window->win || !window->mlx)
 		return (NULL);
-	return (window);
 }
 
 
