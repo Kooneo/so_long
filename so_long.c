@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:01:03 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:43:56 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:44:31 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	init_game(t_game *game, t_map *map, t_win *window, t_player *player)
 	int_keystate(game);
 	game->map->exit_x = 0;
 	game->map->exit_y = 0;
-	base_image = new_img(window.width, window.hight, window);
+	base_image = new_img(window->width, window->hight, *window);
 	game->base_img = &base_image;
 }
 
