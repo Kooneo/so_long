@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:41:20 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:32:32 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:32:54 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ void	init_window(t_win *window, int map_y, int map_x)
 }
 
 
-t_player	*init_player(t_player *player)
-{
-	player->moves_count = 0;
-	player->items_collected = 0;
-	player->sleep_time = 45000;
-	return (player);
-}
+// t_player	*init_player(t_player *player)
+// {
+// 	player->moves_count = 0;
+// 	player->items_collected = 0;
+// 	player->sleep_time = 45000;
+// 	return (player);
+// }
 
-void init_game(t_game *game)
-{
-	t_win window;
-	t_player player;
-	game->window = init_window(&window, game->map->y, game->map->x);
-	game->player = init_player(&player);
-}
+// void init_game(t_game *game)
+// {
+// 	t_win window;
+// 	t_player player;
+// 	game->window = init_window(&window, game->map->y, game->map->x);
+// 	game->player = init_player(&player);
+// }
