@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:41:20 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:08:20 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:11:20 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_player	*init_player(t_player *player)
 	return (player);
 }
 
-void	init_game(t_game *game, char *map_path)
+t_game 	*init_game(t_game *game, char *map_path)
 {
 	t_win window;
 	t_map map;
@@ -64,4 +64,6 @@ void	init_game(t_game *game, char *map_path)
 	game->map = init_map(&map, map_path);
 	game->window = init_window(&window, map.y, map.x);
 	game->player = init_player(&player);
+
+	return (game);
 }
