@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 16:46:29 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:47:51 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,7 +251,7 @@ void	render_map_design(t_game *game)
 	int	j;
 	int	x;
 	int	y;
-
+	char c;
 	if (game->map->is_sp == 1)
 	{
 		i = 0;
