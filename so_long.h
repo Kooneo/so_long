@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:36:40 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:47:20 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,4 +133,8 @@ int				is_coin(t_game *game, int new_x, int new_y);
 int				is_the_curse(t_game *game, int new_x, int new_y);
 int				is_the_curse_remover(t_game *game, int new_x, int new_y);
 int				is_exit_and_valid(t_game *game, int new_x, int new_y);
+
+// game_init.c
+void init_window(t_win *window, int map_y, int map_x);
+
 #endif

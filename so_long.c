@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:01:03 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:20:04 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:48:16 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	map_init(t_map *map, char *filepath)
 		exit(-1);
 	}
 }
+
 // TODO:
 // esc: exit game
 // x button: exits game
@@ -53,13 +54,7 @@ int	main(int argc, char **argv)
 	map_init(&map, mapname);
 	map.coins_count = 0;
 	map.is_sp = 0;
-	window.hight = map.y * TILE_SIZE;
-	window.width = map.x * TILE_SIZE;
-	window.mlx = mlx_init();
-	window.win = mlx_new_window(window.mlx, window.width, window.hight,
-			"Drunk Runner!");
-	if (!window.win || !window.mlx)
-		return (0);
+	init_window(&window, map->y, map->x);
 	player.moves_count = 0;
 	player.items_collected = 0;
 	player.sleep_time = 45000;

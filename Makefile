@@ -14,6 +14,7 @@ CFILES = so_long.c \
 		keys_manage.c \
 		animation.c \
 		game_utils.c \
+		game_init.c \
 		utils.c 
 
 OFILES = $(CFILES:.c=.o)
