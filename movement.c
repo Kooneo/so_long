@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 15:30:24 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 15:31:57 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	handle_player_movement(t_game *game)
 	else if (game->key_states[65307])
 		exit_game(game);
 	if (game->player->items_collected == game->map->coins_count)
-		render_digit(game);
+		render_exit(game);
 	if (direction && is_exit_and_valid(game, new_x, new_y))
 	{
 		ft_printf("\nI came, I played, I won! 🎉👑\n");
