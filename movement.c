@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 16:32:28 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:33:10 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static int	check_valid_move(t_game *game, t_movement *move)
 	if (move->direction && is_move_valid(game, move->new_x, move->new_y))
 	{
 		game->player->moves_count++;
-		animate_player(game, (t_anim_params){
+		animate_player(game, (t_movement){
 			move->old_x, move->old_y, move->new_x, move->new_y, move->direction});
 		game->player->x_pos = move->new_x;
 		game->player->y_pos = move->new_y;
