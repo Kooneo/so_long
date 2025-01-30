@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:41:20 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:11:20 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:15:02 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ t_win	*init_window(t_win *window, int map_y, int map_x)
 t_map	*init_map(t_map *map, char *filepath)
 {
 	int	i;
+	map->ptr = NULL;
 
 	map->size = 0;
 	map->x = 0;
