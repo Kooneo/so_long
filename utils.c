@@ -2,19 +2,15 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
-	+:+     */
-/*   By: zbakour <zbakour@student.42.fr>            +#+  +:+      
-	+#+        */
-/*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2025/01/24 15:46:08 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:12:15 by zbakour          ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/30 13:39:10 by zbakour           #+#    #+#             */
+/*   Updated: 2025/01/30 13:39:13 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 void	show_err(char *err)
 {
@@ -25,7 +21,7 @@ void	show_err(char *err)
 
 void	render_image(t_game *game, char *file_path, int x, int y)
 {
-	t_img tile;
+	t_img	tile;
 
 	tile = new_file_img(file_path, *(game->window));
 	if (!tile.img_ptr)
@@ -45,7 +41,7 @@ void	destroy_image(t_img img)
 
 int	exit_game(t_game *game)
 {
-	int i;
+	int	i;
 
 	if (game->map && game->map->ptr)
 	{
@@ -68,9 +64,9 @@ int	exit_game(t_game *game)
 
 char	*ft_strjoin_free(char *s1, char const *s2)
 {
-	char *string;
-	size_t len_s1;
-	size_t len_s2;
+	char	*string;
+	size_t	len_s1;
+	size_t	len_s2;
 
 	len_s1 = 0;
 	len_s2 = 0;
