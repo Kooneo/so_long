@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 16:47:51 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:48:21 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,8 +128,6 @@ void	render_el_at(t_game *game, int el, int x, int y)
 	if (el == 1)
 		render_image(game, "textures/env/el_1.xpm", x, y + 64 - 15);
 	else if (el == 2)
-		// render_image(game, "textures/env/el_2.xpm", x + 64 - 15, y  + 64
-		// - 15 )
 		render_image(game, "textures/env/el_2.xpm", x, y + 64 - 15);
 	else if (el == 3)
 		render_image(game, "textures/env/el_3.xpm", x + 64 - 20, y + 64 - 15);
