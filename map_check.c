@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:30:12 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:31:25 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:32:03 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ int	map_check(t_map *map)
 
 	new_map = make_new_map(map);
 	i = 0;
-	while (map[i] != NULL)
+	while (new_map[i] != NULL)
 	{
 		ft_printf("%s", new_map[i]);
 		i++;
