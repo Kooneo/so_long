@@ -6,19 +6,20 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:44:23 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/24 15:52:00 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:19:57 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void render_ground(t_game *game, char *filepath)
+void	render_ground(t_game *game, char *filepath)
 {
-	int x, y;
+	t_img	src_img;
 
-	t_img src_img = new_file_img(filepath, *(game->window));
+	int x, y;
+	src_img = new_file_img(filepath, *(game->window));
 	if (!src_img.img_ptr)
-		return;
+		return ;
 	y = 0;
 	while (y < game->window->hight)
 	{
