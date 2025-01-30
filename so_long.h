@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:20:13 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:23:28 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,12 @@ void			animate_player(t_game *game, int old_x, int old_y, int new_x,
 void			free_map(char **map);
 char			**load_map(t_map *map_data);
 size_t			map_row_c(char *filepath);
-void			fill(t_map map, t_point size, t_point current, char to_fill);
-void			flood_fill(t_map *map, int x, int y);
 int				check_is_rectangular(t_map *map);
 int				check_psec_dup(void);
 void			map_render(t_game *game);
 
+void			fill(char **map, t_point size, t_point current, char to_fill);
+char			**make_new_map(t_map *map);
+void			flood_fill(char **map, t_point size, int x, int y);
+int				map_check(t_map *map);
 #endif
