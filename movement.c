@@ -6,11 +6,89 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 16:25:23 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:32:28 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static int	check_exit(t_game *game, t_movement *move)
+{
+	if (move->direction && game->map->ptr[move->new_y / 64][move->new_x / 64] == 'E'
+		&& game->player->items_collected == game->map->coins_count)
+	{
+		ft_printf("\nI came, I played, I won! 🎉👑\n");
+		exit_game(game);
+	}
+	return (0);
+}
+
+static int	check_trap(t_game *game, t_movement *move)
+{
+	if (game->map->ptr[move->new_y / 64][move->new_x / 64] == 'T')
+	{
+		ft_printf("\nGame over, you gave it your all... but 🏁 you lose! 😜\n");
+		exit_game(game);
+	}
+	return (0);
+}
+
+static int	check_curse(t_game *game, t_movement *move)
+{
+	if (move->direction && is_move_valid(game, move->new_x, move->new_y)
+		&& game->map->ptr[move->new_y / 64][move->new_x / 64] == 'N')
+	{
+		game->player->sleep_time /= 2;
+		game->map->ptr[move->new_y / 64][move->new_x / 64] = '0';
+		render_image(game, "textures/bg_64n.xpm", move->new_x, move->new_y);
+		return (1);
+	}
+	return (0);
+}
+
+static int	check_curse_remover(t_game *game, t_movement *move)
+{
+	if (move->direction && is_move_valid(game, move->new_x, move->new_y)
+		&& game->map->ptr[move->new_y / 64][move->new_x / 64] == 'R')
+	{
+		if (game->player->sleep_time < 45000)
+		{
+			game->player->sleep_time *= 2;
+			game->map->ptr[move->new_y / 64][move->new_x / 64] = '0';
+		}
+		render_image(game, "textures/bg_64n.xpm", move->new_x, move->new_y);
+		return (1);
+	}
+	return (0);
+}
+
+static int	check_coin(t_game *game, t_movement *move)
+{
+	if (move->direction && is_move_valid(game, move->new_x, move->new_y)
+		&& game->map->ptr[move->new_y / 64][move->new_x / 64] == 'C')
+	{
+		game->player->items_collected++;
+		game->map->ptr[move->new_y / 64][move->new_x / 64] = '0';
+		render_image(game, "textures/bg_64n.xpm", move->new_x, move->new_y);
+		return (1);
+	}
+	return (0);
+}
+
+static int	check_valid_move(t_game *game, t_movement *move)
+{
+	if (move->direction && is_move_valid(game, move->new_x, move->new_y))
+	{
+		game->player->moves_count++;
+		animate_player(game, (t_anim_params){
+			move->old_x, move->old_y, move->new_x, move->new_y, move->direction});
+		game->player->x_pos = move->new_x;
+		game->player->y_pos = move->new_y;
+		render_movement_count(game);
+		return (1);
+	}
+	return (0);
+}
 
 void	render_digit(t_game *game, int digit, int x, int y)
 {
