@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:53:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 15:04:44 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 15:08:29 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	check_psec_dup(t_map *map_data)
 	while (map_data->ptr[i])
 	{
 		j = 0;
-		while (map_data->ptr[i][j])
+		while (map_data->ptr[i][j++])
 		{
 			c = map_data->ptr[i][j];
 			if (c == 'P' || c == 'E')
@@ -55,7 +55,6 @@ int	check_psec_dup(t_map *map_data)
 			}
 			if ( c == 'C')
 				map[c] = 1;
-			j++;
 		}
 		i++;
 	}
