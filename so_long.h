@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:23:28 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:28:56 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void			free_map(char **map);
 char			**load_map(t_map *map_data);
 size_t			map_row_c(char *filepath);
 int				check_is_rectangular(t_map *map);
-int				check_psec_dup(void);
+int				check_psec_dup(t_map *map_data);
 void			map_render(t_game *game);
 
 void			fill(char **map, t_point size, t_point current, char to_fill);
