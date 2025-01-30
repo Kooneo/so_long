@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 16:24:05 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:25:23 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,17 +93,17 @@ static void	check_and_render_exit(t_game *game)
 
 static int	check_conditions(t_game *game, t_movement *move)
 {
-	if (check_exit(game, move) || check_trap(game, move)
-		|| check_curse(game, move) || check_curse_remover(game, move)
-		|| check_coin(game, move) || check_valid_move(game, move))
+	if (check_exit(game, move) || check_trap(game, move) || check_curse(game,
+			move) || check_curse_remover(game, move) || check_coin(game, move)
+		|| check_valid_move(game, move))
 		return (1);
 	return (0);
 }
 
 static void	render_idle_player(t_game *game)
 {
-	render_image(game, "textures/bg_64n.xpm",
-		game->player->x_pos, game->player->y_pos);
+	render_image(game, "textures/bg_64n.xpm", game->player->x_pos,
+		game->player->y_pos);
 	render_image(game, "textures/player/p_idle/down/idle_down_00.xpm",
 		game->player->x_pos, game->player->y_pos);
 	mlx_put_image_to_window(game->window->mlx, game->window->win,
@@ -132,10 +132,10 @@ int	handle_player_movement(t_game *game)
 
 void	render_exit(t_game *game)
 {
-	render_image(game, "textures/env/exit_wall.xpm",
-		game->map->exit_x - 2, game->map->exit_y - 2);
-	render_image(game, "textures/env/exit_door.xpm",
-		game->map->exit_x + 12, game->map->exit_y + 13);
+	render_image(game, "textures/env/exit_wall.xpm", game->map->exit_x - 2,
+		game->map->exit_y - 2);
+	render_image(game, "textures/env/exit_door.xpm", game->map->exit_x + 12,
+		game->map->exit_y + 13);
 	mlx_put_image_to_window(game->window->mlx, game->window->win,
 		game->base_img->img_ptr, 0, 0);
 }
