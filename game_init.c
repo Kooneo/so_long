@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:41:20 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:31:51 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:32:32 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_window(t_win *window, int map_y, int map_x)
 	window->win = mlx_new_window(window->mlx, window->width, window->hight,
 			"Drunk Runner!");
 	if (!window->win || !window->mlx)
-		return (NULL);
+		return ;
 }
 
 
