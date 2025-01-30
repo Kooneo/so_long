@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:30:12 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:21:46 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:31:25 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ int	check_psec_dup(t_map *map_data)
 void	fill(char **map, t_point size, t_point current, char to_fill)
 {
 	if (current.x < 0 || current.y < 0 || current.y >= size.y
-		|| current.x >= size.x || map.ptr[current.y][current.x] != to_fill)
+		|| current.x >= size.x || map[current.y][current.x] != to_fill)
 		return ;
-	map.ptr[current.y][current.x] = 'V';
+	map[current.y][current.x] = 'V';
 	fill(map, size, (t_point){current.x + 1, current.y}, to_fill);
 	fill(map, size, (t_point){current.x - 1, current.y}, to_fill);
 	fill(map, size, (t_point){current.x, current.y + 1}, to_fill);
@@ -115,22 +115,22 @@ void	fill(char **map, t_point size, t_point current, char to_fill)
 
 char	**make_new_map(t_map *map)
 {
-	char	**map;
+	char	**new_map;
 	int		i;
 
 	if (!map)
 		return (NULL);
-	map = malloc((map->y + 1) * sizeof(char *));
-	if (!map)
+	new_map = malloc((map->y + 1) * sizeof(char *));
+	if (!new_map)
 		return (NULL);
 	i = 0;
 	while (map->ptr[i] != NULL)
 	{
-		map[i] = ft_strdup(map->ptr[i]);
+		new_map[i] = ft_strdup(map->ptr[i]);
 		i++;
 	}
-	map[i] = NULL;
-	return (map);
+	new_map[i] = NULL;
+	return (new_map);
 }
 
 void	flood_fill(char **map, t_point size, int x, int y)
