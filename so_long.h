@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:10:37 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 14:11:41 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ int				is_exit_and_valid(t_game *game, int new_x, int new_y);
 
 // game_init.c
 void			init_window(t_win *window, int map_y, int map_x);
-void			init_game(t_game *game, char *map_path);
+t_game			init_game(t_game *game, char *map_path);
 t_player		*init_player(t_player *player);
 t_map			*init_map(t_map *map, char *filepath);
 #endif
