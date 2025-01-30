@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:53:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 15:04:15 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 15:04:44 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ int	check_is_rectangular(t_map *map)
 
 int	check_psec_dup(t_map *map_data)
 {
-	int	map[255];
-	int	i;
-	int	j;
+	int				map[255];
+	unsigned char	c;
+	int				i;
+	int				j;
 
 	ft_memset(map, 0, sizeof(map));
 	i = 0;
@@ -45,14 +46,15 @@ int	check_psec_dup(t_map *map_data)
 		j = 0;
 		while (map_data->ptr[i][j])
 		{
-			if (map_data->ptr[i][j] == 'P' || map_data->ptr[i][j] == 'E')
+			c = map_data->ptr[i][j];
+			if (c == 'P' || c == 'E')
 			{
-				if (map[(char)map_data->ptr[i][j]] != 0)
+				if (map[c] != 0)
 					return (0);
-				map[(char)map_data->ptr[i][j]] = 1;
+				map[c] = 1;
 			}
-			if ((char)map_data->ptr[i][j] == 'C')
-				map[(char)map_data->ptr[i][j]] = 1;
+			if ( c == 'C')
+				map[c] = 1;
 			j++;
 		}
 		i++;
