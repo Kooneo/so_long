@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 15:36:28 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 15:53:34 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,14 @@ void	render_movement_count(t_game *game)
 	m = 1;
 	render_image(game, "textures/wall_m.xpm", 0, 0);
 	while (m < game->map->x - 2)
-	{
-		render_image(game, "textures/wall_b.xpm", 64 * m, 0);
-		m++;
-	}
+		render_image(game, "textures/wall_b.xpm", 64 * m++, 0);
 	// Break the movement count into individual digits and render them
 	if (movement_count == 0)
-	{
-		render_digit(game, 0, digit_x, digit_y); // Render '0' if the count is 0
-		return ;
-	}
+		return render_digit(game, 0, digit_x, digit_y);// Render '0' if the count is 0
 	// Find the number of digits in movement_count
 	divisor = 1;
 	while (movement_count / divisor >= 10)
-	{
 		divisor *= 10;
-	}
 	// Render each digit one by one
 	while (divisor > 0)
 	{
