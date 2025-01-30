@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:01:03 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:48:16 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:48:43 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	main(int argc, char **argv)
 	map_init(&map, mapname);
 	map.coins_count = 0;
 	map.is_sp = 0;
-	init_window(&window, map->y, map->x);
+	init_window(&window, map.y, map.x);
 	player.moves_count = 0;
 	player.items_collected = 0;
 	player.sleep_time = 45000;
