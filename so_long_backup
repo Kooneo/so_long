@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_backup                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:01:03 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:52:36 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:41:06 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void	map_init(t_map *map, char *filepath)
 // x button: exits game
 // add flood fill algo
 // map error if the map file is not .ber
+// movement.c
+// animation.c
+// handle_map.c
 int	main(int argc, char **argv)
 {
 	t_game		game;

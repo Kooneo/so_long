@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:34:29 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:46:29 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,9 +157,7 @@ void	map_render(t_game *game)
 	render_ground(game, "textures/bg_64n.xpm");
 	if (ft_strncmp(game->map->filepath, "maps/map3.ber",
 			ft_strlen("game->map->filepath")) == 0)
-	{
 		game->map->is_sp = 1;
-	}
 	while (i < game->map->y && game->map->ptr[i])
 	{
 		x = 0;
@@ -173,10 +171,7 @@ void	map_render(t_game *game)
 			{
 				if (game->map->is_sp == 1 && ((x / 64 == 12 && y / 64 == 5)
 						|| (x / 64 == 18 && y / 64 == 4)))
-				{
 					render_image(game, "textures/env/wall_001.xpm", x, y);
-					// render_image(game, "textures/bg_64n.xpm", x, y);
-				}
 				else if (game->map->is_sp == 1 && (((x / 64 >= 2 && x / 64 <= 5)
 							&& y / 64 == 4) || ((x / 64 >= 2 && x / 64 <= 5)
 							&& y / 64 == 5) || ((x / 64 >= 16 && x / 64 <= 18)
@@ -185,10 +180,7 @@ void	map_render(t_game *game)
 						|| (x / 64 == 12 && y / 64 == 4) || (x / 64 == 4 && y
 							/ 64 == 6) || ((x / 64 >= 3 && x / 64 <= 4) && y
 							/ 64 == 6)))
-				// skipe the element and render the the ground
-				{
 					render_image(game, "textures/bg_64n.xpm", x, y);
-				}
 				else if (game->map->is_sp == 1 && (((x / 64 >= 23 && y
 								/ 64 == 6) && (x / 64 <= 27 && y / 64 == 6))
 						|| ((x / 64 >= 23 && y / 64 == 7) && (x / 64 <= 27 && y
@@ -204,46 +196,27 @@ void	map_render(t_game *game)
 							render_el_at(game, 1, x + 10, y - 20);
 						}
 						if ((x / 64 == 25 && y / 64 == 6))
-						{
 							render_el_at(game, 2, x, y - 15);
-						}
 						render_el_at(game, 10, x, y);
 					}
 					else
-					{
 						render_el_at(game, 9, x, y);
-					}
 				}
 				else
 					render_wall(game, i, j, x, y);
 				if (game->map->is_sp == 1 && ((x / 64 == 8 && y / 64 == 7) || (x
 							/ 64 == 12 && y / 64 == 2)))
-				{
 					render_el_at(game, 2, x, y);
-					// render_image(game, "textures/env/el_2.xpm", x , y + 64
-					// - 15 );
-					// render_image(game, "textures/env/el_2.xpm", x + 64
-					// 	- 15,
-					// y  + 64 - 15 );
-				}
 				if (game->map->is_sp == 1 && ((x / 64 == 16 && y / 64 == 2)
 						|| (x / 64 == 21 && y / 64 == 4)))
-				{
 					render_el_at(game, 3, x, y);
-				}
 			}
 			else if (c == 'T')
-			{
 				render_image(game, "textures/env/enemy.xpm", x - 3, y - 3);
-			}
 			else if (c == 'X')
-			{
 				render_image(game, "textures/env/blue_hand.xpm", x - 3, y - 3);
-			}
 			else if (c == 'G')
-			{
 				render_image(game, "textures/env/green_hand.xpm", x - 3, y - 3);
-			}
 			else if (c == 'C')
 			{
 				render_image(game, "textures/coins/coin.xpm", x + 10, y);
@@ -257,7 +230,6 @@ void	map_render(t_game *game)
 				game->player->y_pos = y;
 				game->map->player_x = x;
 				game->map->player_y = y;
-				// flood_fill(game->map, x, y);
 			}
 			else if (c == 'E')
 			{
@@ -270,6 +242,16 @@ void	map_render(t_game *game)
 		y += 64;
 		i++;
 	}
+	render_map_design(game);
+}
+
+void	render_map_design(t_game *game)
+{
+	int	i;
+	int	j;
+	int	x;
+	int	y;
+
 	if (game->map->is_sp == 1)
 	{
 		i = 0;
@@ -292,23 +274,14 @@ void	map_render(t_game *game)
 							render_el_at(game, 13, x, y);
 					}
 					if ((x / 64 == 18 && y / 64 == 3))
-					{
 						render_el_at(game, 15, x - 12, y + 32);
-					}
 					if ((x / 64 == 3 && y / 64 == 4))
-					{
-						// render_image(game, "textures/bg_64n.xpm", x, y);
 						render_image(game, "textures/env/big_obj_1.xpm", x + 25,
 							y);
-					}
 					if ((x / 64 == 17 && y / 64 == 6))
-					{
-						// render_image(game, "textures/bg_64n.xpm", x, y);
 						render_image(game, "textures/env/props/el_2.xpm", x, y);
-					}
 					if ((x / 64 == 16 && y / 64 == 6))
 					{
-						// render_image(game, "textures/bg_64n.xpm", x, y);
 						render_image(game, "textures/env/props/el_4.xpm", x, y);
 						render_image(game, "textures/env/props/el_14.xpm", x, y
 							+ 45);
@@ -319,7 +292,6 @@ void	map_render(t_game *game)
 					}
 					if ((x / 64 == 18 && y / 64 == 6))
 					{
-						// render_image(game, "textures/bg_64n.xpm", x, y);
 						render_image(game, "textures/env/props/el_1.xpm", x, y
 							+ 10);
 						render_image(game, "textures/env/plant/el_10.xpm", x, y
@@ -328,13 +300,10 @@ void	map_render(t_game *game)
 							+ 40, y + 40);
 					}
 					if ((x / 64 == 17 && y / 64 == 7))
-					{
 						render_image(game, "textures/env/props/el_12.xpm", x
 							- 15, y + 25);
-					}
 					if ((x / 64 == 20 && y / 64 == 5))
 					{
-						// render_image(game, "textures/bg_64n.xpm", x, y);
 						render_image(game, "textures/env/props/el_15.xpm", x,
 							y);
 						render_image(game, "textures/env/props/el_9.xpm", x
@@ -342,7 +311,6 @@ void	map_render(t_game *game)
 					}
 					if ((x / 64 == 12 && y / 64 == 4))
 					{
-						// render_image(game, "textures/bg_64n.xpm", x, y);
 						render_image(game, "textures/env/el_5.xpm", x, y);
 						render_image(game, "textures/env/el_2.xpm", x, y + 55);
 						render_image(game, "textures/env/el_3.xpm", x + 10, y
@@ -351,9 +319,7 @@ void	map_render(t_game *game)
 							+ 55);
 					}
 					if (x / 64 == 4 && y / 64 == 6)
-					{
 						render_image(game, "textures/env/obj_3.xpm", x, y - 10);
-					}
 					if (x / 64 == 2 && y / 64 == 4)
 					{
 						render_image(game, "textures/env/obj_2.xpm", x, y + 5);
@@ -363,15 +329,8 @@ void	map_render(t_game *game)
 							+ 40);
 					}
 					if (x / 64 == 3 && y / 64 == 6)
-					{
-						// render_image(game, "textures/env/obj_2.xpm", x, y
-						// + 5);
-						// render_image(game, "textures/env/object_21.xpm",
-						// 	x
-						// + 74, y + 10);
 						render_image(game, "textures/env/object_25.xpm", x, y
 							+ 10);
-					}
 				}
 				x += 64;
 				j++;
