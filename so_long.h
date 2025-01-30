@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:47:47 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 15:06:01 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,4 +140,6 @@ void			map_init(t_map *map, char *filepath);
 void			init_game(t_game *game, t_map *map, t_win *window,
 					t_player *player);
 void			setup_hooks(t_win *window, t_game *game);
+int				check_wall(char *wall);
+int				check_is_surrounded(char *row);
 #endif
