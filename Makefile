@@ -13,6 +13,7 @@ CFILES = so_long.c \
 		movement.c \
 		keys_manage.c \
 		animation.c \
+		game_utils.c \
 		utils.c 
 
 OFILES = $(CFILES:.c=.o)
