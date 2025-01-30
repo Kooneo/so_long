@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:30:12 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:32:39 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 13:33:05 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,11 +157,9 @@ int	map_check(t_map *map)
 	while (new_map[i] != NULL)
 	{
 		if (ft_strchr(new_map[i], 'C'))
-		{	
 			show_err("Invalid Map.");
-			return (0);
-		}
 		
 		i++;
 	}
+	return (0);
 }
