@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 18:19:40 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 13:19:39 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:36:55 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	put_pixel_img(t_img img, int x, int y, int color)
 unsigned int	get_pixel_img(t_img img, int x, int y)
 {
 	return (*(unsigned int *)((img.addr + (y * img.line_length) + (x
-					* img.bits_per_pixel / 8))));
+				* img.bits_per_pixel / 8))));
 }
 
 void	put_img_to_img(t_img dst, t_img src, int x, int y)

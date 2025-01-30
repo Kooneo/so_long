@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 15:44:23 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:49:58 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/30 16:36:35 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 void	render_ground(t_game *game, char *filepath)
 {
 	t_img	src_img;
+	int		x;
+	int		y;
 
-	int x, y;
 	src_img = new_file_img(filepath, *(game->window));
 	if (!src_img.img_ptr)
 		return ;
