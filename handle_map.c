@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 20:53:28 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 20:54:17 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,7 +223,7 @@ void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 {
 	const int	tx = x / TILE_SIZE;
 	const int	ty = y / TILE_SIZE;
-	const int	tx_ty[4] = {tx, ty, i, j};
+	int	tx_ty[4] = {tx, ty, i, j};
 
 	if (c == '1')
 		handle_wall(g, tx_ty, (int [2]){x, y});
