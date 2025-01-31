@@ -16,7 +16,8 @@ CFILES = so_long.c \
 		game_utils.c \
 		game_init.c \
 		map_utils_2.c \
-		utils_2.c \
+		special_design.c \
+		map_design.c \
 		utils.c 
 
 OFILES = $(CFILES:.c=.o)
