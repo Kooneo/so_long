@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 19:29:30 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:33:14 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,14 +271,11 @@ void	render_map_design(t_game *game)
 				if (c == '1')
 				{
 
-					if (game->map->is_sp == 1 && ((x / 64 == 8 && y / 64 == 7) || (x
-								/ 64 == 12 && y / 64 == 2)))
+					if ((x / 64 == 8 && y / 64 == 7) || (x / 64 == 12 && y / 64 == 2))
 						render_el_at(game, 2, x, y);
-					if (game->map->is_sp == 1 && ((x / 64 == 16 && y / 64 == 2)
-							|| (x / 64 == 21 && y / 64 == 4)))
+					if ((x / 64 == 16 && y / 64 == 2) || (x / 64 == 21 && y / 64 == 4))
 						render_el_at(game, 3, x, y);
-					if ((x / 64 == 25 && y / 64 == 7) || (x / 64 == 23 && y
-							/ 64 == 6))
+					if ((x / 64 == 25 && y / 64 == 7) || (x / 64 == 23 && y / 64 == 6))
 					{
 						if ((x / 64 == 23 && y / 64 == 6))
 							render_el_at(game, 14, x, y + 25);
@@ -335,14 +332,11 @@ void	render_map_design(t_game *game)
 					if (x / 64 == 2 && y / 64 == 4)
 					{
 						render_image(game, "textures/env/obj_2.xpm", x, y + 5);
-						render_image(game, "textures/env/object_21.xpm", x + 74,
-							y + 10);
-						render_image(game, "textures/env/object_22.xpm", x, y
-							+ 40);
+						render_image(game, "textures/env/object_21.xpm", x + 74, y + 10);
+						render_image(game, "textures/env/object_22.xpm", x, y + 40);
 					}
 					if (x / 64 == 3 && y / 64 == 6)
-						render_image(game, "textures/env/object_25.xpm", x, y
-							+ 10);
+						render_image(game, "textures/env/object_25.xpm", x, y + 10);
 				}
 				x += 64;
 				j++;
