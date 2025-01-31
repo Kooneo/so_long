@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 19:59:55 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 20:01:21 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -339,11 +339,9 @@ void		render_map_design(t_game *g)
 	int	xy[2];
 	int	tile[2];
 
-	if (!g->map->is_sp)
-		return ;
 	i = -1;
 	xy[1] = 0;
-	while (++i < g->map->y && g->map->ptr[i])
+	while (++i < g->map->y && g->map->ptr[i] && g->map->is_sp)
 	{
 		j = -1;
 		xy[0] = 0;
