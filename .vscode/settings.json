@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "so_long.h": "c",
-        "so_long_backup": "cpp"
+        "so_long_backup": "cpp",
+        "stdbool.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

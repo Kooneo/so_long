@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 20:39:59 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 20:50:59 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "./libft/libft.h"
 # include <fcntl.h>
 # include <mlx.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <unistd.h>
 
