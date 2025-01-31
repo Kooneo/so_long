@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 19:13:59 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:14:23 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ static void	handle_wall_rendering(t_game *g, int x, int y, int tx_ty[2])
 
 	if ((tx == 12 && ty == 5) || (tx == 18 && ty == 4))
 		render_image(g, "textures/env/wall_001.xpm", x, y);
-	else if (is_special_background(g, tx, ty))
+	else if (is_special_background(tx, ty))
 		render_image(g, "textures/bg_64n.xpm", x, y);
 	else
 		render_wall(g, (y / TILE_SIZE), (x / TILE_SIZE), x, y);
