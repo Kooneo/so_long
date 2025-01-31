@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 19:12:11 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:13:10 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ static void	render_player(t_game *g, int x, int y)
 	g->map->player_y = y;
 }
 
-static int	is_special_background(t_game *g, int tx, int ty)
+static int	is_special_background(int tx, int ty)
 {
 	return ((tx >= 2 && tx <= 5 && (ty == 4 || ty == 5)) || (tx >= 16
 			&& ((ty == 6 && tx <= 18) || (ty == 7 && tx <= 17))) || tx == 20
