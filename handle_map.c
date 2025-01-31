@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 19:45:46 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:46:09 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -242,7 +242,7 @@ void	map_render(t_game *g)
 	while (++i < g->map->y && g->map->ptr[i])
 	{
 		x = 0;
-		j = 0;
+		j = -1;
 		while (g->map->ptr[i][++j])
 		{
 			if (!ft_isalnum(g->map->ptr[i][j]))
