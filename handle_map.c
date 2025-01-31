@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 19:33:14 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:35:01 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ void	render_el_at(t_game *game, int el, int x, int y)
 	
 // }
 
-void	map_render(t_game *game)
+void	map_render(t_game *g)
 {
 	char	c;
 	int		i;
@@ -162,24 +162,23 @@ void	map_render(t_game *game)
 	int x, y;
 	i = 0;
 	y = 0;
-	render_ground(game, "textures/bg_64n.xpm");
-	if (ft_strncmp(game->map->filepath, "maps/map3.ber", ft_strlen(game->map->filepath)) == 0)
-		game->map->is_sp = 1;
-	while (i < game->map->y && game->map->ptr[i])
+	render_ground(g, "textures/bg_64n.xpm");
+	g->map->is_sp = (ft_strcmp(g->map->filepath, "maps/map3.ber") == 0);
+	while (i < g->map->y && g->map->ptr[i])
 	{
 		x = 0;
 		j = 0;
-		while (game->map->ptr[i][j])
+		while (g->map->ptr[i][j])
 		{
-			c = game->map->ptr[i][j];
+			c = g->map->ptr[i][j];
 			if (!ft_isalnum(c))
 				return ;
 			if (c == '1')
 			{
-				if (game->map->is_sp == 1 && ((x / 64 == 12 && y / 64 == 5)
+				if (g->map->is_sp == 1 && ((x / 64 == 12 && y / 64 == 5)
 						|| (x / 64 == 18 && y / 64 == 4)))
-					render_image(game, "textures/env/wall_001.xpm", x, y);
-				else if (game->map->is_sp == 1 && 
+					render_image(g, "textures/env/wall_001.xpm", x, y);
+				else if (g->map->is_sp == 1 && 
 				(	
 					((x / 64 >= 2 && x / 64 <= 5) && (y / 64 == 4 || y / 64 == 5))
 					|| ((x / 64 >= 16 && x / 64 <= 18) && y / 64 == 6) 
@@ -189,9 +188,9 @@ void	map_render(t_game *game)
 					|| (x / 64 == 4 && y / 64 == 6) 
 					|| ((x / 64 >= 3 && x / 64 <= 4) && y / 64 == 6)
 				))
-					render_image(game, "textures/bg_64n.xpm", x, y);
+					render_image(g, "textures/bg_64n.xpm", x, y);
 				else if (
-						game->map->is_sp == 1 && 
+						g->map->is_sp == 1 && 
 						(	
 							((x / 64 >= 23 && y / 64 == 6) && (x / 64 <= 27 && y / 64 == 6))
 							|| ((x / 64 >= 23 && y / 64 == 7) && (x / 64 <= 27 && y / 64 == 7)) 
@@ -203,43 +202,43 @@ void	map_render(t_game *game)
 					{
 						if ((x / 64 == 23 && y / 64 == 7))
 						{
-							render_el_at(game, 2, x + 64 - 15, y - 15);
-							render_el_at(game, 1, x + 10, y - 20);
+							render_el_at(g, 2, x + 64 - 15, y - 15);
+							render_el_at(g, 1, x + 10, y - 20);
 						}
 						if ((x / 64 == 25 && y / 64 == 6))
-							render_el_at(game, 2, x, y - 15);
-						render_el_at(game, 10, x, y);
+							render_el_at(g, 2, x, y - 15);
+						render_el_at(g, 10, x, y);
 					}
 					else
-						render_el_at(game, 9, x, y);
+						render_el_at(g, 9, x, y);
 				}
 				else
-					render_wall(game, i, j, x, y);
+					render_wall(g, i, j, x, y);
 					
 			}
 			else if (c == 'T')
-				render_image(game, "textures/env/enemy.xpm", x - 3, y - 3);
+				render_image(g, "textures/env/enemy.xpm", x - 3, y - 3);
 			else if (c == 'X')
-				render_image(game, "textures/env/blue_hand.xpm", x - 3, y - 3);
+				render_image(g, "textures/env/blue_hand.xpm", x - 3, y - 3);
 			else if (c == 'G')
-				render_image(game, "textures/env/green_hand.xpm", x - 3, y - 3);
+				render_image(g, "textures/env/green_hand.xpm", x - 3, y - 3);
 			else if (c == 'C')
 			{
-				render_image(game, "textures/coins/coin.xpm", x + 10, y);
-				game->map->coins_count++;
+				render_image(g, "textures/coins/coin.xpm", x + 10, y);
+				g->map->coins_count++;
 			}
 			else if (c == 'P')
 			{
-				render_image(game, "textures/player/p_idle/down/idle_down_00.xpm", x, y);
-				game->player->x_pos = x;
-				game->player->y_pos = y;
-				game->map->player_x = x;
-				game->map->player_y = y;
+				render_image(g, "textures/player/p_idle/down/idle_down_00.xpm", x, y);
+				g->player->x_pos = x;
+				g->player->y_pos = y;
+				g->map->player_x = x;
+				g->map->player_y = y;
 			}
 			else if (c == 'E')
 			{
-				game->map->exit_x = x;
-				game->map->exit_y = y;
+				g->map->exit_x = x;
+				g->map->exit_y = y;
 			}
 			x += 64;
 			j++;
@@ -247,7 +246,7 @@ void	map_render(t_game *game)
 		y += 64;
 		i++;
 	}
-	render_map_design(game);
+	render_map_design(g);
 }
 
 void	render_map_design(t_game *game)
