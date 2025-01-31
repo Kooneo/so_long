@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 19:25:35 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:26:02 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,15 +143,15 @@ void	render_el_at(t_game *game, int el, int x, int y)
 		render_image(game, "textures/env/plant/el_3.xpm", x + 20, y - 80);
 }
 
-void render_skipwall(t_game *game)
-{
+// void render_skipwall(t_game *game)
+// {
 	
-}
+// }
 
-void	render_env()
-{
+// void	render_env()
+// {
 	
-}
+// }
 
 void	map_render(t_game *game)
 {
