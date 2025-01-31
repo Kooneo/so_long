@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 19:44:02 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:45:46 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,32 +230,27 @@ static void	process_tile(t_game *g, char c, int x, int y)
 
 void	map_render(t_game *g)
 {
-	char	c;
 	int		i;
 	int		j;
-
-	int x;
-	int y;
-	i = 0;
+	int		x;
+	int		y;
+	
+	i = -1;
 	y = 0;
 	render_ground(g, "textures/bg_64n.xpm");
 	g->map->is_sp = (ft_strcmp(g->map->filepath, "maps/map3.ber") == 0);
-	while (i < g->map->y && g->map->ptr[i])
+	while (++i < g->map->y && g->map->ptr[i])
 	{
 		x = 0;
 		j = 0;
-		while (g->map->ptr[i][j])
+		while (g->map->ptr[i][++j])
 		{
-			c = g->map->ptr[i][j];
-			if (!ft_isalnum(c))
+			if (!ft_isalnum(g->map->ptr[i][j]))
 				return ;
 			process_tile(g, g->map->ptr[i][j], x, y);
-
-			x += 64;
-			j++;
+			x += TILE_SIZE;
 		}
-		y += 64;
-		i++;
+		y += TILE_SIZE;
 	}
 	render_map_design(g);
 }
