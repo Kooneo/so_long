@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 20:40:19 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 20:42:33 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,15 +142,6 @@ void	render_el_at(t_game *game, int el, int x, int y)
 		render_image(game, "textures/env/plant/el_3.xpm", x + 20, y - 80);
 }
 
-// void render_skipwall(t_game *game)
-// {
-	
-// }
-
-// void	render_env()
-// {
-	
-// }
 static void	render_player(t_game *g, int x, int y)
 {
 	render_image(g, "textures/player/p_idle/down/idle_down_00.xpm", x, y);
@@ -253,100 +244,3 @@ void	map_render(t_game *g)
 	}
 	render_map_design(g);
 }
-
-// void	render_map_design(t_game *game)
-// {
-// 	int	i;
-// 	int	j;
-// 	int	x;
-// 	int	y;
-// 	char c;
-// 	if (game->map->is_sp == 1)
-// 	{
-// 		i = 0;
-// 		y = 0;
-// 		while (i < game->map->y && game->map->ptr[i])
-// 		{
-// 			x = 0;
-// 			j = 0;
-// 			while (game->map->ptr[i][j])
-// 			{
-// 				c = game->map->ptr[i][j];
-// 				if (c == '1')
-// 				{
-
-// 					if ((x / 64 == 8 && y / 64 == 7) || (x / 64 == 12 && y / 64 == 2))
-// 						render_el_at(game, 2, x, y);
-// 					if ((x / 64 == 16 && y / 64 == 2) || (x / 64 == 21 && y / 64 == 4))
-// 						render_el_at(game, 3, x, y);
-// 					if ((x / 64 == 25 && y / 64 == 7) || (x / 64 == 23 && y / 64 == 6))
-// 					{
-// 						if ((x / 64 == 23 && y / 64 == 6))
-// 							render_el_at(game, 14, x, y + 25);
-// 						else
-// 							render_el_at(game, 13, x, y);
-// 					}
-// 					if ((x / 64 == 18 && y / 64 == 3))
-// 						render_el_at(game, 15, x - 12, y + 32);
-// 					if ((x / 64 == 3 && y / 64 == 4))
-// 						render_image(game, "textures/env/big_obj_1.xpm", x + 25,
-// 							y);
-// 					if ((x / 64 == 17 && y / 64 == 6))
-// 						render_image(game, "textures/env/props/el_2.xpm", x, y);
-// 					if ((x / 64 == 16 && y / 64 == 6))
-// 					{
-// 						render_image(game, "textures/env/props/el_4.xpm", x, y);
-// 						render_image(game, "textures/env/props/el_14.xpm", x, y
-// 							+ 45);
-// 						render_image(game, "textures/env/plant/el_14.xpm", x, y
-// 							+ 40);
-// 						render_image(game, "textures/env/plant/el_7.xpm", x, y
-// 							+ 85);
-// 					}
-// 					if ((x / 64 == 18 && y / 64 == 6))
-// 					{
-// 						render_image(game, "textures/env/props/el_1.xpm", x, y
-// 							+ 10);
-// 						render_image(game, "textures/env/plant/el_10.xpm", x, y
-// 							+ 40);
-// 						render_image(game, "textures/env/plant/el_16.xpm", x
-// 							+ 40, y + 40);
-// 					}
-// 					if ((x / 64 == 17 && y / 64 == 7))
-// 						render_image(game, "textures/env/props/el_12.xpm", x
-// 							- 15, y + 25);
-// 					if ((x / 64 == 20 && y / 64 == 5))
-// 					{
-// 						render_image(game, "textures/env/props/el_15.xpm", x,
-// 							y);
-// 						render_image(game, "textures/env/props/el_9.xpm", x
-// 							+ 38, y + 23);
-// 					}
-// 					if ((x / 64 == 12 && y / 64 == 4))
-// 					{
-// 						render_image(game, "textures/env/el_5.xpm", x, y);
-// 						render_image(game, "textures/env/el_2.xpm", x, y + 55);
-// 						render_image(game, "textures/env/el_3.xpm", x + 10, y
-// 							+ 40);
-// 						render_image(game, "textures/env/el_4.xpm", x + 35, y
-// 							+ 55);
-// 					}
-// 					if (x / 64 == 4 && y / 64 == 6)
-// 						render_image(game, "textures/env/obj_3.xpm", x, y - 10);
-// 					if (x / 64 == 2 && y / 64 == 4)
-// 					{
-// 						render_image(game, "textures/env/obj_2.xpm", x, y + 5);
-// 						render_image(game, "textures/env/object_21.xpm", x + 74, y + 10);
-// 						render_image(game, "textures/env/object_22.xpm", x, y + 40);
-// 					}
-// 					if (x / 64 == 3 && y / 64 == 6)
-// 						render_image(game, "textures/env/object_25.xpm", x, y + 10);
-// 				}
-// 				x += 64;
-// 				j++;
-// 			}
-// 			y += 64;
-// 			i++;
-// 		}
-// 	}
-// }
