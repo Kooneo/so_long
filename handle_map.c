@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 20:54:17 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 20:54:39 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ char	**load_map(t_map *map_data)
 		return (NULL);
 	read_line = get_next_line(fd);
 	if (!read_line)
+	{
 		return (NULL);
+	}
 	trimed_line = ft_strtrim(read_line, "\n");
 	row_c = 0;
 	while (read_line)
@@ -140,6 +142,15 @@ void	render_el_at(t_game *game, int el, int x, int y)
 		render_image(game, "textures/env/plant/el_3.xpm", x + 20, y - 80);
 }
 
+// void render_skipwall(t_game *game)
+// {
+	
+// }
+
+// void	render_env()
+// {
+	
+// }
 static void	render_player(t_game *g, int x, int y)
 {
 	render_image(g, "textures/player/p_idle/down/idle_down_00.xpm", x, y);
@@ -149,88 +160,64 @@ static void	render_player(t_game *g, int x, int y)
 	g->map->player_y = y;
 }
 
-static bool	is_special_wall(int tx, int ty)
+static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 {
-	return ((tx == 12 && ty == 5) || (tx == 18 && ty == 4));
-}
-
-static bool	is_special_background(int tx, int ty)
-{
-	return ((tx >= 2 && tx <= 5 && (ty == 4 || ty == 5)) || (tx >= 16
-			&& ((ty == 6 && tx <= 18) || (ty == 7 && tx <= 17))) || tx == 20
-		|| tx == 12 || tx == 4 || (tx >= 3 && tx <= 4 && ty == 6));
-}
-
-static bool	is_special_decor(int tx, int ty)
-{
-	return ((tx >= 23 && tx <= 27) && (ty == 5 || ty == 6 || ty == 7));
-}
-
-static void	handle_special_decor(t_game *g, int tx, int ty, int xy[2])
-{
-	const int	x = xy[0];
-	const int	y = xy[1];
-
-	if (tx == 25 || tx == 27 || tx == 23)
-	{
-		if (tx == 23 && ty == 7)
-		{
-			render_el_at(g, 2, x + TILE_SIZE - 15, y - 15);
-			render_el_at(g, 1, x + 10, y - 20);
-		}
-		if (tx == 25 && ty == 6)
-			render_el_at(g, 2, x, y - 15);
-		render_el_at(g, 10, x, y);
-	}
-	else
-		render_el_at(g, 9, x, y);
-}
-
-static void	handle_wall(t_game *g, int tx_ty[4], int xy[2])
-{
-	const int	tx = tx_ty[0];
-	const int	ty = tx_ty[1];
-	const int	x = xy[0];
-	const int	y = xy[1];
-
-	if (is_special_wall(tx, ty))
-		render_image(g, "textures/env/wall_001.xpm", x, y);
-	else if (is_special_background(tx, ty))
-		render_image(g, "textures/bg_64n.xpm", x, y);
-	else if (is_special_decor(tx, ty))
-		handle_special_decor(g, tx, ty, xy);
-	else
-		render_wall(g, tx_ty[2], tx_ty[3], x, y);
-}
-
-static void	render_enemies(t_game *g, char c, int x, int y)
-{
-	if (c == 'T')
-		render_image(g, "textures/env/enemy.xpm", x - 3, y - 3);
-	else if (c == 'X')
-		render_image(g, "textures/env/blue_hand.xpm", x - 3, y - 3);
-	else if (c == 'G')
-		render_image(g, "textures/env/green_hand.xpm", x - 3, y - 3);
-}
-
-static void	render_collectible(t_game *g, int x, int y)
-{
-	render_image(g, "textures/coins/coin.xpm", x + 10, y);
-	g->map->coins_count++;
-}
-
-void	process_tile(t_game *g, char c, int x, int y, int i, int j)
-{
-	const int	tx = x / TILE_SIZE;
-	const int	ty = y / TILE_SIZE;
-	int	tx_ty[4] = {tx, ty, i, j};
-
 	if (c == '1')
-		handle_wall(g, tx_ty, (int [2]){x, y});
+	{
+		if (g->map->is_sp == 1 && ((x / 64 == 12 && y / 64 == 5)
+				|| (x / 64 == 18 && y / 64 == 4)))
+			render_image(g, "textures/env/wall_001.xpm", x, y);
+		else if (g->map->is_sp == 1 && 
+		(	
+			((x / 64 >= 2 && x / 64 <= 5) && (y / 64 == 4 || y / 64 == 5))
+			|| ((x / 64 >= 16 && x / 64 <= 18) && y / 64 == 6) 
+			|| ((x / 64 >= 16 && x / 64 <= 17) && y / 64 == 7) 
+			|| (x / 64 == 20 && y / 64 == 5)
+			|| (x / 64 == 12 && y / 64 == 4) 
+			|| (x / 64 == 4 && y / 64 == 6) 
+			|| ((x / 64 >= 3 && x / 64 <= 4) && y / 64 == 6)
+		))
+			render_image(g, "textures/bg_64n.xpm", x, y);
+		else if ( g->map->is_sp == 1 && 
+				(	((x / 64 >= 23 && y / 64 == 6) && (x / 64 <= 27 && y / 64 == 6))
+					|| ((x / 64 >= 23 && y / 64 == 7) && (x / 64 <= 27 && y / 64 == 7)) 
+					|| ((x / 64 >= 23 && y / 64 == 5) && (x / 64 <= 27 && y / 64 == 5))
+				))
+		{
+			if ((x / 64 == 25 && y / 64 == 6) 
+				|| ((x / 64 == 27 || x / 64 == 23) && y / 64 == 7)
+			)
+			{
+				if ((x / 64 == 23 && y / 64 == 7))
+				{
+					render_el_at(g, 2, x + 64 - 15, y - 15);
+					render_el_at(g, 1, x + 10, y - 20);
+				}
+				if ((x / 64 == 25 && y / 64 == 6))
+					render_el_at(g, 2, x, y - 15);
+				render_el_at(g, 10, x, y);
+			}
+			else
+				render_el_at(g, 9, x, y);
+		}
+		else
+			render_wall(g, i, j, x, y);
+			
+	}
 	else if (c == 'T' || c == 'X' || c == 'G')
-		render_enemies(g, c, x, y);
+	{
+		if (c == 'T')
+			render_image(g, "textures/env/enemy.xpm", x - 3, y - 3);
+		else if (c == 'X')
+			render_image(g, "textures/env/blue_hand.xpm", x - 3, y - 3);
+		else
+			render_image(g, "textures/env/green_hand.xpm", x - 3, y - 3);
+	}
 	else if (c == 'C')
-		render_collectible(g, x, y);
+	{
+		render_image(g, "textures/coins/coin.xpm", x + 10, y);
+		g->map->coins_count++;
+	}
 	else if (c == 'P')
 		render_player(g, x, y);
 	else if (c == 'E')
@@ -242,11 +229,11 @@ void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 
 void	map_render(t_game *g)
 {
-	int	i;
-	int	j;
-	int	x;
-	int	y;
-
+	int		i;
+	int		j;
+	int		x;
+	int		y;
+	
 	i = -1;
 	y = 0;
 	render_ground(g, "textures/bg_64n.xpm");
@@ -267,72 +254,99 @@ void	map_render(t_game *g)
 	render_map_design(g);
 }
 
-// static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
+// void	render_map_design(t_game *game)
 // {
-// 	if (c == '1')
+// 	int	i;
+// 	int	j;
+// 	int	x;
+// 	int	y;
+// 	char c;
+// 	if (game->map->is_sp == 1)
 // 	{
-// 		if (g->map->is_sp == 1 && ((x / 64 == 12 && y / 64 == 5)
-// 				|| (x / 64 == 18 && y / 64 == 4)))
-// 			render_image(g, "textures/env/wall_001.xpm", x, y);
-// 		else if (g->map->is_sp == 1 &&
-// 		(
-// 			((x / 64 >= 2 && x / 64 <= 5) && (y / 64 == 4 || y / 64 == 5))
-// 			|| ((x / 64 >= 16 && x / 64 <= 18) && y / 64 == 6)
-// 			|| ((x / 64 >= 16 && x / 64 <= 17) && y / 64 == 7)
-// 			|| (x / 64 == 20 && y / 64 == 5)
-// 			|| (x / 64 == 12 && y / 64 == 4)
-// 			|| (x / 64 == 4 && y / 64 == 6)
-// 			|| ((x / 64 >= 3 && x / 64 <= 4) && y / 64 == 6)
-// 		))
-// 			render_image(g, "textures/bg_64n.xpm", x, y);
-// 		else if ( g->map->is_sp == 1 &&
-// 				(	((x / 64 >= 23 && y / 64 == 6) && (x / 64 <= 27 && y
-// / 64 == 6))
-// 					|| ((x / 64 >= 23 && y / 64 == 7) && (x / 64 <= 27 && y
-// / 64 == 7))
-// 					|| ((x / 64 >= 23 && y / 64 == 5) && (x / 64 <= 27 && y
-// / 64 == 5))
-// 				))
+// 		i = 0;
+// 		y = 0;
+// 		while (i < game->map->y && game->map->ptr[i])
 // 		{
-// 			if ((x / 64 == 25 && y / 64 == 6)
-// 				|| ((x / 64 == 27 || x / 64 == 23) && y / 64 == 7)
-// 			)
+// 			x = 0;
+// 			j = 0;
+// 			while (game->map->ptr[i][j])
 // 			{
-// 				if ((x / 64 == 23 && y / 64 == 7))
+// 				c = game->map->ptr[i][j];
+// 				if (c == '1')
 // 				{
-// 					render_el_at(g, 2, x + 64 - 15, y - 15);
-// 					render_el_at(g, 1, x + 10, y - 20);
-// 				}
-// 				if ((x / 64 == 25 && y / 64 == 6))
-// 					render_el_at(g, 2, x, y - 15);
-// 				render_el_at(g, 10, x, y);
-// 			}
-// 			else
-// 				render_el_at(g, 9, x, y);
-// 		}
-// 		else
-// 			render_wall(g, i, j, x, y);
 
-// 	}
-// 	else if (c == 'T' || c == 'X' || c == 'G')
-// 	{
-// 		if (c == 'T')
-// 			render_image(g, "textures/env/enemy.xpm", x - 3, y - 3);
-// 		else if (c == 'X')
-// 			render_image(g, "textures/env/blue_hand.xpm", x - 3, y - 3);
-// 		else
-// 			render_image(g, "textures/env/green_hand.xpm", x - 3, y - 3);
-// 	}
-// 	else if (c == 'C')
-// 	{
-// 		render_image(g, "textures/coins/coin.xpm", x + 10, y);
-// 		g->map->coins_count++;
-// 	}
-// 	else if (c == 'P')
-// 		render_player(g, x, y);
-// 	else if (c == 'E')
-// 	{
-// 		g->map->exit_x = x;
-// 		g->map->exit_y = y;
+// 					if ((x / 64 == 8 && y / 64 == 7) || (x / 64 == 12 && y / 64 == 2))
+// 						render_el_at(game, 2, x, y);
+// 					if ((x / 64 == 16 && y / 64 == 2) || (x / 64 == 21 && y / 64 == 4))
+// 						render_el_at(game, 3, x, y);
+// 					if ((x / 64 == 25 && y / 64 == 7) || (x / 64 == 23 && y / 64 == 6))
+// 					{
+// 						if ((x / 64 == 23 && y / 64 == 6))
+// 							render_el_at(game, 14, x, y + 25);
+// 						else
+// 							render_el_at(game, 13, x, y);
+// 					}
+// 					if ((x / 64 == 18 && y / 64 == 3))
+// 						render_el_at(game, 15, x - 12, y + 32);
+// 					if ((x / 64 == 3 && y / 64 == 4))
+// 						render_image(game, "textures/env/big_obj_1.xpm", x + 25,
+// 							y);
+// 					if ((x / 64 == 17 && y / 64 == 6))
+// 						render_image(game, "textures/env/props/el_2.xpm", x, y);
+// 					if ((x / 64 == 16 && y / 64 == 6))
+// 					{
+// 						render_image(game, "textures/env/props/el_4.xpm", x, y);
+// 						render_image(game, "textures/env/props/el_14.xpm", x, y
+// 							+ 45);
+// 						render_image(game, "textures/env/plant/el_14.xpm", x, y
+// 							+ 40);
+// 						render_image(game, "textures/env/plant/el_7.xpm", x, y
+// 							+ 85);
+// 					}
+// 					if ((x / 64 == 18 && y / 64 == 6))
+// 					{
+// 						render_image(game, "textures/env/props/el_1.xpm", x, y
+// 							+ 10);
+// 						render_image(game, "textures/env/plant/el_10.xpm", x, y
+// 							+ 40);
+// 						render_image(game, "textures/env/plant/el_16.xpm", x
+// 							+ 40, y + 40);
+// 					}
+// 					if ((x / 64 == 17 && y / 64 == 7))
+// 						render_image(game, "textures/env/props/el_12.xpm", x
+// 							- 15, y + 25);
+// 					if ((x / 64 == 20 && y / 64 == 5))
+// 					{
+// 						render_image(game, "textures/env/props/el_15.xpm", x,
+// 							y);
+// 						render_image(game, "textures/env/props/el_9.xpm", x
+// 							+ 38, y + 23);
+// 					}
+// 					if ((x / 64 == 12 && y / 64 == 4))
+// 					{
+// 						render_image(game, "textures/env/el_5.xpm", x, y);
+// 						render_image(game, "textures/env/el_2.xpm", x, y + 55);
+// 						render_image(game, "textures/env/el_3.xpm", x + 10, y
+// 							+ 40);
+// 						render_image(game, "textures/env/el_4.xpm", x + 35, y
+// 							+ 55);
+// 					}
+// 					if (x / 64 == 4 && y / 64 == 6)
+// 						render_image(game, "textures/env/obj_3.xpm", x, y - 10);
+// 					if (x / 64 == 2 && y / 64 == 4)
+// 					{
+// 						render_image(game, "textures/env/obj_2.xpm", x, y + 5);
+// 						render_image(game, "textures/env/object_21.xpm", x + 74, y + 10);
+// 						render_image(game, "textures/env/object_22.xpm", x, y + 40);
+// 					}
+// 					if (x / 64 == 3 && y / 64 == 6)
+// 						render_image(game, "textures/env/object_25.xpm", x, y + 10);
+// 				}
+// 				x += 64;
+// 				j++;
+// 			}
+// 			y += 64;
+// 			i++;
+// 		}
 // 	}
 // }
