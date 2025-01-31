@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 19:13:10 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:13:59 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,7 @@ static void	handle_wall_rendering(t_game *g, int x, int y, int tx_ty[2])
 
 static void	process_tile(t_game *g, char c, int x, int y)
 {
-	const int	tx_ty[2] = {x / TILE_SIZE, y / TILE_SIZE};
+	int	tx_ty[2] = {x / TILE_SIZE, y / TILE_SIZE};
 
 	if (c == '1')
 		handle_wall_rendering(g, x, y, tx_ty);
