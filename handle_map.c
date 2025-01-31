@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 20:50:11 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 20:52:30 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,19 +149,19 @@ static void	render_player(t_game *g, int x, int y)
 	g->map->player_y = y;
 }
 
-static bool	is_special_wall(t_game *g, int tx, int ty)
+static bool	is_special_wall(int tx, int ty)
 {
 	return ((tx == 12 && ty == 5) || (tx == 18 && ty == 4));
 }
 
-static bool	is_special_background(t_game *g, int tx, int ty)
+static bool	is_special_background(int tx, int ty)
 {
 	return ((tx >= 2 && tx <= 5 && (ty == 4 || ty == 5)) || (tx >= 16
 			&& ((ty == 6 && tx <= 18) || (ty == 7 && tx <= 17))) || tx == 20
 		|| tx == 12 || tx == 4 || (tx >= 3 && tx <= 4 && ty == 6));
 }
 
-static bool	is_special_decor(t_game *g, int tx, int ty)
+static bool	is_special_decor(int tx, int ty)
 {
 	return ((tx >= 23 && tx <= 27) && (ty == 5 || ty == 6 || ty == 7));
 }
@@ -195,10 +195,10 @@ static void	handle_wall(t_game *g, int tx_ty[4], int xy[2])
 
 	if (is_special_wall(g, tx, ty))
 		render_image(g, "textures/env/wall_001.xpm", x, y);
-	else if (is_special_background(g, tx, ty))
+	else if (is_special_background(tx, ty))
 		render_image(g, "textures/bg_64n.xpm", x, y);
-	else if (is_special_decor(g, tx, ty))
-		handle_special_decor(g, tx, ty, xy);
+	else if (is_special_decor(tx, ty))
+		handle_special_decor(tx, ty, xy);
 	else
 		render_wall(g, tx_ty[2], tx_ty[3], x, y);
 }
