@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 20:38:43 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 20:39:59 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,9 +145,8 @@ int				check_is_surrounded(char *row);
 void			render_exit(t_game *game);
 void			render_map_design(t_game *game);
 
-
-void	render_section_16_6(t_game *g, int x, int y);
-void	render_section_18_6(t_game *g, int x, int y);
-
+void			render_el_at(t_game *game, int el, int x, int y);
+void			render_section_16_6(t_game *g, int x, int y);
+void			render_section_18_6(t_game *g, int x, int y);
 
 #endif

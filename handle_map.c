@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 20:31:46 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 20:40:19 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,13 @@ size_t	map_row_c(char *filepath)
 	row_c = 0;
 	while (read_line)
 	{
-		trimmed_line = ft_strtrim(read_line, "\n"); // Store the trimmed result
+		trimmed_line = ft_strtrim(read_line, "\n");
 		if (trimmed_line)
-		// If the result is not NULL (non-empty line)
 		{
 			row_c++;
-			free(trimmed_line); // Free the trimmed string
+			free(trimmed_line);
 		}
-		free(read_line); // Free the original read_line (after using it)
+		free(read_line);
 		read_line = get_next_line(fd);
 	}
 	close(fd);
