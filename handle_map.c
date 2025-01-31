@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 19:22:56 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:25:35 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,20 +143,22 @@ void	render_el_at(t_game *game, int el, int x, int y)
 		render_image(game, "textures/env/plant/el_3.xpm", x + 20, y - 80);
 }
 
-// void	render_skipwall(t_game *game)
-// {
-// }
+void render_skipwall(t_game *game)
+{
+	
+}
 
-// void	render_env(void)
-// {
-// }
+void	render_env()
+{
+	
+}
 
 void	map_render(t_game *game)
 {
 	char	c;
 	int		i;
 	int		j;
-	
+
 	int x, y;
 	i = 0;
 	y = 0;
@@ -177,26 +179,47 @@ void	map_render(t_game *game)
 				if (game->map->is_sp == 1 && ((x / 64 == 12 && y / 64 == 5)
 						|| (x / 64 == 18 && y / 64 == 4)))
 					render_image(game, "textures/env/wall_001.xpm", x, y);
-				else if (
-					game->map->is_sp == 1 && 
-					(((x / 64 >= 2 && x / 64 <= 5) && y / 64 == 4) 
+				else if (game->map->is_sp == 1 && 
+				(	
+					((x / 64 >= 2 && x / 64 <= 5) && y / 64 == 4) 
 					|| ((x / 64 >= 2 && x / 64 <= 5) && y / 64 == 5) 
 					|| ((x / 64 >= 16 && x / 64 <= 18) && y / 64 == 6) 
-					|| ((x / 64 >= 16 && x / 64 <= 17) && y / 64 == 7)
+					|| ((x / 64 >= 16 && x / 64 <= 17) && y / 64 == 7) 
 					|| (x / 64 == 20 && y / 64 == 5)
 					|| (x / 64 == 12 && y / 64 == 4) 
-					|| (x / 64 == 4 && y / 64 == 6)
+					|| (x / 64 == 4 && y / 64 == 6) 
 					|| ((x / 64 >= 3 && x / 64 <= 4) && y / 64 == 6)
-					|| ((x / 64 >= 23 && y / 64 == 6)
-								&& (x / 64 <= 27 && y / 64 == 6)) || ((x
-									/ 64 >= 23 && y / 64 == 7) && (x / 64 <= 27
-									&& y / 64 == 7)) || ((x / 64 >= 23 && y
-									/ 64 == 5) && (x / 64 <= 27 && y
-									/ 64 == 5)))
-					)
+				))
 					render_image(game, "textures/bg_64n.xpm", x, y);
+				else if (game->map->is_sp == 1 && (((x / 64 >= 23 && y
+								/ 64 == 6) && (x / 64 <= 27 && y / 64 == 6))
+						|| ((x / 64 >= 23 && y / 64 == 7) && (x / 64 <= 27 && y
+								/ 64 == 7)) || ((x / 64 >= 23 && y / 64 == 5)
+							&& (x / 64 <= 27 && y / 64 == 5))))
+				{
+					if ((x / 64 == 25 && y / 64 == 6) || (x / 64 == 27 && y
+							/ 64 == 7) || (x / 64 == 23 && y / 64 == 7))
+					{
+						if ((x / 64 == 23 && y / 64 == 7))
+						{
+							render_el_at(game, 2, x + 64 - 15, y - 15);
+							render_el_at(game, 1, x + 10, y - 20);
+						}
+						if ((x / 64 == 25 && y / 64 == 6))
+							render_el_at(game, 2, x, y - 15);
+						render_el_at(game, 10, x, y);
+					}
+					else
+						render_el_at(game, 9, x, y);
+				}
 				else
 					render_wall(game, i, j, x, y);
+				if (game->map->is_sp == 1 && ((x / 64 == 8 && y / 64 == 7) || (x
+							/ 64 == 12 && y / 64 == 2)))
+					render_el_at(game, 2, x, y);
+				if (game->map->is_sp == 1 && ((x / 64 == 16 && y / 64 == 2)
+						|| (x / 64 == 21 && y / 64 == 4)))
+					render_el_at(game, 3, x, y);
 			}
 			else if (c == 'T')
 				render_image(game, "textures/env/enemy.xpm", x - 3, y - 3);
@@ -211,8 +234,7 @@ void	map_render(t_game *game)
 			}
 			else if (c == 'P')
 			{
-				render_image(game,
-					"textures/player/p_idle/down/idle_down_00.xpm", x, y);
+				render_image(game, "textures/player/p_idle/down/idle_down_00.xpm", x, y);
 				game->player->x_pos = x;
 				game->player->y_pos = y;
 				game->map->player_x = x;
@@ -234,12 +256,11 @@ void	map_render(t_game *game)
 
 void	render_map_design(t_game *game)
 {
-	int		i;
-	int		j;
-	int		x;
-	int		y;
-	char	c;
-
+	int	i;
+	int	j;
+	int	x;
+	int	y;
+	char c;
 	if (game->map->is_sp == 1)
 	{
 		i = 0;
@@ -253,34 +274,6 @@ void	render_map_design(t_game *game)
 				c = game->map->ptr[i][j];
 				if (c == '1')
 				{
-					if (game->map->is_sp == 1 && (((x / 64 >= 23 && y / 64 == 6)
-								&& (x / 64 <= 27 && y / 64 == 6)) || ((x
-									/ 64 >= 23 && y / 64 == 7) && (x / 64 <= 27
-									&& y / 64 == 7)) || ((x / 64 >= 23 && y
-									/ 64 == 5) && (x / 64 <= 27 && y
-									/ 64 == 5))))
-					{
-						if ((x / 64 == 25 && y / 64 == 6) || (x / 64 == 27 && y
-								/ 64 == 7) || (x / 64 == 23 && y / 64 == 7))
-						{
-							if ((x / 64 == 23 && y / 64 == 7))
-							{
-								render_el_at(game, 2, x + 64 - 15, y - 15);
-								render_el_at(game, 1, x + 10, y - 20);
-							}
-							if ((x / 64 == 25 && y / 64 == 6))
-								render_el_at(game, 2, x, y - 15);
-							render_el_at(game, 10, x, y);
-						}
-						else
-							render_el_at(game, 9, x, y);
-					}
-					if (game->map->is_sp == 1 && ((x / 64 == 8 && y / 64 == 7)
-							|| (x / 64 == 12 && y / 64 == 2)))
-						render_el_at(game, 2, x, y);
-					if (game->map->is_sp == 1 && ((x / 64 == 16 && y / 64 == 2)
-							|| (x / 64 == 21 && y / 64 == 4)))
-						render_el_at(game, 3, x, y);
 					if ((x / 64 == 25 && y / 64 == 7) || (x / 64 == 23 && y
 							/ 64 == 6))
 					{
