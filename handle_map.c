@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 19:14:23 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:16:59 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,89 +151,79 @@ void	render_el_at(t_game *game, int el, int x, int y)
 // {
 // }
 
-static void	render_player(t_game *g, int x, int y)
+void	map_render(t_game *game)
 {
-	render_image(g, "textures/player/p_idle/down/idle_down_00.xpm", x, y);
-	g->player->x_pos = x;
-	g->player->y_pos = y;
-	g->map->player_x = x;
-	g->map->player_y = y;
-}
-
-static int	is_special_background(int tx, int ty)
-{
-	return ((tx >= 2 && tx <= 5 && (ty == 4 || ty == 5)) || (tx >= 16
-			&& ((ty == 6 && tx <= 18) || (ty == 7 && tx <= 17))) || tx == 20
-		|| tx == 12 || tx == 4 || (tx >= 3 && tx <= 4 && ty == 6));
-}
-
-static void	handle_wall_rendering(t_game *g, int x, int y, int tx_ty[2])
-{
-	const int	tx = tx_ty[0];
-	const int	ty = tx_ty[1];
-
-	if ((tx == 12 && ty == 5) || (tx == 18 && ty == 4))
-		render_image(g, "textures/env/wall_001.xpm", x, y);
-	else if (is_special_background(tx, ty))
-		render_image(g, "textures/bg_64n.xpm", x, y);
-	else
-		render_wall(g, (y / TILE_SIZE), (x / TILE_SIZE), x, y);
-}
-
-static void	process_tile(t_game *g, char c, int x, int y)
-{
-	int	tx_ty[2] = {x / TILE_SIZE, y / TILE_SIZE};
-
-	if (c == '1')
-		handle_wall_rendering(g, x, y, tx_ty);
-	else if (c == 'T' || c == 'X' || c == 'G')
-	{
-		if (c == 'T')
-			render_image(g, "textures/env/enemy.xpm", x - 3, y - 3);
-		else if (c == 'X')
-			render_image(g, "textures/env/blue_hand.xpm", x - 3, y - 3);
-		else
-			render_image(g, "textures/env/green_hand.xpm", x - 3, y - 3);
-	}
-	else if (c == 'C')
-	{
-		render_image(g, "textures/coins/coin.xpm", x + 10, y);
-		g->map->coins_count++;
-	}
-	else if (c == 'P')
-		render_player(g, x, y);
-	else if (c == 'E')
-	{
-		g->map->exit_x = x;
-		g->map->exit_y = y;
-	}
-}
-
-void	map_render(t_game *g)
-{
-	int	i;
-	int	j;
-	int	x;
-	int	y;
-
-	render_ground(g, "textures/bg_64n.xpm");
-	g->map->is_sp = (ft_strcmp(g->map->filepath, "maps/map3.ber") == 0);
-	i = -1;
+	char	c;
+	int		i;
+	int		j;
+	
+	int x, y;
+	i = 0;
 	y = 0;
-	while (++i < g->map->y && g->map->ptr[i])
+	render_ground(game, "textures/bg_64n.xpm");
+	if (ft_strncmp(game->map->filepath, "maps/map3.ber", ft_strlen(game->map->filepath)) == 0)
+		game->map->is_sp = 1;
+	while (i < game->map->y && game->map->ptr[i])
 	{
-		j = -1;
 		x = 0;
-		while (g->map->ptr[i][++j])
+		j = 0;
+		while (game->map->ptr[i][j])
 		{
-			if (!ft_isalnum(g->map->ptr[i][j]))
+			c = game->map->ptr[i][j];
+			if (!ft_isalnum(c))
 				return ;
-			process_tile(g, g->map->ptr[i][j], x, y);
-			x += TILE_SIZE;
+			if (c == '1')
+			{
+				if (game->map->is_sp == 1 && ((x / 64 == 12 && y / 64 == 5)
+						|| (x / 64 == 18 && y / 64 == 4)))
+					render_image(game, "textures/env/wall_001.xpm", x, y);
+				else if (
+					game->map->is_sp == 1 && 
+					(((x / 64 >= 2 && x / 64 <= 5) && y / 64 == 4) 
+					|| ((x / 64 >= 2 && x / 64 <= 5) && y / 64 == 5) 
+					|| ((x / 64 >= 16 && x / 64 <= 18) && y / 64 == 6) 
+					|| ((x / 64 >= 16 && x / 64 <= 17) && y / 64 == 7)
+					|| (x / 64 == 20 && y / 64 == 5)
+					|| (x / 64 == 12 && y / 64 == 4) 
+					|| (x / 64 == 4 && y / 64 == 6)
+					|| ((x / 64 >= 3 && x / 64 <= 4) && y / 64 == 6))
+					)
+					render_image(game, "textures/bg_64n.xpm", x, y);
+				else
+					render_wall(game, i, j, x, y);
+			}
+			else if (c == 'T')
+				render_image(game, "textures/env/enemy.xpm", x - 3, y - 3);
+			else if (c == 'X')
+				render_image(game, "textures/env/blue_hand.xpm", x - 3, y - 3);
+			else if (c == 'G')
+				render_image(game, "textures/env/green_hand.xpm", x - 3, y - 3);
+			else if (c == 'C')
+			{
+				render_image(game, "textures/coins/coin.xpm", x + 10, y);
+				game->map->coins_count++;
+			}
+			else if (c == 'P')
+			{
+				render_image(game,
+					"textures/player/p_idle/down/idle_down_00.xpm", x, y);
+				game->player->x_pos = x;
+				game->player->y_pos = y;
+				game->map->player_x = x;
+				game->map->player_y = y;
+			}
+			else if (c == 'E')
+			{
+				game->map->exit_x = x;
+				game->map->exit_y = y;
+			}
+			x += 64;
+			j++;
 		}
-		y += TILE_SIZE;
+		y += 64;
+		i++;
 	}
-	render_map_design(g);
+	render_map_design(game);
 }
 
 void	render_map_design(t_game *game)
