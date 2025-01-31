@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 19:38:52 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:41:51 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,15 @@ void	render_el_at(t_game *game, int el, int x, int y)
 // {
 	
 // }
+static void	render_player(t_game *g, int x, int y)
+{
+	render_image(g, "textures/player/p_idle/down/idle_down_00.xpm", x, y);
+	g->player->x_pos = x;
+	g->player->y_pos = y;
+	g->map->player_x = x;
+	g->map->player_y = y;
+}
+
 
 void	map_render(t_game *g)
 {
@@ -159,7 +168,8 @@ void	map_render(t_game *g)
 	int		i;
 	int		j;
 
-	int x, y;
+	int x;
+	int y;
 	i = 0;
 	y = 0;
 	render_ground(g, "textures/bg_64n.xpm");
@@ -215,25 +225,22 @@ void	map_render(t_game *g)
 					render_wall(g, i, j, x, y);
 					
 			}
-			else if (c == 'T')
-				render_image(g, "textures/env/enemy.xpm", x - 3, y - 3);
-			else if (c == 'X')
-				render_image(g, "textures/env/blue_hand.xpm", x - 3, y - 3);
-			else if (c == 'G')
-				render_image(g, "textures/env/green_hand.xpm", x - 3, y - 3);
+			else if (c == 'T' || c == 'X' || c == 'G')
+			{
+				if (c == 'T')
+					render_image(g, "textures/env/enemy.xpm", x - 3, y - 3);
+				else if (c == 'X')
+					render_image(g, "textures/env/blue_hand.xpm", x - 3, y - 3);
+				else
+					render_image(g, "textures/env/green_hand.xpm", x - 3, y - 3);
+			}
 			else if (c == 'C')
 			{
 				render_image(g, "textures/coins/coin.xpm", x + 10, y);
 				g->map->coins_count++;
 			}
 			else if (c == 'P')
-			{
-				render_image(g, "textures/player/p_idle/down/idle_down_00.xpm", x, y);
-				g->player->x_pos = x;
-				g->player->y_pos = y;
-				g->map->player_x = x;
-				g->map->player_y = y;
-			}
+				render_player(g, x, y);
 			else if (c == 'E')
 			{
 				g->map->exit_x = x;
