@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 17:13:00 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 17:13:36 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,7 @@ void	map_render(t_game *g)
 		y += TILE_SIZE;
 	}
 	if (g->map->is_sp)
-		render_special_decorations(g);
+		render_map_design(g);
 }
 
 void	render_map_design(t_game *game)
