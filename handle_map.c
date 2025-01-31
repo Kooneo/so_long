@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 19:50:34 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 19:52:48 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ static void	render_player(t_game *g, int x, int y)
 	g->map->player_y = y;
 }
 
-static void	process_tile(t_game *g, char c, int x, int y)
+static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 {
 	if (c == '1')
 	{
@@ -247,7 +247,7 @@ void	map_render(t_game *g)
 		{
 			if (!ft_isalnum(g->map->ptr[i][j]))
 				return ;
-			process_tile(g, g->map->ptr[i][j], x, y);
+			process_tile(g, g->map->ptr[i][j], x, y, i, j);
 			x += TILE_SIZE;
 		}
 		y += TILE_SIZE;
