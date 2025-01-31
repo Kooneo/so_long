@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 20:52:30 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 20:53:01 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,7 @@ static void	handle_wall(t_game *g, int tx_ty[4], int xy[2])
 	const int	x = xy[0];
 	const int	y = xy[1];
 
-	if (is_special_wall(g, tx, ty))
+	if (is_special_wall(tx, ty))
 		render_image(g, "textures/env/wall_001.xpm", x, y);
 	else if (is_special_background(tx, ty))
 		render_image(g, "textures/bg_64n.xpm", x, y);
