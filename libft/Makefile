@@ -31,6 +31,7 @@ MANDATORY_SRC = ft_isalpha.c\
 				ft_strjoin.c\
 				ft_strtrim.c\
 				ft_split.c\
+				ft_strcmp.c \
 				ft_itoa.c\
 				ft_strmapi.c\
 				ft_striteri.c\

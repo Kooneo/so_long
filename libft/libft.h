@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 13:54:39 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:49:12 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/01/31 17:22:41 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int					ft_memcmp(const void *str1, const void *str2, size_t n);
 char				*ft_strchr(const char *str, int search_str);
 char				*ft_strrchr(const char *str, int c);
 int					ft_strncmp(const char *str1, const char *str2, size_t n);
+int					ft_strcmp(const char *str1, const char *str2);
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 size_t				ft_strlcat(char *dst, const char *src, size_t n);
 char				*ft_strnstr(const char *big, const char *little,
