@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/02 13:19:46 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/02 13:55:40 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,15 +142,6 @@ void	render_el_at(t_game *game, int el, int x, int y)
 		render_image(game, "textures/env/plant/el_3.xpm", x + 20, y - 80);
 }
 
-// void render_skipwall(t_game *game)
-// {
-	
-// }
-
-// void	render_env()
-// {
-	
-// }
 static void	render_player(t_game *g, int x, int y)
 {
 	render_image(g, "textures/player/p_idle/down/idle_down_00.xpm", x, y);
@@ -160,6 +151,16 @@ static void	render_player(t_game *g, int x, int y)
 	g->map->player_y = y;
 }
 
+static int to_skipe(int x, int y)
+{
+	return ( ((x / 64 >= 2 && x / 64 <= 5) && (y / 64 == 4 || y / 64 == 5))
+		|| ((x / 64 >= 16 && x / 64 <= 18) && y / 64 == 6) 
+		|| ((x / 64 >= 16 && x / 64 <= 17) && y / 64 == 7) 
+		|| (x / 64 == 20 && y / 64 == 5)
+		|| (x / 64 == 12 && y / 64 == 4) 
+		|| (x / 64 == 4 && y / 64 == 6) 
+		|| ((x / 64 >= 3 && x / 64 <= 4) && y / 64 == 6));
+}
 static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 {
 	if (c == '1')
@@ -167,16 +168,7 @@ static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 		if (g->map->is_sp == 1 && ((x / 64 == 12 && y / 64 == 5)
 				|| (x / 64 == 18 && y / 64 == 4)))
 			render_image(g, "textures/env/wall_001.xpm", x, y);
-		else if (g->map->is_sp == 1 && 
-		(	
-			((x / 64 >= 2 && x / 64 <= 5) && (y / 64 == 4 || y / 64 == 5))
-			|| ((x / 64 >= 16 && x / 64 <= 18) && y / 64 == 6) 
-			|| ((x / 64 >= 16 && x / 64 <= 17) && y / 64 == 7) 
-			|| (x / 64 == 20 && y / 64 == 5)
-			|| (x / 64 == 12 && y / 64 == 4) 
-			|| (x / 64 == 4 && y / 64 == 6) 
-			|| ((x / 64 >= 3 && x / 64 <= 4) && y / 64 == 6)
-		))
+		else if (g->map->is_sp == 1 && to_skipe(x, y))
 			render_image(g, "textures/bg_64n.xpm", x, y);
 		else if ( g->map->is_sp == 1 && 
 				(	((x / 64 >= 23 && y / 64 == 6) && (x / 64 <= 27 && y / 64 == 6))
@@ -202,7 +194,6 @@ static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 		}
 		else
 			render_wall(g, i, j, x, y);
-			
 	}
 	else if (c == 'T' || c == 'X' || c == 'G')
 	{
