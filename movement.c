@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/02 13:32:40 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/02 13:33:25 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,15 +99,15 @@
 // 	return (0);
 // }
 
-// void	render_exit(t_game *game)
-// {
-// 	render_image(game, "textures/env/exit_wall.xpm", game->map->exit_x - 2,
-// 		game->map->exit_y - 2);
-// 	render_image(game, "textures/env/exit_door.xpm", game->map->exit_x + 12,
-// 		game->map->exit_y + 13);
-// 	mlx_put_image_to_window(game->window->mlx, game->window->win,
-// 		game->base_img->img_ptr, 0, 0);
-// }
+void	render_exit(t_game *game)
+{
+	render_image(game, "textures/env/exit_wall.xpm", game->map->exit_x - 2,
+		game->map->exit_y - 2);
+	render_image(game, "textures/env/exit_door.xpm", game->map->exit_x + 12,
+		game->map->exit_y + 13);
+	mlx_put_image_to_window(game->window->mlx, game->window->win,
+		game->base_img->img_ptr, 0, 0);
+}
 
 static void	handle_idle_animation(t_game *g)
 {
