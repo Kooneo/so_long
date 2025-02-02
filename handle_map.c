@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/02 13:59:14 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/02 13:59:40 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ static int to_skipe(int x, int y)
 		|| ((x / 64 >= 3 && x / 64 <= 4) && y / 64 == 6));
 }
 
-static void render_others(t_game g, int c, int x, int y)
+static void render_others(t_game *g, int c, int x, int y)
 {
 	if (c == 'T' || c == 'X' || c == 'G')
 	{
