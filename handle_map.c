@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/02 14:50:32 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/02 14:55:30 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,9 +186,6 @@ static void render_others(t_game *g, int c, int x, int y)
 		g->map->exit_y = y;
 	}
 }
-
-static void handle_platform_decorations(t_game *g, int x, int y)
-
 
 static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 {
