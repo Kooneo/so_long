@@ -18,6 +18,7 @@ CFILES = so_long.c \
 		map_utils_2.c \
 		special_design.c \
 		map_design.c \
+		counter.c \
 		utils.c 
 
 OFILES = $(CFILES:.c=.o)

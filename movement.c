@@ -6,64 +6,64 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 16:34:55 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/02 13:20:51 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	render_digit(t_game *game, int digit, int x, int y)
-{
-	char	*file_path;
-	char	*d;
+// void	render_digit(t_game *game, int digit, int x, int y)
+// {
+// 	char	*file_path;
+// 	char	*d;
 
-	if (digit < 0 || digit > 9)
-		return ;
-	d = ft_itoa(digit);
-	file_path = ft_strjoin("textures/numbers/", d);
-	file_path = ft_strjoin_free(file_path, ".xpm");
-	render_image(game, file_path, x, y);
-	free(file_path);
-	free(d);
-}
+// 	if (digit < 0 || digit > 9)
+// 		return ;
+// 	d = ft_itoa(digit);
+// 	file_path = ft_strjoin("textures/numbers/", d);
+// 	file_path = ft_strjoin_free(file_path, ".xpm");
+// 	render_image(game, file_path, x, y);
+// 	free(file_path);
+// 	free(d);
+// }
 
-void	render_movement_count(t_game *game)
-{
-	int	movement_count;
-	int	digit_x;
-	int	digit_y;
-	int	m;
-	int	divisor;
-	int	digit;
+// void	render_movement_count(t_game *game)
+// {
+// 	int	movement_count;
+// 	int	digit_x;
+// 	int	digit_y;
+// 	int	m;
+// 	int	divisor;
+// 	int	digit;
 
-	movement_count = game->player->moves_count;
-	digit_x = 10;
-	digit_y = 10;
-	m = 1;
-	render_image(game, "textures/wall_m.xpm", 0, 0);
-	while (m < game->map->x - 2)
-		render_image(game, "textures/wall_b.xpm", 64 * m++, 0);
+// 	movement_count = game->player->moves_count;
+// 	digit_x = 10;
+// 	digit_y = 10;
+// 	m = 1;
+// 	render_image(game, "textures/wall_m.xpm", 0, 0);
+// 	while (m < game->map->x - 2)
+// 		render_image(game, "textures/wall_b.xpm", 64 * m++, 0);
 		
-	// Break the movement count into individual digits and render them
-	if (movement_count == 0)
-		return render_digit(game, 0, digit_x, digit_y);// Render '0' if the count is 0
+// 	// Break the movement count into individual digits and render them
+// 	if (movement_count == 0)
+// 		return render_digit(game, 0, digit_x, digit_y);// Render '0' if the count is 0
 
-	// Find the number of digits in movement_count
-	divisor = 1;
-	while (movement_count / divisor >= 10)
-	{
-		divisor *= 10;
-	}
-	// Render each digit one by one
-	while (divisor > 0)
-	{
-		digit = movement_count / divisor;
-		render_digit(game, digit, digit_x, digit_y);
-		digit_x += 30;
-		movement_count %= divisor; // Remove the most significant digit
-		divisor /= 10;             // Reduce divisor by one order of magnitude
-	}
-}
+// 	// Find the number of digits in movement_count
+// 	divisor = 1;
+// 	while (movement_count / divisor >= 10)
+// 	{
+// 		divisor *= 10;
+// 	}
+// 	// Render each digit one by one
+// 	while (divisor > 0)
+// 	{
+// 		digit = movement_count / divisor;
+// 		render_digit(game, digit, digit_x, digit_y);
+// 		digit_x += 30;
+// 		movement_count %= divisor; // Remove the most significant digit
+// 		divisor /= 10;             // Reduce divisor by one order of magnitude
+// 	}
+// }
 
 int	handle_player_movement(t_game *game)
 {
