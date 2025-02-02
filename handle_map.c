@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/02 14:03:05 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/02 14:03:38 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,52 +186,42 @@ static void render_others(t_game *g, int c, int x, int y)
 		g->map->exit_y = y;
 	}
 }
-static int	is_special_wall_pos(int x, int y)
-{
-	return ((x == 12 && y == 5) || (x == 18 && y == 4));
-}
 
-static int	is_platform_area(int x, int y)
+static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 {
-	return (x >= 23 && x <= 27 && (y == 5 || y == 6 || y == 7));
-}
-
-static void	handle_platform_decorations(t_game *g, int x, int y)
-{
-	const int	tile_x = x / 64;
-	const int	tile_y = y / 64;
-
-	if (tile_x == 25 && tile_y == 6)
-		render_el_at(g, 2, x, y - 15);
-	else if (tile_x == 23 && tile_y == 7)
+	if (c == '1')
 	{
-		render_el_at(g, 2, x + 49, y - 15);
-		render_el_at(g, 1, x + 10, y - 20);
-	}
-	if ((tile_x == 25 && tile_y == 6) || ((tile_x == 27 || tile_x == 23) && tile_y == 7))
-		render_el_at(g, 10, x, y);
-	else
-		render_el_at(g, 9, x, y);
-}
-
-void	process_tile(t_game *g, char c, int x, int y, int ij[2])
-{
-	const int	tx = x / 64;
-	const int	ty = y / 64;
-
-	if (c != '1')
-		return (render_others(g, c, x, y));
-	if (g->map->is_sp && (is_special_wall_pos(tx, ty) || to_skipe(x, y)))
-	{
-		if (to_skipe(x, y))
-			render_image(g, "textures/bg_64n.xpm", x, y);
-		else
+		if (g->map->is_sp == 1 && ((x / 64 == 12 && y / 64 == 5) || (x / 64 == 18 && y / 64 == 4)))
 			render_image(g, "textures/env/wall_001.xpm", x, y);
+		else if (g->map->is_sp == 1 && to_skipe(x, y))
+			render_image(g, "textures/bg_64n.xpm", x, y);
+		else if ( g->map->is_sp == 1 && 
+				(	((x / 64 >= 23 && y / 64 == 6) && (x / 64 <= 27 && y / 64 == 6))
+					|| ((x / 64 >= 23 && y / 64 == 7) && (x / 64 <= 27 && y / 64 == 7)) 
+					|| ((x / 64 >= 23 && y / 64 == 5) && (x / 64 <= 27 && y / 64 == 5))
+				))
+		{
+			if ((x / 64 == 25 && y / 64 == 6) 
+				|| ((x / 64 == 27 || x / 64 == 23) && y / 64 == 7)
+			)
+			{
+				if ((x / 64 == 23 && y / 64 == 7))
+				{
+					render_el_at(g, 2, x + 64 - 15, y - 15);
+					render_el_at(g, 1, x + 10, y - 20);
+				}
+				if ((x / 64 == 25 && y / 64 == 6))
+					render_el_at(g, 2, x, y - 15);
+				render_el_at(g, 10, x, y);
+			}
+			else
+				render_el_at(g, 9, x, y);
+		}
+		else
+			render_wall(g, i, j, x, y);
 	}
-	else if (g->map->is_sp && is_platform_area(tx, ty))
-		handle_platform_decorations(g, x, y);
-	else
-		render_wall(g, ij[0], ij[1], x, y);
+	else 
+		render_others(g, c, x, y);
 }
 
 void	map_render(t_game *g)
