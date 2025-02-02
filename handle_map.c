@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/02 14:55:30 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/02 14:58:09 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,36 +187,38 @@ static void render_others(t_game *g, int c, int x, int y)
 	}
 }
 
+static int if_conddition_2(int x, int y)
+{
+	return (((x / 64 >= 23 && y / 64 == 6) && (x / 64 <= 27 && y / 64 == 6))
+			|| ((x / 64 >= 23 && y / 64 == 7) && (x / 64 <= 27 && y / 64 == 7)) 
+			|| ((x / 64 >= 23 && y / 64 == 5) && (x / 64 <= 27 && y / 64 == 5)));
+}
 static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 {
 	if (c == '1')
 	{
-		if (g->map->is_sp == 1 && ((x / 64 == 12 && y / 64 == 5) || (x / 64 == 18 && y / 64 == 4)))
-			render_image(g, "textures/env/wall_001.xpm", x, y);
-		else if (g->map->is_sp == 1 && to_skipe(x, y))
-			render_image(g, "textures/bg_64n.xpm", x, y);
-		else if ( g->map->is_sp == 1 && 
-						(	((x / 64 >= 23 && y / 64 == 6) && (x / 64 <= 27 && y / 64 == 6))
-							|| ((x / 64 >= 23 && y / 64 == 7) && (x / 64 <= 27 && y / 64 == 7)) 
-							|| ((x / 64 >= 23 && y / 64 == 5) && (x / 64 <= 27 && y / 64 == 5))
-						)
-			)
+		if( g->map->is_sp == 1)
 		{
-			if ((x / 64 == 25 && y / 64 == 6) 
-				|| ((x / 64 == 27 || x / 64 == 23) && y / 64 == 7)
-			)
+			if ((x / 64 == 12 && y / 64 == 5) || (x / 64 == 18 && y / 64 == 4))
+				render_image(g, "textures/env/wall_001.xpm", x, y);
+			else if (to_skipe(x, y))
+				render_image(g, "textures/bg_64n.xpm", x, y);
+			else if (if_conddition_2(x, y))
 			{
-				if ((x / 64 == 23 && y / 64 == 7))
+				if ((x / 64 == 25 && y / 64 == 6)  || ((x / 64 == 27 || x / 64 == 23) && y / 64 == 7))
 				{
-					render_el_at(g, 2, x + 64 - 15, y - 15);
-					render_el_at(g, 1, x + 10, y - 20);
+					if ((x / 64 == 23 && y / 64 == 7))
+					{
+						render_el_at(g, 2, x + 64 - 15, y - 15);
+						render_el_at(g, 1, x + 10, y - 20);
+					}
+					if ((x / 64 == 25 && y / 64 == 6))
+						render_el_at(g, 2, x, y - 15);
+					render_el_at(g, 10, x, y);
 				}
-				if ((x / 64 == 25 && y / 64 == 6))
-					render_el_at(g, 2, x, y - 15);
-				render_el_at(g, 10, x, y);
+				else
+					render_el_at(g, 9, x, y);
 			}
-			else
-				render_el_at(g, 9, x, y);
 		}
 		else
 			render_wall(g, i, j, x, y);
