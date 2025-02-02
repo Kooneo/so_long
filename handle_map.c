@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/02 14:02:50 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/02 14:03:05 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,7 +214,7 @@ static void	handle_platform_decorations(t_game *g, int x, int y)
 		render_el_at(g, 9, x, y);
 }
 
-static void	process_tile(t_game *g, char c, int x, int y, int ij[2])
+void	process_tile(t_game *g, char c, int x, int y, int ij[2])
 {
 	const int	tx = x / 64;
 	const int	ty = y / 64;
