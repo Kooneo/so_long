@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/02 13:55:40 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/02 13:59:14 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,32 @@ static int to_skipe(int x, int y)
 		|| (x / 64 == 4 && y / 64 == 6) 
 		|| ((x / 64 >= 3 && x / 64 <= 4) && y / 64 == 6));
 }
+
+static void render_others(t_game g, int c, int x, int y)
+{
+	if (c == 'T' || c == 'X' || c == 'G')
+	{
+		if (c == 'T')
+			render_image(g, "textures/env/enemy.xpm", x - 3, y - 3);
+		else if (c == 'X')
+			render_image(g, "textures/env/blue_hand.xpm", x - 3, y - 3);
+		else
+			render_image(g, "textures/env/green_hand.xpm", x - 3, y - 3);
+	}
+	else if (c == 'C')
+	{
+		render_image(g, "textures/coins/coin.xpm", x + 10, y);
+		g->map->coins_count++;
+	}
+	else if (c == 'P')
+		render_player(g, x, y);
+	else if (c == 'E')
+	{
+		g->map->exit_x = x;
+		g->map->exit_y = y;
+	}
+}
+
 static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 {
 	if (c == '1')
@@ -195,27 +221,8 @@ static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 		else
 			render_wall(g, i, j, x, y);
 	}
-	else if (c == 'T' || c == 'X' || c == 'G')
-	{
-		if (c == 'T')
-			render_image(g, "textures/env/enemy.xpm", x - 3, y - 3);
-		else if (c == 'X')
-			render_image(g, "textures/env/blue_hand.xpm", x - 3, y - 3);
-		else
-			render_image(g, "textures/env/green_hand.xpm", x - 3, y - 3);
-	}
-	else if (c == 'C')
-	{
-		render_image(g, "textures/coins/coin.xpm", x + 10, y);
-		g->map->coins_count++;
-	}
-	else if (c == 'P')
-		render_player(g, x, y);
-	else if (c == 'E')
-	{
-		g->map->exit_x = x;
-		g->map->exit_y = y;
-	}
+	else 
+		render_others(g, c, x, y);
 }
 
 void	map_render(t_game *g)
