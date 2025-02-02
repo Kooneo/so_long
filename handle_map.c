@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/02 14:58:50 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/02 15:34:54 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ static int if_conddition_2(int x, int y)
 			|| ((x / 64 >= 23 && y / 64 == 7) && (x / 64 <= 27 && y / 64 == 7)) 
 			|| ((x / 64 >= 23 && y / 64 == 5) && (x / 64 <= 27 && y / 64 == 5)));
 }
+
 static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 {
 	if (c == '1')
@@ -201,9 +202,10 @@ static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 			render_image(g, "textures/env/wall_001.xpm", x, y);
 		else if (g->map->is_sp == 1 && to_skipe(x, y))
 			render_image(g, "textures/bg_64n.xpm", x, y);
-		else if ( g->map->is_sp == 1 && if_conddition_2(x, y))
+		else if (g->map->is_sp == 1 && if_conddition_2(x, y))
 		{
-			if ((x / 64 == 25 && y / 64 == 6)  || ((x / 64 == 27 || x / 64 == 23) && y / 64 == 7))
+			if ((x / 64 == 25 && y / 64 == 6)
+				|| ((x / 64 == 27 || x / 64 == 23) && y / 64 == 7))
 			{
 				if ((x / 64 == 23 && y / 64 == 7))
 				{
@@ -220,7 +222,7 @@ static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
 		else
 			render_wall(g, i, j, x, y);
 	}
-	else 
+	else
 		render_others(g, c, x, y);
 }
 
@@ -230,7 +232,7 @@ void	map_render(t_game *g)
 	int		j;
 	int		x;
 	int		y;
-	
+
 	i = -1;
 	y = 0;
 	render_ground(g, "textures/bg_64n.xpm");
