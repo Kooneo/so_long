@@ -20,7 +20,6 @@ CFILES = so_long.c \
 		special_design.c \
 		map_design.c \
 		counter.c \
-		movement_2.c \
 		utils.c 
 
 OFILES = $(CFILES:.c=.o)
