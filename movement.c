@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/02 13:32:06 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/02 13:32:40 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,16 @@
 // 	mlx_put_image_to_window(game->window->mlx, game->window->win,
 // 		game->base_img->img_ptr, 0, 0);
 // }
+
+static void	handle_idle_animation(t_game *g)
+{
+	render_image(g, "textures/bg_64n.xpm", g->player->x_pos,
+		g->player->y_pos);
+	render_image(g, "textures/player/p_idle/down/idle_down_00.xpm",
+		g->player->x_pos, g->player->y_pos);
+	mlx_put_image_to_window(g->window->mlx, g->window->win,
+		g->base_img->img_ptr, 0, 0);
+}
 
 static int	handle_movement_keys(int *new_xy, t_game *g, char **dir)
 {
@@ -213,12 +223,3 @@ int	handle_player_movement(t_game *game)
 	return (0);
 }
 
-static void	handle_idle_animation(t_game *g)
-{
-	render_image(g, "textures/bg_64n.xpm", g->player->x_pos,
-		g->player->y_pos);
-	render_image(g, "textures/player/p_idle/down/idle_down_00.xpm",
-		g->player->x_pos, g->player->y_pos);
-	mlx_put_image_to_window(g->window->mlx, g->window->win,
-		g->base_img->img_ptr, 0, 0);
-}
