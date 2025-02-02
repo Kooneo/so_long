@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/31 20:50:59 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/02 13:22:09 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,5 +149,9 @@ void			render_map_design(t_game *game);
 void			render_el_at(t_game *game, int el, int x, int y);
 void			render_section_16_6(t_game *g, int x, int y);
 void			render_section_18_6(t_game *g, int x, int y);
+
+// counter.c
+void			render_digit(t_game *game, int digit, int x, int y);
+void			render_movement_count(t_game *game);
 
 #endif
