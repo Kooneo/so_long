@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/02 13:22:47 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/02 13:45:51 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,5 +153,10 @@ void			render_section_18_6(t_game *g, int x, int y);
 // counter.c
 void			render_digit(t_game *game, int digit, int x, int y);
 void			render_movement_count(t_game *game);
+
+
+// game_utils_2.c
+void			handle_special_cases(t_game *g, int new_x, int new_y, char *dir);
+void			handle_collectibles(t_game *g, int new_x, int new_y);
 
 #endif

@@ -14,11 +14,13 @@ CFILES = so_long.c \
 		keys_manage.c \
 		animation.c \
 		game_utils.c \
+		game_utils_2.c \
 		game_init.c \
 		map_utils_2.c \
 		special_design.c \
 		map_design.c \
 		counter.c \
+		movement_2.c \
 		utils.c 
 
 OFILES = $(CFILES:.c=.o)
