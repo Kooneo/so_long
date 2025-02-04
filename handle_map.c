@@ -6,13 +6,11 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/04 17:32:33 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/04 17:33:49 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./so_long.h"
-
-
 
 void	render_player(t_game *g, int x, int y)
 {
@@ -33,8 +31,6 @@ static int	to_skipe(int x, int y)
 		|| (x / 64 == 4 && y / 64 == 6)
 		|| ((x / 64 >= 3 && x / 64 <= 4) && y / 64 == 6));
 }
-
-
 
 static int	if_conddition_2(int x, int y)
 {

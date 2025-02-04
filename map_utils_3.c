@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:53 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/04 17:27:51 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/04 17:39:51 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,12 @@ void	render_el_at(t_game *game, int el, int x, int y)
 
 void	render_wall(t_game *game, int i, int j, int x, int y)
 {
-	if (j > 0 && ((game->map->ptr[i][j - 1] == '0' || game->map->ptr[i][j
-				- 1] == 'P' || game->map->ptr[i][j - 1] == 'C'
-				|| game->map->ptr[i][j - 1] == 'E' || game->map->ptr[i][j
-				- 1] == 'X' || game->map->ptr[i][j - 1] == 'G'))
+	if (j > 0 && ((game->map->ptr[i][j - 1] == '0'
+                || game->map->ptr[i][j - 1] == 'P'
+                || game->map->ptr[i][j - 1] == 'C'
+				|| game->map->ptr[i][j - 1] == 'E'
+                || game->map->ptr[i][j - 1] == 'X'
+                || game->map->ptr[i][j - 1] == 'G'))
 		&& game->map->ptr[i][j + 1] == '1')
 		render_image(game, "textures/xf_end.xpm", x, y);
 	else if (!game->map->ptr[i + 1])
