@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/04 17:28:10 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/04 17:32:33 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 
-static void	render_player(t_game *g, int x, int y)
+void	render_player(t_game *g, int x, int y)
 {
 	render_image(g, "textures/player/p_idle/down/idle_down_00.xpm", x, y);
 	g->player->x_pos = x;
