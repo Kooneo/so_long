@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/04 17:31:03 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/04 17:31:43 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,5 +159,7 @@ void			handle_special_cases(t_game *g, int new_x, int new_y, char *dir);
 void			handle_collectibles(t_game *g, int new_x, int new_y);
 
 
-void	render_others(t_game *g, int c, int x, int y);
+void			render_others(t_game *g, int c, int x, int y);
+void			render_wall(t_game *game, int i, int j, int x, int y);
+
 #endif
