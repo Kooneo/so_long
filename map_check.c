@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:30:12 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:54:26 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/06 19:26:31 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,20 @@
 // 10000000C00000T0000111C0000001
 // 111111111111111111111111111111
 
-void	fill(char **map, t_point size, t_point current, char to_fill)
+void	fill(char **map, t_point size, t_point current)
 {
 	if (current.x < 0 || current.y < 0 || current.y >= size.y
-		|| current.x >= size.x || map[current.y][current.x] != to_fill)
+		|| current.x >= size.x ||  || !strchr("0PCE", map[current.y][current.x]))
 		return ;
-	map[current.y][current.x] = 'V';
-	fill(map, size, (t_point){current.x + 1, current.y}, to_fill);
-	fill(map, size, (t_point){current.x - 1, current.y}, to_fill);
-	fill(map, size, (t_point){current.x, current.y + 1}, to_fill);
-	fill(map, size, (t_point){current.x, current.y - 1}, to_fill);
+	if (map[current.y][current.x] == 'C')
+			map[current.y][current.x] = 'V';
+		else if (map[current.y][current.x] != 'V')
+			map[current.y][current.x] = 'V';
+		
+	fill(map, size, (t_point){current.x + 1, current.y});
+	fill(map, size, (t_point){current.x - 1, current.y});
+	fill(map, size, (t_point){current.x, current.y + 1});
+	fill(map, size, (t_point){current.x, current.y - 1});
 }
 
 char	**make_new_map(t_map *map)
@@ -57,7 +61,7 @@ char	**make_new_map(t_map *map)
 
 void	flood_fill(char **map, t_point size, int x, int y)
 {
-	fill(map, size, (t_point){x, y}, 'C');
+	fill(map, size, (t_point){x, y});
 }
 
 int	map_check(t_map *map)
