@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:28:26 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/04 17:28:38 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/06 18:34:16 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@ size_t	map_row_c(char *filepath)
 		return (0);
 	read_line = get_next_line(fd);
 	if (!read_line)
-	{
 		show_err("Invalid Map.");
-		exit(-1);
-	}
 	row_c = 0;
 	while (read_line)
 	{

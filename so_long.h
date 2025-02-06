@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/06 18:22:27 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/06 18:33:12 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ typedef struct s_point
 	int			y;
 }				t_point;
 
-
 typedef struct t_paramholder
 {
 	int			i;
@@ -93,7 +92,6 @@ typedef struct t_paramholder
 	int			x;
 	int			y;
 }				t_paramholder;
-
 
 # define TILE_SIZE 64
 
