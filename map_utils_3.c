@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:53 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/06 18:48:07 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/06 19:16:49 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,34 +32,64 @@ void	render_el_at(t_game *game, int el, int x, int y)
 		render_image(game, "textures/env/plant/el_3.xpm", x + 20, y - 80);
 }
 
+int	is_walkable(char c)
+{
+	return (c == '0' || c == 'P'
+		|| c == 'C' || c == 'E'
+		|| c == 'X' || c == 'G');
+}
+
+static char	*get_wall_texture(t_game *game, t_paramholder p)
+{
+	const char	left = game->map->ptr[p.i][p.j - 1];
+	const char	right = game->map->ptr[p.i][p.j + 1];
+
+	if (p.j > 0 && is_walkable(left) && right == '1')
+		return ("textures/xf_end.xpm");
+	if (!game->map->ptr[p.i + 1] || p.i == 0)
+		return ("textures/wall_b.xpm");
+	if (right == '\0' || p.j == 0)
+		return ("textures/wall_m.xpm");
+	if (p.j > 0 && left == '1' && right == '1')
+		return ("textures/x_m_m.xpm");
+	if (p.j > 0 && left == '1' && is_walkable(right))
+		return ("textures/xe_end.xpm");
+	return ("textures/mid_wall.xpm");
+}
+
 void	render_wall(t_game *game, t_paramholder p)
 {
-	if (p.j > 0 && ((game->map->ptr[p.i][p.j - 1] == '0'
-										|| game->map->ptr[p.i][p.j - 1] == 'P'
-                || game->map->ptr[p.i][p.j - 1] == 'C'
-					|| game->map->ptr[p.i][p.j - 1] == 'E'
-                		|| game->map->ptr[p.i][p.j - 1] == 'X'
-                			|| game->map->ptr[p.i][p.j - 1] == 'G'))
-		&& game->map->ptr[p.i][p.j + 1] == '1')
-		render_image(game, "textures/xf_end.xpm", p.x, p.y);
-	else if (!game->map->ptr[p.i + 1])
-		render_image(game, "textures/wall_b.xpm", p.x, p.y);
-	else if (game->map->ptr[p.i][p.j + 1] == '\0' || p.j == 0)
-		render_image(game, "textures/wall_m.xpm", p.x, p.y);
-	else if (p.i == 0)
-		render_image(game, "textures/wall_b.xpm", p.x, p.y);
-	else if (p.j > 0 && game->map->ptr[p.i][p.j - 1] == '1' && game->map->ptr[p.i][p.j
-		+ 1] == '1')
-		render_image(game, "textures/x_m_m.xpm", p.x, p.y);
-	else if (p.j > 0 && game->map->ptr[p.i][p.j - 1] == '1' && (game->map->ptr[p.i][p.j
-			+ 1] == '0' || game->map->ptr[p.i][p.j + 1] == 'P'
-			|| game->map->ptr[p.i][p.j + 1] == 'C' || game->map->ptr[p.i][p.j
-			+ 1] == 'E' || game->map->ptr[p.i][p.j + 1] == 'G'
-			|| game->map->ptr[p.i][p.j + 1] == 'X'))
-		render_image(game, "textures/xe_end.xpm", p.x, p.y);
-	else
-		render_image(game, "textures/mid_wall.xpm", p.x, p.y);
+	render_image(game, get_wall_texture(game, p), p.x, p.y);
 }
+
+// void	render_wall(t_game *game, t_paramholder p)
+// {
+// 	if (p.j > 0 && ((game->map->ptr[p.i][p.j - 1] == '0'
+// 										|| game->map->ptr[p.i][p.j - 1] == 'P'
+//                 || game->map->ptr[p.i][p.j - 1] == 'C'
+// 					|| game->map->ptr[p.i][p.j - 1] == 'E'
+//                 		|| game->map->ptr[p.i][p.j - 1] == 'X'
+//                 			|| game->map->ptr[p.i][p.j - 1] == 'G'))
+// 		&& game->map->ptr[p.i][p.j + 1] == '1')
+// 		render_image(game, "textures/xf_end.xpm", p.x, p.y);
+// 	else if (!game->map->ptr[p.i + 1])
+// 		render_image(game, "textures/wall_b.xpm", p.x, p.y);
+// 	else if (game->map->ptr[p.i][p.j + 1] == '\0' || p.j == 0)
+// 		render_image(game, "textures/wall_m.xpm", p.x, p.y);
+// 	else if (p.i == 0)
+// 		render_image(game, "textures/wall_b.xpm", p.x, p.y);
+// 	else if (p.j > 0 && game->map->ptr[p.i][p.j - 1] == '1' && game->map->ptr[p.i][p.j
+// 		+ 1] == '1')
+// 		render_image(game, "textures/x_m_m.xpm", p.x, p.y);
+// 	else if (p.j > 0 && game->map->ptr[p.i][p.j - 1] == '1' && (game->map->ptr[p.i][p.j
+// 			+ 1] == '0' || game->map->ptr[p.i][p.j + 1] == 'P'
+// 			|| game->map->ptr[p.i][p.j + 1] == 'C' || game->map->ptr[p.i][p.j
+// 			+ 1] == 'E' || game->map->ptr[p.i][p.j + 1] == 'G'
+// 			|| game->map->ptr[p.i][p.j + 1] == 'X'))
+// 		render_image(game, "textures/xe_end.xpm", p.x, p.y);
+// 	else
+// 		render_image(game, "textures/mid_wall.xpm", p.x, p.y);
+// }
 
 void	free_map(char **map)
 {
@@ -136,33 +166,3 @@ void	render_others(t_game *g, int c, int x, int y)
 }
 
 
-
-// int	is_walkable(char c)
-// {
-// 	return (c == '0' || c == 'P'
-// 		|| c == 'C' || c == 'E'
-// 		|| c == 'X' || c == 'G');
-// }
-
-// static char	*get_wall_texture(t_game *game, t_paramholder p)
-// {
-// 	const char	left = game->map->ptr[p.i][p.j - 1];
-// 	const char	right = game->map->ptr[p.i][p.j + 1];
-
-// 	if (p.j > 0 && is_walkable(left) && right == '1')
-// 		return ("textures/xf_end.xpm");
-// 	if (!game->map->ptr[p.i + 1] || p.i == 0)
-// 		return ("textures/wall_b.xpm");
-// 	if (right == '\0' || p.j == 0)
-// 		return ("textures/wall_m.xpm");
-// 	if (p.j > 0 && left == '1' && right == '1')
-// 		return ("textures/x_m_m.xpm");
-// 	if (p.j > 0 && left == '1' && is_walkable(right))
-// 		return ("textures/xe_end.xpm");
-// 	return ("textures/mid_wall.xpm");
-// }
-
-// void	render_wall(t_game *game, t_paramholder p)
-// {
-// 	render_image(game, get_wall_texture(game, p), p.x, p.y);
-// }
