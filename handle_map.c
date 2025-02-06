@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/04 17:33:49 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/06 18:21:52 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,37 +39,38 @@ static int	if_conddition_2(int x, int y)
 		|| ((x / 64 >= 23 && y / 64 == 5) && (x / 64 <= 27 && y / 64 == 5)));
 }
 
-static void	process_tile(t_game *g, char c, int x, int y, int i, int j)
+static void	process_tile(t_game *g, char c, t_paramholder p)
 {
 	if (c == '1')
 	{
 		if (g->map->is_sp == 1
-			&& ((x / 64 == 12 && y / 64 == 5) || (x / 64 == 18 && y / 64 == 4)))
-			render_image(g, "textures/env/wall_001.xpm", x, y);
-		else if (g->map->is_sp == 1 && to_skipe(x, y))
-			render_image(g, "textures/bg_64n.xpm", x, y);
-		else if (g->map->is_sp == 1 && if_conddition_2(x, y))
+			&& ((p.x / 64 == 12 && p.y / 64 == 5)
+				|| (p.x / 64 == 18 && p.y / 64 == 4)))
+			render_image(g, "textures/env/wall_001.xpm", p.x, p.y);
+		else if (g->map->is_sp == 1 && to_skipe(p.x, p.y))
+			render_image(g, "textures/bg_64n.xpm", p.x, p.y);
+		else if (g->map->is_sp == 1 && if_conddition_2(p.x, p.y))
 		{
-			if ((x / 64 == 25 && y / 64 == 6)
-				|| ((x / 64 == 27 || x / 64 == 23) && y / 64 == 7))
+			if ((p.x / 64 == 25 && p.y / 64 == 6)
+				|| ((p.x / 64 == 27 || p.x / 64 == 23) && p.y / 64 == 7))
 			{
-				if ((x / 64 == 23 && y / 64 == 7))
+				if ((p.x / 64 == 23 && p.y / 64 == 7))
 				{
-					render_el_at(g, 2, x + 64 - 15, y - 15);
-					render_el_at(g, 1, x + 10, y - 20);
+					render_el_at(g, 2, p.x + 64 - 15, p.x - 15);
+					render_el_at(g, 1, p.x + 10, p.x - 20);
 				}
-				if ((x / 64 == 25 && y / 64 == 6))
-					render_el_at(g, 2, x, y - 15);
-				render_el_at(g, 10, x, y);
+				if ((p.x / 64 == 25 && p.y / 64 == 6))
+					render_el_at(g, 2, p.x, p.y - 15);
+				render_el_at(g, 10, p.x, p.y);
 			}
 			else
-				render_el_at(g, 9, x, y);
+				render_el_at(g, 9, p.x, p.y);
 		}
 		else
-			render_wall(g, i, j, x, y);
+			render_wall(g, p);
 	}
 	else
-		render_others(g, c, x, y);
+		render_others(g, c, p.x, p.y);
 }
 
 void	map_render(t_game *g)
@@ -91,7 +92,7 @@ void	map_render(t_game *g)
 		{
 			if (!ft_isalnum(g->map->ptr[i][j]))
 				return ;
-			process_tile(g, g->map->ptr[i][j], x, y, i, j);
+			process_tile(g, g->map->ptr[i][j], (t_paramholder){i, j, x, y});
 			x += TILE_SIZE;
 		}
 		y += TILE_SIZE;

@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/04 17:32:41 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/06 18:22:27 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,16 @@ typedef struct s_point
 	int			y;
 }				t_point;
 
+
+typedef struct t_paramholder
+{
+	int			i;
+	int			j;
+	int			x;
+	int			y;
+}				t_paramholder;
+
+
 # define TILE_SIZE 64
 
 // Map_utils.c
@@ -160,6 +170,8 @@ void			handle_collectibles(t_game *g, int new_x, int new_y);
 
 
 void			render_others(t_game *g, int c, int x, int y);
-void			render_wall(t_game *game, int i, int j, int x, int y);
+void			render_wall(t_game *game, t_paramholder p);
 void			render_player(t_game *g, int x, int y);
+
+
 #endif
