@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:30:12 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/06 19:26:31 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/06 19:31:06 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,16 @@
 void	fill(char **map, t_point size, t_point current)
 {
 	if (current.x < 0 || current.y < 0 || current.y >= size.y
-		|| current.x >= size.x ||  || !strchr("0PCE", map[current.y][current.x]))
+		|| current.x >= size.x || !ft_strchr("0PCE", map[current.y][current.x]))
 		return ;
-	if (map[current.y][current.x] == 'C')
-			map[current.y][current.x] = 'V';
-		else if (map[current.y][current.x] != 'V')
-			map[current.y][current.x] = 'V';
 		
+	map[current.y][current.x] = 'V';
+
 	fill(map, size, (t_point){current.x + 1, current.y});
 	fill(map, size, (t_point){current.x - 1, current.y});
 	fill(map, size, (t_point){current.x, current.y + 1});
 	fill(map, size, (t_point){current.x, current.y - 1});
 }
-
 char	**make_new_map(t_map *map)
 {
 	char	**new_map;
@@ -53,11 +50,19 @@ char	**make_new_map(t_map *map)
 	while (map->ptr[i] != NULL)
 	{
 		new_map[i] = ft_strdup(map->ptr[i]);
+		if (!new_map[i])
+		{
+			while (i > 0)
+				free(new_map[--i]);
+			free(new_map);
+			return (NULL);
+		}
 		i++;
 	}
 	new_map[i] = NULL;
 	return (new_map);
 }
+
 
 void	flood_fill(char **map, t_point size, int x, int y)
 {
@@ -71,20 +76,26 @@ int	map_check(t_map *map)
 	int		i;
 
 	new_map = make_new_map(map);
+	if (!new_map)
+		show_err("Memory allocation failed.");
 	i = 0;
 	while (new_map[i] != NULL)
-	{
-		ft_printf("%s", new_map[i]);
-		i++;
-	}
+		ft_printf("%s\n", new_map[i++]);
 	size = (t_point){map->x, map->y};
 	flood_fill(new_map, size, map->player_x, map->player_y);
 	i = 0;
 	while (new_map[i] != NULL)
 	{
 		if (ft_strchr(new_map[i], 'C'))
+		{
 			show_err("Invalid Map.");
+			return (1);
+		}
 		i++;
 	}
+	i = 0;
+	while (new_map[i] != NULL)
+		free(new_map[i++]);
+	free(new_map);
 	return (0);
 }
