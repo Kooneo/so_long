@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:30:12 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/07 15:36:57 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/07 15:39:55 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	**make_new_map(t_map *map)
 void	fill(char **map, t_point size, t_point current)
 {
 	if (current.x < 0 || current.y < 0 || current.y >= size.y
-        || current.x >= size.x || map[current.y][current.x] == '1' || map[current.y][current.x] == 'V')
+        || current.x >= size.x || map[current.y][current.x] == '1' || map[current.y][current.x] == 'V' || map[current.y][current.x] == 'T')
         return ;
 	map[current.y][current.x] = 'V';
 	fill(map, size, (t_point){current.x + 1, current.y});
