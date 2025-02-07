@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:30:12 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/06 19:32:16 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/07 15:36:57 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,8 @@
 // 10000000C00000T0000111C0000001
 // 111111111111111111111111111111
 
-void	fill(char **map, t_point size, t_point current)
-{
-	if (current.x < 0 || current.y < 0 || current.y >= size.y
-		|| current.x >= size.x || !ft_strchr("0PCE", map[current.y][current.x]))
-		return ;
-		
-	map[current.y][current.x] = 'V';
 
-	fill(map, size, (t_point){current.x + 1, current.y});
-	fill(map, size, (t_point){current.x - 1, current.y});
-	fill(map, size, (t_point){current.x, current.y + 1});
-	fill(map, size, (t_point){current.x, current.y - 1});
-}
+
 char	**make_new_map(t_map *map)
 {
 	char	**new_map;
@@ -63,11 +52,23 @@ char	**make_new_map(t_map *map)
 	return (new_map);
 }
 
-
-void	flood_fill(char **map, t_point size, int x, int y)
+void	fill(char **map, t_point size, t_point current)
 {
-	fill(map, size, (t_point){x, y});
+	if (current.x < 0 || current.y < 0 || current.y >= size.y
+        || current.x >= size.x || map[current.y][current.x] == '1' || map[current.y][current.x] == 'V')
+        return ;
+	map[current.y][current.x] = 'V';
+	fill(map, size, (t_point){current.x + 1, current.y});
+	fill(map, size, (t_point){current.x - 1, current.y});
+	fill(map, size, (t_point){current.x, current.y + 1});
+	fill(map, size, (t_point){current.x, current.y - 1});
 }
+
+void flood_fill(char **map, t_point size, int x, int y)
+{
+    fill(map, size, (t_point){x, y});
+}
+
 
 int	map_check(t_map *map)
 {
@@ -78,21 +79,34 @@ int	map_check(t_map *map)
 	new_map = make_new_map(map);
 	if (!new_map)
 		show_err("Memory allocation failed.");
-	i = 0;
-	while (new_map[i] != NULL)
-		ft_printf("%s\n", new_map[i++]);
 	size = (t_point){map->x, map->y};
-	flood_fill(new_map, size, map->player_x, map->player_y);
+	// ft_printf("player X:%d\n", map->player_x);
+	// ft_printf("player Y:%d\n", map->player_y);
+	// ft_printf("t_point Y:%d\n", size.y);
+	// ft_printf("t_point x:%d\n", size.x);
+	flood_fill(new_map, size, map->player_x / 64, map->player_y / 64);
+	// i = 0;
+	// while (new_map[i] != NULL)
+	// {
+	// 	ft_printf("%s\n", new_map[i]);
+	// 	i++;
+	// }
 	i = 0;
 	while (new_map[i] != NULL)
 	{
-		if (ft_strchr(new_map[i], 'C'))
+		if (ft_strchr(new_map[i], 'C') || ft_strchr(new_map[i], 'E'))
 		{
+			// ft_printf("not valid map %d", i);
 			show_err("Invalid Map.");
+			// Cleanup and return error
+			while (new_map[i] != NULL)
+				free(new_map[i++]);
+			free(new_map);
 			return (0);
 		}
 		i++;
 	}
+	// Cleanup
 	i = 0;
 	while (new_map[i] != NULL)
 		free(new_map[i++]);

@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 14:53:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 15:09:05 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/07 14:16:39 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,33 @@ int	check_is_surrounded(char *row)
 	if (row[0] == wall && row[r_count] == wall)
 		return (1);
 	return (0);
+}
+
+size_t	map_row_c(char *filepath)
+{
+	size_t	row_c;
+	char	*read_line;
+	char	*trimmed_line;
+	int		fd;
+
+	fd = open(filepath, O_RDWR);
+	if (fd < 0)
+		return (0);
+	read_line = get_next_line(fd);
+	if (!read_line)
+		show_err("Invalid Map.");
+	row_c = 0;
+	while (read_line)
+	{
+		trimmed_line = ft_strtrim(read_line, "\n");
+		if (trimmed_line)
+		{
+			row_c++;
+			free(trimmed_line);
+		}
+		free(read_line);
+		read_line = get_next_line(fd);
+	}
+	close(fd);
+	return (row_c);
 }

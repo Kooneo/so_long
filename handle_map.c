@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/06 18:21:52 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/07 15:21:40 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	render_player(t_game *g, int x, int y)
 	g->player->y_pos = y;
 	g->map->player_x = x;
 	g->map->player_y = y;
+	map_check(g->map);
 }
 
 static int	to_skipe(int x, int y)
