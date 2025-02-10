@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:01:03 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 14:47:21 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/10 14:01:34 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 // TODO:
 // esc: exit game
 // x button: exits game
-// add flood fill algo
 // map error if the map file is not .ber
 
 int	main(int argc, char **argv)

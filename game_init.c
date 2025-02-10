@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:41:20 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/07 15:20:33 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/10 14:02:14 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void	map_init(t_map *map, char *filepath)
 	map->y = 0;
 	map->filepath = filepath;
 	map->ptr = load_map(map);
-	// ft_printf("%s", map->ptr[0]);
-
 	if (!check_is_rectangular(map) || !check_psec_dup(map))
 	{
 		show_err("Invalid Map.");

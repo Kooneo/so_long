@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/07 15:21:28 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/10 13:51:24 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,5 +170,6 @@ void			handle_collectibles(t_game *g, int new_x, int new_y);
 void			render_others(t_game *g, int c, int x, int y);
 void			render_wall(t_game *game, t_paramholder p);
 void			render_player(t_game *g, int x, int y);
+
 
 #endif

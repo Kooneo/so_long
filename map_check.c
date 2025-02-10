@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:30:12 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/10 13:43:36 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/10 13:52:45 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,4 @@ int	map_check(t_map *map)
 	}
 	free_map(new_map);
 	return (1);
-}
-
-void	free_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i] != NULL)
-		free(map[i++]);
-	free(new_map);
 }
