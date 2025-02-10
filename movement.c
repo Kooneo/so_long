@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/02 13:46:25 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/10 14:16:47 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	handle_move_execution(t_game *g, int new_xy[2],
 	if (is_move_valid(g, new_xy[0], new_xy[1]))
 	{
 		g->player->moves_count++;
-		animate_player(g, old_xy[0], old_xy[1], new_xy[0], new_xy[1], d);
+		animate_player(g,(t_paramholder){old_xy[0], old_xy[1], new_xy[0], new_xy[1]}, d);
 		g->player->x_pos = new_xy[0];
 		g->player->y_pos = new_xy[1];
 		render_movement_count(g);

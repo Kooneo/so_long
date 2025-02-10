@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:41:20 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/10 14:02:14 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/10 14:19:26 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	init_game(t_game *game, t_map *map, t_win *window, t_player *player)
 	init_window(window, map->y, map->x);
 	player->moves_count = 0;
 	player->items_collected = 0;
-	player->sleep_time = 45000;
+	player->sleep_time = 40000;
 	game->map = map;
 	game->window = window;
 	game->player = player;

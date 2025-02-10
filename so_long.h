@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/10 13:51:24 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/10 14:18:45 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,7 @@ int				key_release(int keycode, t_game *game);
 void			int_keystate(t_game *game);
 
 //  animation.c
-void			animate_player(t_game *game, int old_x, int old_y, int new_x,
-					int new_y, char *direction);
+void			animate_player(t_game *game, t_paramholder params, char *direction);
 
 // handle_map.c
 void			free_map(char **map);
@@ -160,7 +159,6 @@ void			render_section_18_6(t_game *g, int x, int y);
 // counter.c
 void			render_digit(t_game *game, int digit, int x, int y);
 void			render_movement_count(t_game *game);
-
 
 // game_utils_2.c
 void			handle_special_cases(t_game *g, int new_x, int new_y, char *dir);
