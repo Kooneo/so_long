@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:41:20 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 19:00:17 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 19:00:56 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_window(t_win *window, int map_y, int map_x)
 		return ;
 }
 
-void	count_enemies(t_map *map)
+void count_enemies(t_map *map)
 {
 	int		i;
 	int		j;
@@ -81,8 +81,7 @@ void	map_init(t_map *map, char *filepath)
 	map->coins_count = 0;
 	map->is_sp = 0;
 	map->enemy_count = 0;
-	map->enemy_count = count_enemies(map);
-	
+	count_enemies(map);
 	map->ptr = load_map(map);
 	if (!check_is_rectangular(map) || !check_psec_dup(map))
 	{
