@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:53 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 18:34:34 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 18:36:09 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	render_others(t_game *g, int c, int x, int y)
 		{
 			g->map->enemy_count++;
             render_image(g, "textures/env/enemy.xpm", x - 3, y - 3);
-            g->enemies[i++] = (t_enemy){x, y};
+            g->enemies[i] = (t_enemy){x, y};
 		}
 		else if (c == 'X')
 			render_image(g, "textures/env/blue_hand.xpm", x - 3, y - 3);
