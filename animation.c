@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:17:49 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:19:27 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:20:24 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,15 +102,15 @@ void	animate_player(t_game *game, t_paramholder p, char *direction)
 	int		y;
 	int		x;
 
-	frames = get_frames(direction, &frame_count);
-	if (!frames)
-		return ;
+	// frames = ;
+	// if (!frames)
+	// 	return ;
 	i = 0;
 	while (i < frame_count)
 	{
 		x = p.i + (p.x - p.i) * (i + 1) / frame_count;
 		y = p.j + (p.y - p.j) * (i + 1) / frame_count;
-		file_path = frames[i];
+		file_path = get_frames(direction, &frame_count)[i];
 		render_image(game, "textures/bg_64n.xpm", x, y);
 		render_image(game, "textures/bg_64n.xpm", p.i, p.j);
 		render_image(game, file_path, x, y);
