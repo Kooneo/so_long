@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:17:49 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:20:24 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:22:02 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,37 +80,33 @@ static char	**get_frames_right(void)
 	return (frames_right);
 }
 
-static char	**get_frames(char *direction, int *frame_count)
+static char	**get_frames(char *direction)
 {
 	if (ft_strncmp(direction, "up", 2) == 0)
-		return (*frame_count = 8, get_frames_up());
+		return (get_frames_up());
 	if (ft_strncmp(direction, "down", 4) == 0)
-		return (*frame_count = 8, get_frames_down());
+		return (get_frames_down());
 	if (ft_strncmp(direction, "left", 4) == 0)
-		return (*frame_count = 8, get_frames_left());
+		return (get_frames_left());
 	if (ft_strncmp(direction, "right", 5) == 0)
-		return (*frame_count = 8, get_frames_right());
+		return (get_frames_right());
 	return (NULL);
 }
 
 void	animate_player(t_game *game, t_paramholder p, char *direction)
 {
-	char	**frames;
-	int		frame_count;
+	static int	frame_count = 8;
 	char	*file_path;
 	int		i;
 	int		y;
 	int		x;
 
-	// frames = ;
-	// if (!frames)
-	// 	return ;
 	i = 0;
 	while (i < frame_count)
 	{
 		x = p.i + (p.x - p.i) * (i + 1) / frame_count;
 		y = p.j + (p.y - p.j) * (i + 1) / frame_count;
-		file_path = get_frames(direction, &frame_count)[i];
+		file_path = get_frames(direction)[i];
 		render_image(game, "textures/bg_64n.xpm", x, y);
 		render_image(game, "textures/bg_64n.xpm", p.i, p.j);
 		render_image(game, file_path, x, y);
