@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:53 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 18:36:09 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 18:43:51 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,41 @@ char	**load_map(t_map *map_data)
 	return (map);
 }
 
+int count_enemies(t_game *g)
+{
+	int y = 0;
+	int x = 0;
+	int count = 0;
+	while (y < g->map->y)
+	{
+		while (x < g->map->x)
+		{
+			if (g->map->ptr[y][x] == 'T')
+				count++;
+			x++;
+		}
+		y++;
+	}
+	return (count);
+}
+
 void	render_others(t_game *g, int c, int x, int y)
 {
-	int i = g->map->enemy_count;
+	int i = count_enemies(g);
+	printf("enemy count: %d\n", i);
+	g->enemies = malloc(sizeof(t_enemy) * i);
+	if (g->enemies == NULL)
+	{
+		printf("Failed to allocate memory for enemies.\n");
+		exit(EXIT_FAILURE);
+	}
 	if (c == 'T' || c == 'X' || c == 'G')
 	{
 		if (c == 'T')
 		{
-			g->map->enemy_count++;
+			// g->map->enemy_count++;
             render_image(g, "textures/env/enemy.xpm", x - 3, y - 3);
-            g->enemies[i] = (t_enemy){x, y};
+            // g->enemies[i] = (t_enemy){x, y};
 		}
 		else if (c == 'X')
 			render_image(g, "textures/env/blue_hand.xpm", x - 3, y - 3);
