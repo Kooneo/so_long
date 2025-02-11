@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:30:12 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 14:42:14 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:47:04 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int	map_check(t_map *map)
 				free(new_map[i++]);
 			free(new_map);
 			show_err("Invalid Map.");
+			exit_game();
 			return (0);
 		}
 		i++;
