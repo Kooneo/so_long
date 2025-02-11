@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 18:11:30 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 18:23:56 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ typedef struct s_player
 	int			items_collected;
 }				t_player;
 
-typedef struct s_enemy
-{
-	int			x_pos;
-	int			y_pos;
-	int			sleep_time;
-}				t_enemy;
+// typedef struct s_enemy
+// {
+// 	int			x_pos;
+// 	int			y_pos;
+// 	int			sleep_time;
+// }				t_enemy;
 
 typedef struct s_img
 {
@@ -84,6 +84,8 @@ typedef struct s_game
 	t_player	*player;
 	t_img		*base_img;
 	int			key_states[1000000];
+	int     	*enemy_x;
+    int     	*enemy_y;
 }				t_game;
 
 typedef struct s_point
@@ -183,4 +185,5 @@ char			**get_frames_left(void);
 char			**get_frames_right(void);
 char			**get_frames(char *direction);
 
+void			move_enemy(t_game *game, int index);
 #endif

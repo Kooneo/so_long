@@ -23,7 +23,8 @@ CFILES = so_long.c \
 		special_design.c \
 		map_design.c \
 		counter.c \
-		utils.c 
+		utils.c \
+		enemy.c
 
 OFILES = $(CFILES:.c=.o)
 
