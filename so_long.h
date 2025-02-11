@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:25:35 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:26:33 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,5 +174,5 @@ char			**get_frames_up(void);
 char			**get_frames_down(void);
 char			**get_frames_left(void);
 char			**get_frames_right(void);
-
+static char	**get_frames(char *direction);
 #endif
