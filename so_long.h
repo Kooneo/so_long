@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 17:52:27 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 18:07:05 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,19 @@ typedef struct s_map
 typedef struct s_player
 {
 	int			x_pos;
-	size_t		y_pos;
+	int 		y_pos;
 	int			moves_count;
 	int			hp;
 	int			sleep_time;
 	int			items_collected;
 }				t_player;
+
+typedef struct s_enemy
+{
+	int			x_pos;
+	int			y_pos;
+	int			sleep_time;
+}				t_enemy;
 
 typedef struct s_img
 {
