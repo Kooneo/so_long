@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:53 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/10 13:48:46 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 14:47:30 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,35 +32,58 @@ void	render_el_at(t_game *game, int el, int x, int y)
 		render_image(game, "textures/env/plant/el_3.xpm", x + 20, y - 80);
 }
 
-void	render_wall(t_game *game, t_paramholder p)
-{
-	if (p.j > 0 && ((game->map->ptr[p.i][p.j - 1] == '0'
-			|| game->map->ptr[p.i][p.j - 1] == 'P'
-		|| game->map->ptr[p.i][p.j - 1] == 'C'
-		|| game->map->ptr[p.i][p.j - 1] == 'E'
-		|| game->map->ptr[p.i][p.j - 1] == 'X'
-		|| game->map->ptr[p.i][p.j - 1] == 'G'))
-		&& game->map->ptr[p.i][p.j + 1] == '1')
-		render_image(game, "textures/xf_end.xpm", p.x, p.y);
-	else if (!game->map->ptr[p.i + 1])
-		render_image(game, "textures/wall_b.xpm", p.x, p.y);
-	else if (game->map->ptr[p.i][p.j + 1] == '\0' || p.j == 0)
-		render_image(game, "textures/wall_m.xpm", p.x, p.y);
-	else if (p.i == 0)
-		render_image(game, "textures/wall_b.xpm", p.x, p.y);
-	else if (p.j > 0 && game->map->ptr[p.i][p.j - 1] == '1'
-		&& game->map->ptr[p.i][p.j + 1] == '1')
-		render_image(game, "textures/x_m_m.xpm", p.x, p.y);
-	else if (p.j > 0 && game->map->ptr[p.i][p.j - 1] == '1'
-		&& (game->map->ptr[p.i][p.j + 1] == '0'
-		|| game->map->ptr[p.i][p.j + 1] == 'P'
-			|| game->map->ptr[p.i][p.j + 1] == 'C' || game->map->ptr[p.i][p.j
-			+ 1] == 'E' || game->map->ptr[p.i][p.j + 1] == 'G'
-			|| game->map->ptr[p.i][p.j + 1] == 'X'))
-		render_image(game, "textures/xe_end.xpm", p.x, p.y);
-	else
-		render_image(game, "textures/mid_wall.xpm", p.x, p.y);
+void render_wall(t_game *game, t_paramholder p) {
+    bool left = (p.j > 0) && (game->map->ptr[p.i][p.j - 1] != '1' && game->map->ptr[p.i][p.j - 1] != '\0');
+    bool right = (game->map->ptr[p.i][p.j + 1] && (game->map->ptr[p.i][p.j + 1] != '1' && game->map->ptr[p.i][p.j + 1] != '\0'));
+    bool top = (p.i > 0) && (game->map->ptr[p.i - 1][p.j] != '1');
+    bool bottom = (game->map->ptr[p.i + 1] && game->map->ptr[p.i + 1][p.j] != '1');
+
+    if (left && right && !top && !bottom) {
+        render_image(game, "textures/x_m_m.xpm", p.x, p.y);
+    } else if (left && !right) {
+        render_image(game, "textures/xe_end.xpm", p.x, p.y);
+    } else if (!left && right) {
+        render_image(game, "textures/xf_end.xpm", p.x, p.y);
+    } else if (top || bottom) {
+        render_image(game, "textures/wall_m.xpm", p.x, p.y);
+    } else if (p.i == 0) {
+        render_image(game, "textures/wall_t.xpm", p.x, p.y); // Separate top texture
+    } else if (!game->map->ptr[p.i + 1]) {
+        render_image(game, "textures/wall_b.xpm", p.x, p.y);
+    } else {
+        render_image(game, "textures/mid_wall.xpm", p.x, p.y);
+    }
 }
+
+// void	render_wall(t_game *game, t_paramholder p)
+// {
+// 	if (p.j > 0 && ((game->map->ptr[p.i][p.j - 1] == '0'
+// 			|| game->map->ptr[p.i][p.j - 1] == 'P'
+// 		|| game->map->ptr[p.i][p.j - 1] == 'C'
+// 		|| game->map->ptr[p.i][p.j - 1] == 'E'
+// 		|| game->map->ptr[p.i][p.j - 1] == 'X'
+// 		|| game->map->ptr[p.i][p.j - 1] == 'G'))
+// 		&& game->map->ptr[p.i][p.j + 1] == '1')
+// 		render_image(game, "textures/xf_end.xpm", p.x, p.y);
+// 	else if (!game->map->ptr[p.i + 1])
+// 		render_image(game, "textures/wall_b.xpm", p.x, p.y);
+// 	else if (game->map->ptr[p.i][p.j + 1] == '\0' || p.j == 0)
+// 		render_image(game, "textures/wall_m.xpm", p.x, p.y);
+// 	else if (p.i == 0)
+// 		render_image(game, "textures/wall_b.xpm", p.x, p.y);
+// 	else if (p.j > 0 && game->map->ptr[p.i][p.j - 1] == '1'
+// 		&& game->map->ptr[p.i][p.j + 1] == '1')
+// 		render_image(game, "textures/x_m_m.xpm", p.x, p.y);
+// 	else if (p.j > 0 && game->map->ptr[p.i][p.j - 1] == '1'
+// 		&& (game->map->ptr[p.i][p.j + 1] == '0'
+// 		|| game->map->ptr[p.i][p.j + 1] == 'P'
+// 			|| game->map->ptr[p.i][p.j + 1] == 'C' || game->map->ptr[p.i][p.j
+// 			+ 1] == 'E' || game->map->ptr[p.i][p.j + 1] == 'G'
+// 			|| game->map->ptr[p.i][p.j + 1] == 'X'))
+// 		render_image(game, "textures/xe_end.xpm", p.x, p.y);
+// 	else
+// 		render_image(game, "textures/mid_wall.xpm", p.x, p.y);
+// }
 
 void	free_map(char **map)
 {
