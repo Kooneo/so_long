@@ -6,12 +6,11 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:17:49 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:14:12 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:17:11 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 static char **get_frames_up()
 {
@@ -29,7 +28,8 @@ static char **get_frames_up()
 
 	return frames_up;
 }
-static char	**get_frames(char *direction, int *frame_count)
+
+static char **get_frames_down()
 {
 	static char	*frames_down[] = {
 		"textures/player/p_down/p_down_00.xpm",
@@ -42,6 +42,12 @@ static char	**get_frames(char *direction, int *frame_count)
 		"textures/player/p_down/p_down_07.xpm",
 		NULL
 	};
+
+	return frames_down;
+}
+
+static char **get_frames_left()
+{
 	static char	*frames_left[] = {
 		"textures/player/p_left/xpm/p_left_00.xpm",
 		"textures/player/p_left/xpm/p_left_01.xpm",
@@ -53,6 +59,12 @@ static char	**get_frames(char *direction, int *frame_count)
 		"textures/player/p_left/xpm/p_left_07.xpm",
 		NULL
 	};
+
+	return frames_left;
+}
+
+static char **get_frames_right()
+{
 	static char	*frames_right[] = {
 		"textures/player/p_right/p_right_00.xpm",
 		"textures/player/p_right/p_right_01.xpm",
@@ -65,14 +77,19 @@ static char	**get_frames(char *direction, int *frame_count)
 		NULL
 	};
 
+	return frames_right;
+}
+
+static char	**get_frames(char *direction, int *frame_count)
+{
 	if (ft_strncmp(direction, "up", 2) == 0)
 		return (*frame_count = 8, get_frames_up());
 	if (ft_strncmp(direction, "down", 4) == 0)
-		return (*frame_count = 8, frames_down);
+		return (*frame_count = 8, get_frames_down());
 	if (ft_strncmp(direction, "left", 4) == 0)
-		return (*frame_count = 8, frames_left);
+		return (*frame_count = 8, get_frames_left());
 	if (ft_strncmp(direction, "right", 5) == 0)
-		return (*frame_count = 8, frames_right);
+		return (*frame_count = 8, get_frames_right());
 	return (NULL);
 }
 
