@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 15:33:41 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 15:56:00 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,16 @@ typedef struct t_paramholder
 	int			x;
 	int			y;
 }				t_paramholder;
+
+typedef enum e_direction
+{
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT,
+	INVALID
+} t_direction;
+
 
 # define TILE_SIZE 64
 
