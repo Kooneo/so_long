@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:53 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 15:01:40 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 15:13:55 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,9 @@ char	**load_map(t_map *map_data)
 	row_c = 0;
 	while (read_line)
 	{
-		map[row_c] = ft_strtrim(read_line, "\n");
+		map[row_c++] = ft_strtrim(read_line, "\n");
 		free(read_line);
 		read_line = get_next_line(fd);
-		row_c++;
 	}
 	map_data->x = ft_strlen(trimed_line);
 	map_data->y = row_c;
