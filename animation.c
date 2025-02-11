@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:17:49 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:22:02 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:22:41 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,10 @@ static char	**get_frames(char *direction)
 void	animate_player(t_game *game, t_paramholder p, char *direction)
 {
 	static int	frame_count = 8;
-	char	*file_path;
-	int		i;
-	int		y;
-	int		x;
+	char		*file_path;
+	int			i;
+	int			y;
+	int			x;
 
 	i = 0;
 	while (i < frame_count)
