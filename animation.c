@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:17:49 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 15:37:28 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 15:46:39 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,24 +58,33 @@ static char	**get_frames(char *direction, int *frame_count)
 		"textures/player/p_right/p_right_07.xpm",
 		NULL
 	};
-	if (ft_strncmp(direction, "up", ft_strlen("up")) == 0)
-		*frame_count = sizeof(frames_up) / sizeof(frames_up[0]) - 1;
-	else if (ft_strncmp(direction, "down", ft_strlen("down")) == 0)
-		*frame_count = sizeof(frames_down) / sizeof(frames_down[0]) - 1;
-	else if (ft_strncmp(direction, "left", ft_strlen("left")) == 0)
-		*frame_count = sizeof(frames_left) / sizeof(frames_left[0]) - 1;
-	else if (ft_strncmp(direction, "right", ft_strlen("right")) == 0)
-		*frame_count = sizeof(frames_right) / sizeof(frames_right[0]) - 1;
-	else
-		return (NULL);
-	if (ft_strncmp(direction, "up", ft_strlen("up")) == 0)
-		return (frames_up);
-	else if (ft_strncmp(direction, "down", ft_strlen("down")) == 0)
-		return (frames_down);
-	else if (ft_strncmp(direction, "left", ft_strlen("left")) == 0)
-		return (frames_left);
-	else if (ft_strncmp(direction, "right", ft_strlen("right")) == 0)
-		return (frames_right);
+	// if (ft_strncmp(direction, "up", ft_strlen("up")) == 0)
+	// 	*frame_count = sizeof(frames_up) / sizeof(frames_up[0]) - 1;
+	// else if (ft_strncmp(direction, "down", ft_strlen("down")) == 0)
+	// 	*frame_count = sizeof(frames_down) / sizeof(frames_down[0]) - 1;
+	// else if (ft_strncmp(direction, "left", ft_strlen("left")) == 0)
+	// 	*frame_count = sizeof(frames_left) / sizeof(frames_left[0]) - 1;
+	// else if (ft_strncmp(direction, "right", ft_strlen("right")) == 0)
+	// 	*frame_count = sizeof(frames_right) / sizeof(frames_right[0]) - 1;
+	// else
+	// 	return (NULL);
+	// if (ft_strncmp(direction, "up", ft_strlen("up")) == 0)
+	// 	return (frames_up);
+	// else if (ft_strncmp(direction, "down", ft_strlen("down")) == 0)
+	// 	return (frames_down);
+	// else if (ft_strncmp(direction, "left", ft_strlen("left")) == 0)
+	// 	return (frames_left);
+	// else if (ft_strncmp(direction, "right", ft_strlen("right")) == 0)
+	// 	return (frames_right);
+	// return (NULL);
+	if (ft_strncmp(direction, "up", 2) == 0)
+		return (*frame_count = 8, frames_up);
+	if (ft_strncmp(direction, "down", 4) == 0)
+		return (*frame_count = 8, frames_down);
+	if (ft_strncmp(direction, "left", 4) == 0)
+		return (*frame_count = 8, frames_left);
+	if (ft_strncmp(direction, "right", 5) == 0)
+		return (*frame_count = 8, frames_right);
 	return (NULL);
 }
 
