@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:41:20 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 17:54:12 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 18:01:50 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,11 @@ void	setup_hooks(t_win *window, t_game *game)
 	mlx_hook(window->win, 2, 1L << 0, key_press, game);
 	mlx_hook(window->win, 3, 1L << 1, key_release, game);
 	mlx_loop_hook(window->mlx, handle_player_movement, game);
+	mlx_hook(window->win, 17, 0, exit_game, game);
 }
 
 void	map_init(t_map *map, char *filepath)
 {
-	// int	i;
-
 	if (!map || !filepath)
 		return ;
 	map->ptr = NULL;
@@ -63,10 +62,5 @@ void	map_init(t_map *map, char *filepath)
 	{
 		free_map(map->ptr);
 		show_err("Invalid Map.");
-		// i = 0;
-		// while (map->ptr[i])
-		// 	free(map->ptr[i++]);
-		// exit(-1);
-		
 	}
 }
