@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:53 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 18:49:56 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 18:52:52 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int count_enemies(t_game *g)
 			{
 				count++;
 			}
-			printf("%c", g->map->ptr[y][x]);
+			printf("%c", count);
 			x++;
 		}
 		y++;
@@ -99,7 +99,7 @@ int count_enemies(t_game *g)
 
 void	render_others(t_game *g, int c, int x, int y)
 {
-	int i = count_enemies(g);
+	int i = g->map->enemy_count;
 	printf("enemy count: %d\n", i);
 	g->enemies = malloc(sizeof(t_enemy) * i);
 	if (g->enemies == NULL)

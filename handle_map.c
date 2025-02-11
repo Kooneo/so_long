@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 15:33:16 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 18:52:25 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,11 @@ static void	process_tile(t_game *g, char c, t_paramholder p)
 			render_wall(g, p);
 	}
 	else
+	{
+		if (c == 'T')
+			g->map->enemy_count++;
 		render_others(g, c, p.x, p.y);
+	}
 }
 
 void	map_render(t_game *g)
