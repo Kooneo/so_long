@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:41:20 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/10 14:19:26 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:45:11 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ void	init_game(t_game *game, t_map *map, t_win *window, t_player *player)
 	game->map = map;
 	game->window = window;
 	game->player = player;
-	int_keystate(game);
 	game->map->exit_x = 0;
 	game->map->exit_y = 0;
 }
 
 void	setup_hooks(t_win *window, t_game *game)
 {
+	int_keystate(game);
 	mlx_hook(window->win, 2, 1L << 0, key_press, game);
 	mlx_hook(window->win, 3, 1L << 1, key_release, game);
 	mlx_loop_hook(window->mlx, handle_player_movement, game);
