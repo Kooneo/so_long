@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:53 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 15:22:55 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 15:23:17 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ char	**load_map(t_map *map_data)
 		free(read_line);
 		read_line = get_next_line(fd);
 	}
-	map_data->x = ft_strlen(map[row_c]);
+	map_data->x = ft_strlen(map[row_c - 1]);
 	map_data->y = row_c;
 	map_data->size = map_data->y * map_data->x;
 	map[row_c] = NULL;
