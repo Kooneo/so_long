@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 18:26:59 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 18:28:10 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	handle_player_movement(t_game *game)
 	
 	mlx_put_image_to_window(game->window->mlx, game->window->win,
 		game->base_img->img_ptr, 0, 0);
-	for (i = 0; i < game->num_enemies; i++)
+	for (i = 0; i < game->map->enemy_count; i++)
 		render_image(game, "textures/env/enemy.xpm", game->enemies[i].x_pos - 3, game->enemies[i].y_pos - 3);
 
 	return (0);
