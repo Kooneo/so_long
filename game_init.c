@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:41:20 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 18:04:54 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 18:33:50 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	init_game(t_game *game, t_map *map, t_win *window, t_player *player)
 	map_init(map, map->filepath);
 	map->coins_count = 0;
 	map->is_sp = 0;
+	map->enemy_count = 0;
 	init_window(window, map->y, map->x);
 	player->moves_count = 0;
 	player->items_collected = 0;
