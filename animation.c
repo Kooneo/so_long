@@ -6,13 +6,14 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:17:49 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 15:57:05 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:14:12 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static char	**get_frames(char *direction, int *frame_count)
+
+static char **get_frames_up()
 {
 	static char	*frames_up[] = {
 		"textures/player/p_up/p_up_00.xpm",
@@ -25,6 +26,11 @@ static char	**get_frames(char *direction, int *frame_count)
 		"textures/player/p_up/p_up_07.xpm",
 		NULL
 	};
+
+	return frames_up;
+}
+static char	**get_frames(char *direction, int *frame_count)
+{
 	static char	*frames_down[] = {
 		"textures/player/p_down/p_down_00.xpm",
 		"textures/player/p_down/p_down_01.xpm",
@@ -58,8 +64,9 @@ static char	**get_frames(char *direction, int *frame_count)
 		"textures/player/p_right/p_right_07.xpm",
 		NULL
 	};
+
 	if (ft_strncmp(direction, "up", 2) == 0)
-		return (*frame_count = 8, frames_up);
+		return (*frame_count = 8, get_frames_up());
 	if (ft_strncmp(direction, "down", 4) == 0)
 		return (*frame_count = 8, frames_down);
 	if (ft_strncmp(direction, "left", 4) == 0)
