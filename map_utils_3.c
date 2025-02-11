@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:53 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 18:43:51 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 18:45:01 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int count_enemies(t_game *g)
 		{
 			if (g->map->ptr[y][x] == 'T')
 				count++;
+			printf("%d", g->map->ptr[y][x]);
 			x++;
 		}
 		y++;
