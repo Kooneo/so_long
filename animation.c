@@ -6,13 +6,13 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:17:49 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:18:28 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:19:27 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static char	**get_frames_up()
+static char	**get_frames_up(void)
 {
 	static char	*frames_up[] = {
 		"textures/player/p_up/p_up_00.xpm",
@@ -26,10 +26,10 @@ static char	**get_frames_up()
 		NULL
 	};
 
-	return frames_up;
+	return (frames_up);
 }
 
-static char	**get_frames_down()
+static char	**get_frames_down(void)
 {
 	static char	*frames_down[] = {
 		"textures/player/p_down/p_down_00.xpm",
@@ -43,10 +43,10 @@ static char	**get_frames_down()
 		NULL
 	};
 
-	return frames_down;
+	return (frames_down);
 }
 
-static char	**get_frames_left()
+static char	**get_frames_left(void)
 {
 	static char	*frames_left[] = {
 		"textures/player/p_left/xpm/p_left_00.xpm",
@@ -60,10 +60,10 @@ static char	**get_frames_left()
 		NULL
 	};
 
-	return frames_left;
+	return (frames_left);
 }
 
-static char	**get_frames_right()
+static char	**get_frames_right(void)
 {
 	static char	*frames_right[] = {
 		"textures/player/p_right/p_right_00.xpm",
@@ -77,7 +77,7 @@ static char	**get_frames_right()
 		NULL
 	};
 
-	return frames_right;
+	return (frames_right);
 }
 
 static char	**get_frames(char *direction, int *frame_count)
