@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:30:12 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:47:04 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:50:42 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ void	flood_fill(char **map, t_point size, int x, int y)
 	fill(map, size, (t_point){x, y});
 }
 
-int	map_check(t_map *map)
+int	map_check(t_game *g)
 {
 	t_point	size;
 	char	**new_map;
 	int		i;
 
-	new_map = make_new_map(map);
+	new_map = make_new_map(g->map);
 	if (!new_map)
 		return (0);
 	size = (t_point){map->x, map->y};
@@ -76,8 +76,9 @@ int	map_check(t_map *map)
 			while (new_map[i] != NULL)
 				free(new_map[i++]);
 			free(new_map);
-			show_err("Invalid Map.");
-			exit_game();
+			ft_putendl_fd("Error", 2);
+			ft_putendl_fd("Invalid Map.", 2);
+			exit_game(g);
 			return (0);
 		}
 		i++;
