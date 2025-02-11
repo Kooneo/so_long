@@ -13,6 +13,7 @@ CFILES = so_long.c \
 		movement.c \
 		keys_manage.c \
 		animation.c \
+		animation_utils.c \
 		game_utils.c \
 		game_utils_2.c \
 		game_init.c \
