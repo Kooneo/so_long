@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 18:23:37 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 18:26:59 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	handle_player_movement(t_game *game)
 	}
 	else
 		handle_idle_animation(game);
-	for (i = 0; i < game->num_enemies; i++)
+	for (i = 0; i < game->map->enemy_count; i++)
         move_enemy(game, &game->enemies[i]);
 	
 	mlx_put_image_to_window(game->window->mlx, game->window->win,
