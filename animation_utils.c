@@ -14,5 +14,5 @@
 
 void    animation_loader()
 {
-    
+
 }

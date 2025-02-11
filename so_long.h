@@ -122,7 +122,8 @@ int				key_release(int keycode, t_game *game);
 void			int_keystate(t_game *game);
 
 //  animation.c
-void			animate_player(t_game *game, t_paramholder params, char *direction);
+void			animate_player(t_game *game,
+					t_paramholder params, char *direction);
 
 // handle_map.c
 void			free_map(char **map);
@@ -161,13 +162,12 @@ void			render_digit(t_game *game, int digit, int x, int y);
 void			render_movement_count(t_game *game);
 
 // game_utils_2.c
-void			handle_special_cases(t_game *g, int new_x, int new_y, char *dir);
+void			handle_special_cases(t_game *g,
+					int new_x, int new_y, char *dir);
 void			handle_collectibles(t_game *g, int new_x, int new_y);
-
 
 void			render_others(t_game *g, int c, int x, int y);
 void			render_wall(t_game *game, t_paramholder p);
 void			render_player(t_game *g, int x, int y);
-
 
 #endif
