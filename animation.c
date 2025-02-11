@@ -6,24 +6,12 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:17:49 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:27:41 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:28:26 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	**get_frames(char *direction)
-{
-	if (ft_strncmp(direction, "up", 2) == 0)
-		return (get_frames_up());
-	if (ft_strncmp(direction, "down", 4) == 0)
-		return (get_frames_down());
-	if (ft_strncmp(direction, "left", 4) == 0)
-		return (get_frames_left());
-	if (ft_strncmp(direction, "right", 5) == 0)
-		return (get_frames_right());
-	return (NULL);
-}
 
 void	animate_player(t_game *game, t_paramholder p, char *direction)
 {

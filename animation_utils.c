@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:07:02 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:25:49 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:28:31 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,17 @@ char	**get_frames_right(void)
 	};
 
 	return (frames_right);
+}
+
+char	**get_frames(char *direction)
+{
+	if (ft_strncmp(direction, "up", 2) == 0)
+		return (get_frames_up());
+	if (ft_strncmp(direction, "down", 4) == 0)
+		return (get_frames_down());
+	if (ft_strncmp(direction, "left", 4) == 0)
+		return (get_frames_left());
+	if (ft_strncmp(direction, "right", 5) == 0)
+		return (get_frames_right());
+	return (NULL);
 }
