@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:28:26 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:50:02 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:53:15 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,5 @@ void	render_player(t_game *g, int x, int y)
 	g->player->y_pos = y;
 	g->map->player_x = x;
 	g->map->player_y = y;
-	map_check(g);
+	map_check(g->map);
 }
