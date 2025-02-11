@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:41:20 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 17:53:30 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 17:54:12 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	setup_hooks(t_win *window, t_game *game)
 
 void	map_init(t_map *map, char *filepath)
 {
-	int	i;
+	// int	i;
 
 	if (!map || !filepath)
 		return ;
