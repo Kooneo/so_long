@@ -6,21 +6,11 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 15:30:57 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 15:33:16 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./so_long.h"
-
-void	render_player(t_game *g, int x, int y)
-{
-	render_image(g, "textures/player/p_idle/down/idle_down_00.xpm", x, y);
-	g->player->x_pos = x;
-	g->player->y_pos = y;
-	g->map->player_x = x;
-	g->map->player_y = y;
-	map_check(g->map);
-}
 
 static int	to_skipe(int x, int y)
 {
@@ -40,7 +30,7 @@ static int	if_conddition_2(int x, int y)
 		|| ((x / 64 >= 23 && y / 64 == 5) && (x / 64 <= 27 && y / 64 == 5)));
 }
 
-static	void render_elements(t_game *g, t_paramholder p)
+static	void	render_elements(t_game *g, t_paramholder p)
 {
 	if ((p.x / 64 == 25 && p.y / 64 == 6)
 		|| ((p.x / 64 == 27 || p.x / 64 == 23) && p.y / 64 == 7))

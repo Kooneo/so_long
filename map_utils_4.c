@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:28:26 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 15:31:15 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 15:33:48 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,14 @@ void	render_wall(t_game *game, t_paramholder p)
 		render_image(game, "textures/xe_end.xpm", p.x, p.y);
 	else
 		render_image(game, "textures/mid_wall.xpm", p.x, p.y);
+}
+
+void	render_player(t_game *g, int x, int y)
+{
+	render_image(g, "textures/player/p_idle/down/idle_down_00.xpm", x, y);
+	g->player->x_pos = x;
+	g->player->y_pos = y;
+	g->map->player_x = x;
+	g->map->player_y = y;
+	map_check(g->map);
 }

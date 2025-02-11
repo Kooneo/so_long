@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:17:49 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/10 14:25:37 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 15:34:08 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ static char	**get_frames(char *direction, int *frame_count)
 		*frame_count = sizeof(frames_right) / sizeof(frames_right[0]) - 1;
 	else
 		return (NULL);
-
 	if (ft_strncmp(direction, "up", ft_strlen("up")) == 0)
 		return (frames_up);
 	else if (ft_strncmp(direction, "down", ft_strlen("down")) == 0)
