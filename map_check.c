@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:30:12 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:50:42 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:51:20 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ int	map_check(t_game *g)
 	new_map = make_new_map(g->map);
 	if (!new_map)
 		return (0);
-	size = (t_point){map->x, map->y};
-	flood_fill(new_map, size, map->player_x / 64, map->player_y / 64);
+	size = (t_point){g->map->x, g->map->y};
+	flood_fill(new_map, size, g->map->player_x / 64, g->map->player_y / 64);
 	i = 0;
 	while (new_map[i] != NULL)
 	{
