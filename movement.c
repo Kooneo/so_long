@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 19:01:40 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 19:03:47 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	handle_player_movement(t_game *game)
 	int		new_xy[2];
 	int		old_xy[2];
 	char	*direction;
-	int  i;
+	// int  i;
 
 	new_xy[0] = game->player->x_pos;
 	new_xy[1] = game->player->y_pos;
