@@ -6,13 +6,8 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:07:02 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/10 14:07:50 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 15:27:43 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-void    animation_loader()
-{
-
-}

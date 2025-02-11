@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/07 15:21:40 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 15:29:40 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,24 @@ static int	if_conddition_2(int x, int y)
 		|| ((x / 64 >= 23 && y / 64 == 5) && (x / 64 <= 27 && y / 64 == 5)));
 }
 
+static	void render_elements(t_game *g, t_paramholder p)
+{
+	if ((p.x / 64 == 25 && p.y / 64 == 6)
+		|| ((p.x / 64 == 27 || p.x / 64 == 23) && p.y / 64 == 7))
+	{
+		if ((p.x / 64 == 23 && p.y / 64 == 7))
+		{
+			render_el_at(g, 2, p.x + 64 - 15, p.x - 15);
+			render_el_at(g, 1, p.x + 10, p.x - 20);
+		}
+		if ((p.x / 64 == 25 && p.y / 64 == 6))
+			render_el_at(g, 2, p.x, p.y - 15);
+		render_el_at(g, 10, p.x, p.y);
+	}
+	else
+		render_el_at(g, 9, p.x, p.y);
+}
+
 static void	process_tile(t_game *g, char c, t_paramholder p)
 {
 	if (c == '1')
@@ -51,22 +69,7 @@ static void	process_tile(t_game *g, char c, t_paramholder p)
 		else if (g->map->is_sp == 1 && to_skipe(p.x, p.y))
 			render_image(g, "textures/bg_64n.xpm", p.x, p.y);
 		else if (g->map->is_sp == 1 && if_conddition_2(p.x, p.y))
-		{
-			if ((p.x / 64 == 25 && p.y / 64 == 6)
-				|| ((p.x / 64 == 27 || p.x / 64 == 23) && p.y / 64 == 7))
-			{
-				if ((p.x / 64 == 23 && p.y / 64 == 7))
-				{
-					render_el_at(g, 2, p.x + 64 - 15, p.x - 15);
-					render_el_at(g, 1, p.x + 10, p.x - 20);
-				}
-				if ((p.x / 64 == 25 && p.y / 64 == 6))
-					render_el_at(g, 2, p.x, p.y - 15);
-				render_el_at(g, 10, p.x, p.y);
-			}
-			else
-				render_el_at(g, 9, p.x, p.y);
-		}
+			render_elements(g, p);
 		else
 			render_wall(g, p);
 	}
