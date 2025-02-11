@@ -6,13 +6,13 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:17:49 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:25:39 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:27:41 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static char	**get_frames(char *direction)
+char	**get_frames(char *direction)
 {
 	if (ft_strncmp(direction, "up", 2) == 0)
 		return (get_frames_up());
