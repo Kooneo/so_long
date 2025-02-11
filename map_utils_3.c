@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:53 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 15:00:44 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 15:01:40 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,75 +82,37 @@ void	free_map(char **map)
 	free(map);
 }
 
-// char	**load_map(t_map *map_data)
-// {
-// 	char	*read_line;
-// 	size_t	row_c;
-// 	char	*trimed_line;
-// 	char	**map;
-// 	int		fd;
-
-// 	map = malloc(sizeof(char *) * map_row_c(map_data->filepath) * 100);
-// 	if (!map)
-// 		return (NULL);
-// 	fd = open(map_data->filepath, O_RDWR);
-// 	if (fd < 0)
-// 		return (NULL);
-// 	read_line = get_next_line(fd);
-// 	if (!read_line)
-// 		return (NULL);
-// 	trimed_line = ft_strtrim(read_line, "\n");
-// 	row_c = 0;
-// 	while (read_line)
-// 	{
-// 		map[row_c] = ft_strtrim(read_line, "\n");
-// 		free(read_line);
-// 		read_line = get_next_line(fd);
-// 		row_c++;
-// 	}
-// 	map_data->x = ft_strlen(trimed_line);
-// 	map_data->y = row_c;
-// 	map_data->size = map_data->y * map_data->x;
-// 	map[row_c] = NULL;
-// 	free(trimed_line);
-// 	close(fd);
-// 	return (map);
-// }
-
 char	**load_map(t_map *map_data)
 {
 	char	*read_line;
-	char	*trimmed_line;
+	size_t	row_c;
+	char	*trimed_line;
 	char	**map;
 	int		fd;
-	int		row_c;
 
-	map = malloc(sizeof(char *) * (map_row_c(map_data->filepath) + 1));
+	map = malloc(sizeof(char *) * map_row_c(map_data->filepath) * 100);
 	if (!map)
 		return (NULL);
 	fd = open(map_data->filepath, O_RDWR);
+	if (fd < 0)
+		return (NULL);
 	read_line = get_next_line(fd);
 	if (!read_line)
-		return (free(map), close(fd), NULL);
-	trimmed_line = ft_strtrim(read_line, "\n");
-	if (!trimmed_line)
-		return (free(read_line), free(map), close(fd), NULL);
-	free(read_line);
+		return (NULL);
+	trimed_line = ft_strtrim(read_line, "\n");
 	row_c = 0;
 	while (read_line)
 	{
 		map[row_c] = ft_strtrim(read_line, "\n");
 		free(read_line);
-		if (!map[row_c])
-			return (free(trimmed_line), free(map), close(fd), NULL);
 		read_line = get_next_line(fd);
 		row_c++;
 	}
-	map_data->x = ft_strlen(trimmed_line);
+	map_data->x = ft_strlen(trimed_line);
 	map_data->y = row_c;
 	map_data->size = map_data->y * map_data->x;
 	map[row_c] = NULL;
-	free(trimmed_line);
+	free(trimed_line);
 	close(fd);
 	return (map);
 }
