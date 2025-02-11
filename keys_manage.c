@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:15:43 by zbakour           #+#    #+#             */
-/*   Updated: 2025/01/30 16:39:08 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:37:05 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	key_press(int keycode, t_game *game)
 {
+	printf("%d", keycode);
 	if (keycode >= 0 && keycode < 256)
 		game->key_states[keycode] = 1;
 	return (0);
