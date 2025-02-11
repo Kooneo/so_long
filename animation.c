@@ -6,12 +6,11 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:17:49 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:28:26 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:35:20 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 void	animate_player(t_game *game, t_paramholder p, char *direction)
 {
