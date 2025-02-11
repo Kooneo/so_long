@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:30:12 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:52:20 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 16:52:47 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int	map_check(t_game *g)
 	{
 		if (ft_strchr(new_map[i], 'C') || ft_strchr(new_map[i], 'E'))
 		{
-			while (i > 0)
-				free(new_map[--i]);
+			while (new_map[i] != NULL)
+				free(new_map[i++]);
 			free(new_map);
 			ft_putendl_fd("Error", 2);
 			ft_putendl_fd("Invalid Map.", 2);
