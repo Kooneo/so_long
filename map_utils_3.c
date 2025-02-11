@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:53 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 14:51:01 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/11 14:51:58 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	render_el_at(t_game *game, int el, int x, int y)
 		render_image(game, "textures/env/plant/el_3.xpm", x + 20, y - 80);
 }
 
-int	render_wall_statment(t_game game, t_paramholder p)
+int	render_wall_statment(t_game *game, t_paramholder p)
 {
 	return (p.j > 0 && ((game->map->ptr[p.i][p.j - 1] == '0'
 			|| game->map->ptr[p.i][p.j - 1] == 'P'
