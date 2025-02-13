@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 17:31:52 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 17:56:12 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,8 @@ int	handle_player_movement(t_game *game)
 	}
 	else
 		handle_idle_animation(game);
-	
-
 	mlx_put_image_to_window(game->window->mlx, game->window->win,
 		game->base_img->img_ptr, 0, 0);
-	// for (i = 0; i < game->map->enemy_count; i++)
-	// render_image(game, "textures/env/enemy.xpm", game->enemies[0].x_pos, game->enemies[0].x_pos);
 
 	return (0);
 }
