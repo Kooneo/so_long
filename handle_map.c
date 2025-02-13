@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 17:56:28 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 17:57:20 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,18 @@ void find_enemies(t_game *game)
     game->enemies = malloc(sizeof(t_enemy) * game->map->enemy_count);
     index = 0;
     for (i = 0; i < game->map->y; i++)
+	{
         for (j = 0; j < game->map->x; j++)
-            if (game->map->ptr[i][j] == 'T')
+		{
+			if (game->map->ptr[i][j] == 'T')
             {
-                game->enemies[index].x = j;
+				game->enemies[index].x = j;
                 game->enemies[index].y = i;
                 game->enemies[index].direction = 1; // Start moving right
                 index++;
             }
+		}
+	}
 }
 
 void	map_render(t_game *g)
