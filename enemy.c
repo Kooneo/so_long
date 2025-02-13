@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:13:17 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 17:41:10 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 17:42:15 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int update_game(t_game *game)
         for (int i = 0; i < game->map->enemy_count; i++)
             move_enemy(game, &game->enemies[i]); // Move each enemy
 
-        draw_map(game); // Redraw the updated map
+        map_render(game); // Redraw the updated map
     }
     return (0);
 }
