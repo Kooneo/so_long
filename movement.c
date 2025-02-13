@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:57:07 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:58:35 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ int	handle_player_movement(t_game *game)
 	direction = NULL;
 	static int frame = 0;
 
-    // if (frame++ % 120 == 0)
-    // {
+    if (frame++ % 120 == 0)
+    {
         for (int i = 0; i < game->map->enemy_count; i++)
 		{
 			if ( game->map->ptr[game->player->y_pos / 64][game->player->x_pos / 64] == 'T')
@@ -94,9 +94,9 @@ int	handle_player_movement(t_game *game)
 				exit_game(game);
 			}
             move_enemy(game, &game->enemies[i]);
-			usleep(44000);
+			// usleep(44000);
 		}
-    // }
+    }
 	if (!handle_movement_keys(new_xy, game, &direction))
 		return (handle_idle_animation(game), 0);
 	if (game->player->items_collected == game->map->coins_count)
