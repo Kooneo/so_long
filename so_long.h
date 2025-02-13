@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 17:38:39 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 19:00:17 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,8 @@ int				is_move_valid(t_game *game, int new_x, int new_y);
 int				handle_player_movement(t_game *game);
 
 // keys_manage.c
-int				key_press(int keycode, t_game *game);
-int				key_release(int keycode, t_game *game);
+void				key_press(int keycode, t_game *game);
+void				key_release(int keycode, t_game *game);
 void			int_keystate(t_game *game);
 
 //  animation.c
