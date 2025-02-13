@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:41:56 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:43:18 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	handle_player_movement(t_game *game)
 	direction = NULL;
 	static int frame = 0;
 
-    if (frame++ % 60 == 0) // Move every 20 frames
+    if (frame++ % 120 == 0) // Move every 20 frames
     {
         for (int i = 0; i < game->map->enemy_count; i++)
 		{
