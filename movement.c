@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:52:29 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:53:09 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int	handle_player_movement(t_game *game)
 				exit_game(game);
 			}
             move_enemy(game, &game->enemies[i]);
+			usleep(3800);
 		}
     // }
 	if (!handle_movement_keys(new_xy, game, &direction))
