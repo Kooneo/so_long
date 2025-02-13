@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:58:35 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 19:01:57 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,16 @@ int	handle_player_movement(t_game *game)
 	{
 		handle_collectibles(game, new_xy[0], new_xy[1]);
 		handle_move_execution(game, new_xy, old_xy, direction);
+		for (int i = 0; i < game->map->enemy_count; i++)
+		{
+			if ( game->map->ptr[game->player->y_pos / 64][game->player->x_pos / 64] == 'T')
+			{
+				ft_printf("\nGame over... 🏁 you lose! 😜\n");
+				exit_game(game);
+			}
+            move_enemy(game, &game->enemies[i]);
+			// usleep(44000);
+		}
 	}
 	else
 		handle_idle_animation(game);
