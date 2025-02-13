@@ -185,7 +185,7 @@ char			**get_frames_left(void);
 char			**get_frames_right(void);
 char			**get_frames(char *direction);
 
-void		move_enemy(t_game *game, t_enemy *enemy);
-void		move_enemy_vertical(t_game *game, t_enemy *enemy);
-int			update_game(t_game *game);
+void			move_enemy(t_game *game, t_enemy *enemy);
+void			move_enemy_vertical(t_game *game, t_enemy *enemy);
+int				update_game(t_game *game);
 #endif
