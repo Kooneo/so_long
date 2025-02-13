@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:13:17 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:05:04 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:07:19 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void move_enemy(t_game *game, t_enemy *enemy)
 {
-    int new_x = enemy->x + enemy->direction;
+    int new_x = enemy->x;
     int new_y = enemy->y; // Keep y the same for left/right movement
 
     // Collision check: If the enemy hits a wall, change direction
@@ -51,9 +51,8 @@ int update_game(t_game *game)
 
     if (frame++ % 20 == 0) // Move every 20 frames
     {
-        ft_printf("20 frames passed");
-        // for (int i = 0; i < game->map->enemy_count; i++)
-        //     move_enemy(game, &game->enemies[i]); // Move each enemy
+        for (int i = 0; i < game->map->enemy_count; i++)
+            move_enemy(game, &game->enemies[i]); // Move each enemy
 
         // map_render(game); // Redraw the updated map
     }
