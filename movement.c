@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:37:29 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:37:45 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	handle_player_movement(t_game *game)
 				// if (g->map->ptr[new_y / 64][new_x / 64] == 'T' && dir)
 				// {
 				ft_printf("\nGame over... 🏁 you lose! 😜\n");
-				exit_game(g);
+				exit_game(game);
 				// }
 			}
 			
