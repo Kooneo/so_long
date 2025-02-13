@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:13:17 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:24:19 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:25:03 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void move_enemy(t_game *game, t_enemy *enemy)
         render_image(game, "textures/bg_64n.xpm",  enemy->x * TILE_SIZE, enemy->y * TILE_SIZE);
         enemy->x = new_x;
         game->map->ptr[enemy->y][enemy->x] = 'T';
-        render_image(game, "textures/env/enemy.xpm", new_x * TILE_SIZE, enemy->y * TILE_SIZE);
+        render_image(game, "textures/env/enemy.xpm", (new_x) * TILE_SIZE, (enemy->y + TILE_SIZE) * TILE_SIZE);
 
     }
     ft_printf("enemy: {x: %d, y: %d, dir: %d}\n", enemy->x * TILE_SIZE, enemy->y * TILE_SIZE, enemy->direction);
