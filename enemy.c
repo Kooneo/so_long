@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:13:17 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:28:08 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:30:41 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void move_enemy(t_game *game, t_enemy *enemy)
 {
     int new_x = enemy->x + enemy->direction;
     int new_y = enemy->y; // Keep y the same for left/right movement
-    ft_printf("move_enemy");
     // Collision check: If the enemy hits a wall, change direction
     if (game->map->ptr[new_y][new_x] == '1') 
         enemy->direction *= -1; // Reverse direction
@@ -29,7 +28,6 @@ void move_enemy(t_game *game, t_enemy *enemy)
         enemy->x = new_x;
         game->map->ptr[enemy->y][enemy->x] = 'T';
         render_image(game, "textures/env/enemy.xpm", new_x * TILE_SIZE, enemy->y * TILE_SIZE);
-
     }
     ft_printf("enemy: {x: %d, y: %d, dir: %d}\n", enemy->x * TILE_SIZE, enemy->y * TILE_SIZE, enemy->direction);
 
@@ -50,6 +48,18 @@ void move_enemy_vertical(t_game *game, t_enemy *enemy)
     }
 }
 
+void    print_map(t_game *g)
+{
+    for (size_t i = 0; i < g->map->y; i++)
+    {
+        for (size_t j = 0; j < g->map->x; j++)
+        {
+            ft_printf("%c", g->map->ptr[i][j]);
+        }
+        
+    }
+    
+}
 
 
 
