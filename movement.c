@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:49:34 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:49:54 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	handle_player_movement(t_game *game)
             move_enemy(game, &game->enemies[i]);
 		}
     }
-	else if (!handle_movement_keys(new_xy, game, &direction))
+	if (!handle_movement_keys(new_xy, game, &direction))
 		return (handle_idle_animation(game), 0);
 	if (game->player->items_collected == game->map->coins_count)
 		render_exit(game);
