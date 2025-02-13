@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:13:17 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:16:34 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:23:03 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ void move_enemy(t_game *game, t_enemy *enemy)
         // Clear the old position
         game->map->ptr[enemy->y][enemy->x] = '0';
         // Move to the new position
+        render_image(game, "textures/bg_64n.xpm",  enemy->x, enemy->y);
         enemy->x = new_x;
         game->map->ptr[enemy->y][enemy->x] = 'T';
+        render_image(game, "textures/env/enemy.xpm", new_x, enemy->y);
+
     }
     ft_printf("enemy: {x: %d, y: %d, dir: %d}\n", enemy->x * TILE_SIZE, enemy->y * TILE_SIZE, enemy->direction);
 
@@ -47,19 +50,6 @@ void move_enemy_vertical(t_game *game, t_enemy *enemy)
     }
 }
 
-int update_game(t_game *game)
-{
-    static int frame = 0;
-
-    if (frame++ % 20 == 0) // Move every 20 frames
-    {
-        // for (int i = 0; i < game->map->enemy_count; i++)
-        //     move_enemy(game, &game->enemies[i]); // Move each enemy
-
-        // map_render(game); // Redraw the updated map
-    }
-    return (0);
-}
 
 
 

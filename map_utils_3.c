@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:53 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 19:01:21 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:18:24 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,6 @@ char	**load_map(t_map *map_data)
 	return (map);
 }
 
-// int i = g->map->enemy_count;
-// 	g->enemies = malloc(sizeof(t_enemy) * i);
-// 	if (g->enemies == NULL)
-// 	{
-// 		printf("Failed to allocate memory for enemies.\n");
-// 		exit(EXIT_FAILURE);
-// 	}
 void	render_others(t_game *g, int c, int x, int y)
 {
 	if (c == 'T' || c == 'X' || c == 'G')
@@ -90,7 +83,6 @@ void	render_others(t_game *g, int c, int x, int y)
 		if (c == 'T')
 		{
             render_image(g, "textures/env/enemy.xpm", x - 3, y - 3);
-            // g->enemies[i] = (t_enemy){x, y};
 		}
 		else if (c == 'X')
 			render_image(g, "textures/env/blue_hand.xpm", x - 3, y - 3);
