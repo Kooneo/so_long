@@ -2,7 +2,7 @@ CC = cc
 NAME = so_long
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3 
+# CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3 
 LIBS =  -lmlx -lXext -lX11 -lm -lbsd
 
 CFILES = so_long.c \
