@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:13:17 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:25:03 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:25:44 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void move_enemy(t_game *game, t_enemy *enemy)
         // Clear the old position
         game->map->ptr[enemy->y][enemy->x] = '0';
         // Move to the new position
-        render_image(game, "textures/bg_64n.xpm",  enemy->x * TILE_SIZE, enemy->y * TILE_SIZE);
+        render_image(game, "textures/bg_64n.xpm",  enemy->x * TILE_SIZE, (enemy->y + TILE_SIZE) * TILE_SIZE);
         enemy->x = new_x;
         game->map->ptr[enemy->y][enemy->x] = 'T';
         render_image(game, "textures/env/enemy.xpm", (new_x) * TILE_SIZE, (enemy->y + TILE_SIZE) * TILE_SIZE);
