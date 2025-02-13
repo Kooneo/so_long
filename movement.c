@@ -71,6 +71,21 @@ static void	handle_move_execution(t_game *g, int new_xy[2],
 	}
 }
 
+void	move_enemies(t_game *game)
+{
+	int i = 0;
+	while(i < game->map->enemy_count)
+	{
+		if ( game->map->ptr[game->player->y_pos / 64][game->player->x_pos / 64] == 'T')
+		{
+			ft_printf("\nGame over... 🏁 you lose! 😜\n");
+			exit_game(game);
+		}
+		move_enemy(game, &game->enemies[i]);
+		i++;
+	}
+}
+
 int	handle_player_movement(t_game *game)
 {
 	int		new_xy[2];
@@ -84,39 +99,18 @@ int	handle_player_movement(t_game *game)
 	direction = NULL;
 	static int frame = 0;
 
-    if (frame++ % 120 == 0)
-    {
-        for (int i = 0; i < game->map->enemy_count; i++)
-		{
-			if ( game->map->ptr[game->player->y_pos / 64][game->player->x_pos / 64] == 'T')
-			{
-				ft_printf("\nGame over... 🏁 you lose! 😜\n");
-				exit_game(game);
-			}
-            move_enemy(game, &game->enemies[i]);
-			// usleep(44000);
-		}
-    }
+    if (frame++ % 150 == 0)
+        move_enemies(game);
 	if (!handle_movement_keys(new_xy, game, &direction))
 		return (handle_idle_animation(game), 0);
 	if (game->player->items_collected == game->map->coins_count)
 		render_exit(game);
 	handle_special_cases(game, new_xy[0], new_xy[1], direction);
+	
+	
 	if (is_move_valid(game, new_xy[0], new_xy[1]))
 	{
-		if (frame++ % 120 == 0)
-		{
-			for (int i = 0; i < game->map->enemy_count; i++)
-			{
-				if ( game->map->ptr[game->player->y_pos / 64][game->player->x_pos / 64] == 'T')
-				{
-					ft_printf("\nGame over... 🏁 you lose! 😜\n");
-					exit_game(game);
-				}
-				move_enemy(game, &game->enemies[i]);
-				// usleep(44000);
-			}
-		}
+		move_enemies(game);
 		handle_collectibles(game, new_xy[0], new_xy[1]);
 		handle_move_execution(game, new_xy, old_xy, direction);
 		

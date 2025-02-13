@@ -43,6 +43,8 @@ int	exit_game(t_game *game)
 {
 	int	i;
 
+	if (game->enemies)
+		free(game->enemies);
 	if (game->map && game->map->ptr)
 	{
 		i = 0;
