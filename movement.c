@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:49:54 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:51:36 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,20 +82,7 @@ int	handle_player_movement(t_game *game)
 	old_xy[0] = new_xy[0];
 	old_xy[1] = new_xy[1];
 	direction = NULL;
-	static int frame = 0;
-
-    if (frame++ % 120 == 0)
-    {
-        for (int i = 0; i < game->map->enemy_count; i++)
-		{
-			if ( game->map->ptr[game->player->y_pos / 64][game->player->x_pos / 64] == 'T')
-			{
-				ft_printf("\nGame over... 🏁 you lose! 😜\n");
-				exit_game(game);
-			}
-            move_enemy(game, &game->enemies[i]);
-		}
-    }
+	
 	if (!handle_movement_keys(new_xy, game, &direction))
 		return (handle_idle_animation(game), 0);
 	if (game->player->items_collected == game->map->coins_count)

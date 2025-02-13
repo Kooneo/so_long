@@ -6,11 +6,30 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:13:17 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:34:54 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:51:40 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+
+int			update_game(t_game *game)
+{
+    static int frame = 0;
+
+    if (frame++ % 120 == 0)
+    {
+        for (int i = 0; i < game->map->enemy_count; i++)
+		{
+			if ( game->map->ptr[game->player->y_pos / 64][game->player->x_pos / 64] == 'T')
+			{
+				ft_printf("\nGame over... 🏁 you lose! 😜\n");
+				exit_game(game);
+			}
+            move_enemy(game, &game->enemies[i]);
+		}
+    }
+}
 
 void move_enemy(t_game *game, t_enemy *enemy)
 {
