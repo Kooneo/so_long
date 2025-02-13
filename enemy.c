@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:13:17 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 17:52:47 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 17:55:03 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void move_enemy_vertical(t_game *game, t_enemy *enemy)
 
 int update_game(t_game *game)
 {
-    static int frame = 0;
+    // static int frame = 0;
 
     // if (frame++ % 20 == 0) // Move every 20 frames
     // {
