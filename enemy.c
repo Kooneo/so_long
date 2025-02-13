@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:13:17 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:25:44 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:26:32 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void move_enemy(t_game *game, t_enemy *enemy)
 {
-    int new_x = enemy->x;
-    int new_y = enemy->y; // Keep y the same for left/right movement
+    int new_x = enemy->x + TILE_SIZE;
+    int new_y = enemy->y + TILE_SIZE; // Keep y the same for left/right movement
     ft_printf("move_enemy");
     // Collision check: If the enemy hits a wall, change direction
     if (game->map->ptr[new_y][new_x] == '1') 
