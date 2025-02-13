@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:01:57 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:02:30 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void find_enemies(t_game *game)
 	
 	for (int i = 0; i < game->map->enemy_count; i++)
 	{
-		ft_printf("enemy[%d] x: %d y: %d\n", i, game->enemies[i].x, game->enemies[i].y);
+		ft_printf("enemy[%d] x: %d y: %d\n", i + 1, game->enemies[i].x, game->enemies[i].y);
 	}
 
 }
