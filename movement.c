@@ -92,16 +92,17 @@ int	handle_player_movement(t_game *game)
 	{
 		handle_collectibles(game, new_xy[0], new_xy[1]);
 		handle_move_execution(game, new_xy, old_xy, direction);
+		move_enemy(game, 0);
 	}
 	else
 		handle_idle_animation(game);
 	// for (i = 0; i < game->map->enemy_count; i++)
-    //     move_enemy(game, i);
 	
+
 	mlx_put_image_to_window(game->window->mlx, game->window->win,
 		game->base_img->img_ptr, 0, 0);
 	// for (i = 0; i < game->map->enemy_count; i++)
-    //     render_image(game, "textures/env/enemy.xpm", game->enemies[i].x_pos - 3, game->enemies[i].y_pos - 3);
+	render_image(game, "textures/env/enemy.xpm", game->enemies[0].x_pos, game->enemies[0].x_pos);
 
 	return (0);
 }

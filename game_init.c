@@ -58,6 +58,10 @@ void	init_game(t_game *game, t_map *map, t_win *window, t_player *player)
 	game->player = player;
 	game->map->exit_x = 0;
 	game->map->exit_y = 0;
+
+	// int i = game->map->enemy_count;
+	game->enemies = malloc(sizeof(t_enemy) * 1);
+	game->enemies[0] = (t_enemy){0, 0};
 }
 
 void	setup_hooks(t_win *window, t_game *game)
