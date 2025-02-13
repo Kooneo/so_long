@@ -6,11 +6,59 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:13:17 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 17:34:07 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 17:38:29 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void move_enemy(t_game *game, t_enemy *enemy)
+{
+    int new_x = enemy->x + enemy->direction;
+    int new_y = enemy->y; // Keep y the same for left/right movement
+
+    // Collision check: If the enemy hits a wall, change direction
+    if (game->map[new_y][new_x] == '1') 
+        enemy->direction *= -1; // Reverse direction
+    else
+    {
+        // Clear the old position
+        game->map[enemy->y][enemy->x] = '0';
+        // Move to the new position
+        enemy->x = new_x;
+        game->map[enemy->y][enemy->x] = 'E';
+    }
+}
+
+void move_enemy_vertical(t_game *game, t_enemy *enemy)
+{
+    int new_y = enemy->y + enemy->direction;
+    int new_x = enemy->x; // Keep x the same for up/down movement
+
+    if (game->map[new_y][new_x] == '1')
+        enemy->direction *= -1;
+    else
+    {
+        game->map[enemy->y][enemy->x] = '0';
+        enemy->y = new_y;
+        game->map[enemy->y][enemy->x] = 'E';
+    }
+}
+
+int update_game(t_game *game)
+{
+    static int frame = 0;
+
+    if (frame++ % 20 == 0) // Move every 20 frames
+    {
+        for (int i = 0; i < game->num_enemies; i++)
+            move_enemy(game, &game->enemies[i]); // Move each enemy
+
+        draw_map(game); // Redraw the updated map
+    }
+    return (0);
+}
+
 
 
 // int	enemy_is_move_valid(t_game *game, int new_x, int new_y)
