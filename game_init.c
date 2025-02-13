@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:41:20 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 19:00:56 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 17:31:22 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,6 @@ void	init_game(t_game *game, t_map *map, t_win *window, t_player *player)
 	game->map->exit_x = 0;
 	game->map->exit_y = 0;
 
-	// int i = game->map->enemy_count;
-	game->enemies = malloc(sizeof(t_enemy) * 1);
-	game->enemies[0] = (t_enemy){0, 0};
 }
 
 void	setup_hooks(t_win *window, t_game *game)
@@ -85,7 +82,6 @@ void	map_init(t_map *map, char *filepath)
 	map->coins_count = 0;
 	map->is_sp = 0;
 	map->enemy_count = 0;
-	count_enemies(map);
 	map->ptr = load_map(map);
 	if (!check_is_rectangular(map) || !check_psec_dup(map))
 	{

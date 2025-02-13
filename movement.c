@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 19:03:47 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 17:31:52 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ int	handle_player_movement(t_game *game)
 	int		new_xy[2];
 	int		old_xy[2];
 	char	*direction;
-	// int  i;
 
 	new_xy[0] = game->player->x_pos;
 	new_xy[1] = game->player->y_pos;
@@ -92,17 +91,15 @@ int	handle_player_movement(t_game *game)
 	{
 		handle_collectibles(game, new_xy[0], new_xy[1]);
 		handle_move_execution(game, new_xy, old_xy, direction);
-		move_enemy(game, 0);
 	}
 	else
 		handle_idle_animation(game);
-	// for (i = 0; i < game->map->enemy_count; i++)
 	
 
 	mlx_put_image_to_window(game->window->mlx, game->window->win,
 		game->base_img->img_ptr, 0, 0);
 	// for (i = 0; i < game->map->enemy_count; i++)
-	render_image(game, "textures/env/enemy.xpm", game->enemies[0].x_pos, game->enemies[0].x_pos);
+	// render_image(game, "textures/env/enemy.xpm", game->enemies[0].x_pos, game->enemies[0].x_pos);
 
 	return (0);
 }

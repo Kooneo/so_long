@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 18:29:56 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 17:28:51 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,11 @@ typedef struct s_img
 }				t_img;
 
 
-typedef struct s_enemy {
-	int x_pos;
-	int y_pos;
+typedef struct s_enemy
+{
+    int x;
+    int y;
+    int direction; // 1 for right/down, -1 for left/up
 } t_enemy;
 
 typedef struct s_game
