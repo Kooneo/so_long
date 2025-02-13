@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:37:45 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:37:59 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	handle_player_movement(t_game *game)
         for (int i = 0; i < game->map->enemy_count; i++)
 		{
 			// ft_printf("20 frames passed");
-			if ( g->map->ptr[game->player->y_pos / 64][game->player->x_pos / 64] == 'T')
+			if ( game->map->ptr[game->player->y_pos / 64][game->player->x_pos / 64] == 'T')
 			{
 				/* code */
 				// if (g->map->ptr[new_y / 64][new_x / 64] == 'T' && dir)
