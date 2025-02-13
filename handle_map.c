@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 17:33:24 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 17:53:57 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void find_enemies(t_game *game)
             if (game->map->ptr[i][j] == 'T') // 'E' represents an enemy
 				game->map->enemy_count++;
 
+	ft_printf("%d", game->map->enemy_count++);
     game->enemies = malloc(sizeof(t_enemy) * game->map->enemy_count);
     index = 0;
     for (i = 0; i < game->map->y; i++)

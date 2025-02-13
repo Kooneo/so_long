@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:01:03 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 17:44:55 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 17:46:47 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	
 	
 	setup_hooks(&window, &game);
-	// mlx_loop_hook(window.mlx, update_game, &game);
+	mlx_loop_hook(window.mlx, update_game, &game);
 	mlx_loop(window.mlx);
 	return (0);
 }
