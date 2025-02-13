@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:13:17 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:26:32 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:27:17 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void move_enemy(t_game *game, t_enemy *enemy)
 {
     int new_x = enemy->x + TILE_SIZE;
-    int new_y = enemy->y + TILE_SIZE; // Keep y the same for left/right movement
+    int new_y = enemy->y; // Keep y the same for left/right movement
     ft_printf("move_enemy");
     // Collision check: If the enemy hits a wall, change direction
     if (game->map->ptr[new_y][new_x] == '1') 
@@ -25,10 +25,10 @@ void move_enemy(t_game *game, t_enemy *enemy)
         // Clear the old position
         game->map->ptr[enemy->y][enemy->x] = '0';
         // Move to the new position
-        render_image(game, "textures/bg_64n.xpm",  enemy->x * TILE_SIZE, (enemy->y + TILE_SIZE) * TILE_SIZE);
+        render_image(game, "textures/bg_64n.xpm",  enemy->x * TILE_SIZE, enemy->y * TILE_SIZE);
         enemy->x = new_x;
         game->map->ptr[enemy->y][enemy->x] = 'T';
-        render_image(game, "textures/env/enemy.xpm", (new_x) * TILE_SIZE, (enemy->y + TILE_SIZE) * TILE_SIZE);
+        render_image(game, "textures/env/enemy.xpm", new_x * TILE_SIZE, enemy->y * TILE_SIZE);
 
     }
     ft_printf("enemy: {x: %d, y: %d, dir: %d}\n", enemy->x * TILE_SIZE, enemy->y * TILE_SIZE, enemy->direction);
