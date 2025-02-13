@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:48:22 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:49:34 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,22 @@ int	handle_player_movement(t_game *game)
 	direction = NULL;
 	static int frame = 0;
 
-	if (!handle_movement_keys(new_xy, game, &direction))
-	return (handle_idle_animation(game), 0);
+    if (frame++ % 120 == 0)
+    {
+        for (int i = 0; i < game->map->enemy_count; i++)
+		{
+			if ( game->map->ptr[game->player->y_pos / 64][game->player->x_pos / 64] == 'T')
+			{
+				ft_printf("\nGame over... 🏁 you lose! 😜\n");
+				exit_game(game);
+			}
+            move_enemy(game, &game->enemies[i]);
+		}
+    }
+	else if (!handle_movement_keys(new_xy, game, &direction))
+		return (handle_idle_animation(game), 0);
 	if (game->player->items_collected == game->map->coins_count)
-	render_exit(game);
+		render_exit(game);
 	handle_special_cases(game, new_xy[0], new_xy[1], direction);
 	if (is_move_valid(game, new_xy[0], new_xy[1]))
 	{
@@ -95,21 +107,9 @@ int	handle_player_movement(t_game *game)
 		handle_move_execution(game, new_xy, old_xy, direction);
 	}
 	else
-	handle_idle_animation(game);
+		handle_idle_animation(game);
 	mlx_put_image_to_window(game->window->mlx, game->window->win,
 		game->base_img->img_ptr, 0, 0);
-	if (frame++ % 120 == 0)
-	{
-		for (int i = 0; i < game->map->enemy_count; i++)
-		{
-			if ( game->map->ptr[game->player->y_pos / 64][game->player->x_pos / 64] == 'T')
-			{
-				ft_printf("\nGame over... 🏁 you lose! 😜\n");
-				exit_game(game);
-			}
-			move_enemy(game, &game->enemies[i]);
-		}
-	}
 		
 	return (0);
 }
