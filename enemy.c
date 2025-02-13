@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:13:17 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:13:05 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:15:03 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void move_enemy(t_game *game, t_enemy *enemy)
         enemy->x = new_x;
         game->map->ptr[enemy->y][enemy->x] = 'T';
     }
+    ft_printf("enemy: {x: %d, y: %d, dir: %d}\n", enemy->x, enemy->y, enemy->direction);
+
 }
 
 void move_enemy_vertical(t_game *game, t_enemy *enemy)
