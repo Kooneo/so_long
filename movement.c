@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:12:36 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:10:21 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/13 18:12:14 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,9 @@ int	handle_player_movement(t_game *game)
     {
         for (int i = 0; i < game->map->enemy_count; i++)
 		{
-			ft_printf("20 frames passed");
+			// ft_printf("20 frames passed");
+            move_enemy(game, &game->enemies[i]); // Move each enemy
 		}
-            // move_enemy(game, &game->enemies[i]); // Move each enemy
 
         // map_render(game); // Redraw the updated map
     }
