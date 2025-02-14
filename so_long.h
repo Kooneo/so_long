@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 19:00:17 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/14 20:52:35 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,7 @@ char			**get_frames_right(void);
 char			**get_frames(char *direction);
 
 void			move_enemy(t_game *game, t_enemy *enemy);
+void			move_enemies(t_game *game);
 void			move_enemy_vertical(t_game *game, t_enemy *enemy);
 int				update_game(t_game *game);
 #endif

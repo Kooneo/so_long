@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 14:07:02 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/11 16:35:32 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/14 20:50:46 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 char	**get_frames_up(void)
 {
-	static char	*frames_up[] = {
-		"textures/player/p_up/p_up_00.xpm",
+	static char	*frames_up[] = {"textures/player/p_up/p_up_00.xpm",
 		"textures/player/p_up/p_up_01.xpm",
 		"textures/player/p_up/p_up_02.xpm",
 		"textures/player/p_up/p_up_03.xpm",
@@ -40,8 +39,7 @@ char	**get_frames_down(void)
 		"textures/player/p_down/p_down_05.xpm",
 		"textures/player/p_down/p_down_06.xpm",
 		"textures/player/p_down/p_down_07.xpm",
-		NULL
-	};
+		NULL};
 
 	return (frames_down);
 }
