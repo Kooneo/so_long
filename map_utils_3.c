@@ -82,7 +82,7 @@ void	render_others(t_game *g, int c, int x, int y)
 	{
 		if (c == 'T')
 		{
-            render_image(g, "textures/env/enemy.xpm", x - 3, y - 3);
+			render_image(g, "textures/env/enemy.xpm", x - 3, y - 3);
 		}
 		else if (c == 'X')
 			render_image(g, "textures/env/blue_hand.xpm", x - 3, y - 3);

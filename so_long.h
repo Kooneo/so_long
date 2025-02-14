@@ -49,7 +49,7 @@ typedef struct s_map
 typedef struct s_player
 {
 	int			x_pos;
-	size_t 		y_pos;
+	size_t		y_pos;
 	int			moves_count;
 	int			hp;
 	int			sleep_time;
@@ -70,13 +70,12 @@ typedef struct s_img
 	int			line_length;
 }				t_img;
 
-
 typedef struct s_enemy
 {
-    int x;
-    int y;
-    int direction;
-} t_enemy;
+	int			x;
+	int			y;
+	int			direction;
+}	t_enemy;
 
 typedef struct s_game
 {
@@ -85,8 +84,8 @@ typedef struct s_game
 	t_player	*player;
 	t_img		*base_img;
 	int			key_states[1000000];
-	t_enemy     	*enemies;
-}				t_game;
+	t_enemy		*enemies;
+}	t_game;
 
 typedef struct s_point
 {
@@ -126,8 +125,8 @@ int				is_move_valid(t_game *game, int new_x, int new_y);
 int				handle_player_movement(t_game *game);
 
 // keys_manage.c
-void				key_press(int keycode, t_game *game);
-void				key_release(int keycode, t_game *game);
+void			key_press(int keycode, t_game *game);
+void			key_release(int keycode, t_game *game);
 void			int_keystate(t_game *game);
 
 //  animation.c

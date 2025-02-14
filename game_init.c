@@ -23,29 +23,6 @@ void	init_window(t_win *window, int map_y, int map_x)
 		return ;
 }
 
-void count_enemies(t_map *map)
-{
-	int		i;
-	int		j;
-	int		x;
-	int		y;
-
-	i = -1;
-	y = 0;
-	while (++i < map->y && map->ptr[i])
-	{
-		x = 0;
-		j = -1;
-		while (map->ptr[i][++j])
-		{
-			if ( map->ptr[i][j] == 'T')
-				map->enemy_count++;
-			x += TILE_SIZE;
-		}
-		y += TILE_SIZE;
-	}
-}
-
 void	init_game(t_game *game, t_map *map, t_win *window, t_player *player)
 {
 	map_init(map, map->filepath);
@@ -58,7 +35,6 @@ void	init_game(t_game *game, t_map *map, t_win *window, t_player *player)
 	game->player = player;
 	game->map->exit_x = 0;
 	game->map->exit_y = 0;
-
 }
 
 void	setup_hooks(t_win *window, t_game *game)
