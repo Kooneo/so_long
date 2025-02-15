@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:01:03 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/14 19:23:27 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/16 00:01:44 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 // TODO:
 // map error if the map file is not .ber
-// make enemy follows the player
 
 int	main(int argc, char **argv)
 {
