@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 18:30:12 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/16 00:27:54 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/16 00:33:04 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	map_check(t_map *map)
 	return (1);
 }
 
-int is_valid_file_extension(char *filename)
+int	is_valid_file_extension(char *filename)
 {
 	char	*ext;
 
