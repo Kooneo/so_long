@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/04 17:25:53 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/13 18:18:24 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/16 00:36:53 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,17 @@ void	free_map(char **map)
 		i++;
 	}
 	free(map);
+}
+
+int		is_file_readable(t_map *map_data)
+{
+	int	fd;
+
+	fd = open(map_data->filepath, O_RDWR);
+	if (fd < 0)
+		return (0);
+	close(fd);
+	return (1);
 }
 
 char	**load_map(t_map *map_data)
