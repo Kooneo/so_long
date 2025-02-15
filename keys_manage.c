@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 16:15:43 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/14 20:32:51 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/15 23:44:45 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void	int_keystate(t_game *game)
 
 static int	handle_movement_keys(int *new_xy, t_game *g, char **dir)
 {
-	const int keys[] = {119, 115, 100, 97};
-	const int mov[] = {-64, 64, 64, -64};
-	const char *directions[] = {"up", "down", "right", "left"};
-	int i;
+	const int	keys[] = {119, 115, 100, 97};
+	const int	mov[] = {-64, 64, 64, -64};
+	const char	*directions[] = {"up", "down", "right", "left"};
+	int			i;
 
 	i = -1;
 	while (++i < 4)

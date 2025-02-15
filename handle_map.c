@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 13:03:57 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/14 20:40:20 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/15 23:50:59 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,53 +65,6 @@ static void	process_tile(t_game *g, char c, t_paramholder p)
 		if (c == 'T')
 			g->map->enemy_count++;
 		render_others(g, c, p.x, p.y);
-	}
-}
-
-void	count_enemy(t_game *game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	game->map->enemy_count = 0;
-	while (i < game->map->y)
-	{
-		j = 0;
-		while (j < game->map->x)
-		{
-			if (game->map->ptr[i][j] == 'T')
-				game->map->enemy_count++;
-			j++;
-		}
-		i++;
-	}
-}
-
-void	find_enemies(t_game *game)
-{
-	int	i;
-	int	j;
-
-	count_enemy(game);
-	game->enemies = malloc(sizeof(t_enemy) * game->map->enemy_count);
-	index = 0;
-	i = 0;
-	while (i < game->map->y)
-	{
-		j = 0;
-		while (j < game->map->x)
-		{
-			if (game->map->ptr[i][j] == 'T')
-			{
-				game->enemies[index].x = j;
-				game->enemies[index].y = i;
-				game->enemies[index].direction = 1;
-				index++;
-			}
-			j++;
-		}
-		i++;
 	}
 }
 

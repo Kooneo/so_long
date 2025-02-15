@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:13:17 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/14 20:52:54 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/15 23:51:09 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	move_enemy(t_game *game, t_enemy *enemy)
 
 void	move_enemies(t_game *game)
 {
-    int i;
+	int	i;
 
-    i = 0;
+	i = 0;
 	while (i < game->map->enemy_count)
 	{
 		if (game->map->ptr[game->player->y_pos / 64][game->player->x_pos
@@ -53,6 +53,53 @@ void	move_enemies(t_game *game)
 			exit_game(game);
 		}
 		move_enemy(game, &game->enemies[i]);
+		i++;
+	}
+}
+
+void	count_enemy(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	game->map->enemy_count = 0;
+	while (i < game->map->y)
+	{
+		j = 0;
+		while (j < game->map->x)
+		{
+			if (game->map->ptr[i][j] == 'T')
+				game->map->enemy_count++;
+			j++;
+		}
+		i++;
+	}
+}
+
+void	find_enemies(t_game *game)
+{
+	int	i;
+	int	j;
+
+	count_enemy(game);
+	game->enemies = malloc(sizeof(t_enemy) * game->map->enemy_count);
+	index = 0;
+	i = 0;
+	while (i < game->map->y)
+	{
+		j = 0;
+		while (j < game->map->x)
+		{
+			if (game->map->ptr[i][j] == 'T')
+			{
+				game->enemies[index].x = j;
+				game->enemies[index].y = i;
+				game->enemies[index].direction = 1;
+				index++;
+			}
+			j++;
+		}
 		i++;
 	}
 }
