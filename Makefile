@@ -19,7 +19,6 @@ CFILES = so_long.c \
 		game_init.c \
 		map_utils_2.c \
 		map_utils_3.c \
-		map_utils_4.c \
 		special_design.c \
 		map_design.c \
 		counter.c \

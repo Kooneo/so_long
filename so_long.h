@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/21 12:40:35 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/15 23:52:36 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/16 00:28:21 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,5 +188,5 @@ void			move_enemy(t_game *game, t_enemy *enemy);
 void			move_enemies(t_game *game);
 void			count_enemy(t_game *game);
 void			find_enemies(t_game *game);
-
+int				is_valid_file_extension(char *filename);
 #endif
