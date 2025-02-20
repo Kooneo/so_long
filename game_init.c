@@ -6,7 +6,7 @@
 /*   By: zbakour <zbakour@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 13:41:20 by zbakour           #+#    #+#             */
-/*   Updated: 2025/02/16 00:37:29 by zbakour          ###   ########.fr       */
+/*   Updated: 2025/02/20 18:08:25 by zbakour          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,29 @@ void	init_window(t_win *window, int map_y, int map_x)
 			"Drunk Runner!");
 	if (!window->win || !window->mlx)
 		return ;
+}
+
+void	count_enemies(t_map *map)
+{
+	int	i;
+	int	j;
+	int	x;
+	int	y;
+
+	i = -1;
+	y = 0;
+	while (++i < map->y && map->ptr[i])
+	{
+		x = 0;
+		j = -1;
+		while (map->ptr[i][++j])
+		{
+			if (map->ptr[i][j] == 'T')
+				map->enemy_count++;
+			x += TILE_SIZE;
+		}
+		y += TILE_SIZE;
+	}
 }
 
 void	init_game(t_game *game, t_map *map, t_win *window, t_player *player)
@@ -58,11 +81,12 @@ void	map_init(t_map *map, char *filepath)
 	map->coins_count = 0;
 	map->is_sp = 0;
 	map->enemy_count = 0;
+	if (!is_file_exist(filepath))
+		show_err("Invalid Map.");
 	map->ptr = load_map(map);
 	if (!check_is_rectangular(map)
 		|| !check_psec_dup(map)
-		|| !is_valid_file_extension(filepath)
-		|| !is_file_readable(map))
+		|| !characters_check(map))
 	{
 		free_map(map->ptr);
 		show_err("Invalid Map.");
