@@ -27,22 +27,17 @@ void	count_enemies(t_map *map)
 {
 	int	i;
 	int	j;
-	int	x;
-	int	y;
+
 
 	i = -1;
-	y = 0;
 	while (++i < map->y && map->ptr[i])
 	{
-		x = 0;
 		j = -1;
 		while (map->ptr[i][++j])
 		{
 			if (map->ptr[i][j] == 'T')
 				map->enemy_count++;
-			x += TILE_SIZE;
 		}
-		y += TILE_SIZE;
 	}
 }
 

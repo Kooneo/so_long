@@ -23,7 +23,11 @@ static void	handle_idle_animation(t_game *g)
 
 static int	handle_movement_keys(int *new_xy, t_game *g, char **dir)
 {
-	const int	keys[] = {119, 115, 100, 97};
+	#ifdef __linux__
+		const int	keys[] = {119, 115, 100, 97};
+	#elif defined(__APPLE__)
+		const int	keys[] = {13, 1, 2, 0};
+	#endif
 	const int	mov[] = {-64, 64, 64, -64};
 	const char	*directions[] = {"up", "down", "right", "left"};
 	int			i;
@@ -41,8 +45,12 @@ static int	handle_movement_keys(int *new_xy, t_game *g, char **dir)
 			return (1);
 		}
 	}
-	if (g->key_states[65307])
-		exit_game(g);
+	#ifdef __linux__
+		if (g->key_states[65307])
+	#elif defined(__APPLE__)
+		if (g->key_states[53])
+	#endif
+			exit_game(g);
 	return (0);
 }
 

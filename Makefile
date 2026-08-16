@@ -1,9 +1,16 @@
 CC = cc
 NAME = so_long
+
 LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g3 
-LIBS =  -lmlx -lXext -lX11 -lm -lbsd
+
+MLX_DIR = mlx
+MLX = $(MLX_DIR)/libmlx.a
+
+CFLAGS = -Wall -Wextra -Werror
+INCLUDES = -I$(MLX_DIR)
+
+LIBS = $(MLX) -framework OpenGL -framework AppKit
 
 CFILES = so_long.c \
 		map_check.c \
@@ -28,29 +35,43 @@ CFILES = so_long.c \
 
 OFILES = $(CFILES:.c=.o)
 
+
 all: $(NAME)
 
-$(NAME): $(OFILES) $(LIBFT)
+
+$(NAME): $(OFILES) $(LIBFT) $(MLX)
 	$(CC) $(CFLAGS) $(OFILES) $(LIBFT) $(LIBS) -o $(NAME)
-	
+
+
 $(LIBFT):
-	make -C $(LIBFT_DIR) 
-	make -C $(LIBFT_DIR) bonus
+	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(LIBFT_DIR) bonus
+
+
+$(MLX):
+	$(MAKE) -C $(MLX_DIR)
+
 
 %.o: %.c
-	$(CC) -Imlx -c $< $(CFLAGS) -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
 
 clean:
 	rm -f $(OFILES)
-	make -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(MLX_DIR) clean
+
 
 fclean: clean
 	rm -f $(NAME)
-	make -C $(LIBFT_DIR) fclean
+	$(MAKE) -C $(LIBFT_DIR) fclean
+
 
 re: fclean all
 
-run: re
-	./$(NAME) ./maps/map2.ber 
+
+run: $(NAME)
+	./$(NAME) ./maps/map2.ber
+
 
 .PHONY: all clean fclean re run

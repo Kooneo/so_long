@@ -59,7 +59,9 @@ int	exit_game(t_game *game)
 		mlx_destroy_image(game->window->mlx, game->base_img->img_ptr);
 	if (game->window && game->window->win)
 		mlx_destroy_window(game->window->mlx, game->window->win);
+#ifdef __linux__
 	mlx_destroy_display(game->window->mlx);
+#endif
 	free(game->window->mlx);
 	exit(0);
 }
